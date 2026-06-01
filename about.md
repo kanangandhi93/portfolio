@@ -1,22 +1,19 @@
 # 👨‍💻 About Me
 
-I am a penetration tester focused on:
+Penetration Tester with focus on:
 
-- Web Application Security
-- API Security Testing
+- Web Security
+- API Security
 - Bug Bounty Hunting
 
 ---
 
 ## 🛠 Tools
 
-- Burp Suite
-- Postman
-- Nmap
+`Burp Suite` `Nmap` `Postman`
 
 ---
 
-## 🎯 Goals
+## 🎯 Mission
 
-- Find real-world vulnerabilities  
-- Build secure applications  
+Find vulnerabilities before attackers do.
