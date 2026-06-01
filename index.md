@@ -34,7 +34,7 @@
 ### 🔗 API Security
 {% for case in site.cases %}
 {% if case.category == "API Security" %}
-- [{{ case.title }}]({{ case.url }})
+- [{{ case.title }}](👉 [View Report]({{ case.url }}))
 {% endif %}
 {% endfor %}
 
