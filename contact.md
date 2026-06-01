@@ -1,6 +1,4 @@
 # 📬 Contact
 
-- Email: your-email@gmail.com
-- LinkedIn: your-profile
-- GitHub: your-username
-``
+- Email: kanangandhi62@gmail.com
+- GitHub: kanangandhi93  
