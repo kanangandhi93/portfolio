@@ -1,33 +1,16 @@
 # 👨‍💻 Kanan Gandhi
 
-Penetration Tester | Bug Bounty Hunter
+🛡️ Penetration Tester | Bug Bounty Hunter  
 
 ---
 
-## 📂 Navigation
+## 📊 Dashboard
 
-- About
-- Contact
-- API Security
-- Web Security
-
----
-
-## 🚀 About Me
-
-Focused on real-world vulnerabilities like:
-
-- IDOR
-- XSS
-- Authentication Issues
-
----
-
-## 📊 Stats
-
-- Total Findings: 3+
-- Severity High: 1
-- Categories Covered: API, Web
+| Metric | Value |
+|-------|------|
+| Total Findings | 3+ |
+| High Severity | 1 |
+| Categories | API, Web |
 
 ---
 
@@ -37,17 +20,39 @@ Focused on real-world vulnerabilities like:
 ### 🔐 {{ case.title }}
 
 **Category:** `{{ case.category }}`  
-**Endpoint:** `{{ case.endpoint }}`  
+**Severity:** `{{ case.severity }}`  
 
-👉 [View Details]({{ case.url }})
+👉 [View Report]({{ case.url }})
 
 ---
-
 {% endfor %}
 
 ---
 
-## 🏷 Categories
+## 🧬 Categories
 
-- API Security
-- Web Security
+### 🔗 API Security
+{% for case in site.cases %}
+{% if case.category == "API Security" %}
+- [{{ case.title }}]({{ case.url }})
+{% endif %}
+{% endfor %}
+
+---
+
+### 🌐 Web Security
+{% for case in site.cases %}
+{% if case.category == "Web Security" %}
+- [{{ case.title }}]({{ case.url }})
+{% endif %}
+{% endfor %}
+
+---
+
+## 🏷 Tags
+
+{% for case in site.cases %}
+{% for tag in case.tags %}
+`{{ tag }}`
+{% endfor %}
+{% endfor %}
