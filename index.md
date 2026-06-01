@@ -4,21 +4,29 @@ Penetration Tester | Bug Bounty Hunter
 
 ---
 
-## 🧪 Case Studies
-
-- [IDOR Vulnerability](idor.md)
+## 🚀 About Me
+Experienced in identifying real-world vulnerabilities like:
+- IDOR
+- XSS
+- Authentication Bypass
 
 ---
 
-## 🛠 Skills
+## 🧪 Case Studies
 
-- Web Security (OWASP Top 10)
-- Burp Suite
-- API Testing
+- IDOR Vulnerability
+- XSS Injection
+- SQL Injection
+
+---
+
+## 📂 Categories
+
+- Web Security
+- API Security
 
 ---
 
 ## 📬 Contact
-
+- LinkedIn: your-link
 - Email: your-email@gmail.com
-- LinkedIn: your-profile
