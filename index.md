@@ -51,4 +51,3 @@ Focused on real-world vulnerabilities like:
 
 - API Security
 - Web Security
-``
