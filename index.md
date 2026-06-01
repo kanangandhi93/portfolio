@@ -1,32 +1,54 @@
 # 👨‍💻 Kanan Gandhi
 
-Penetration Tester | Bug Bounty Hunter  
+Penetration Tester | Bug Bounty Hunter
+
+---
+
+## 📂 Navigation
+
+- About
+- Contact
+- API Security
+- Web Security
 
 ---
 
 ## 🚀 About Me
-Experienced in identifying real-world vulnerabilities like:
+
+Focused on real-world vulnerabilities like:
+
 - IDOR
 - XSS
-- Authentication Bypass
+- Authentication Issues
 
 ---
 
-## 🧪 Case Studies
+## 📊 Stats
 
-- IDOR Vulnerability
-- XSS Injection
-- SQL Injection
+- Total Findings: 3+
+- Severity High: 1
+- Categories Covered: API, Web
 
 ---
 
-## 📂 Categories
+## 🧪 Latest Findings
 
-- Web Security
+{% for case in site.cases %}
+### 🔐 {{ case.title }}
+
+**Category:** `{{ case.category }}`  
+**Endpoint:** `{{ case.endpoint }}`  
+
+👉 [View Details]({{ case.url }})
+
+---
+
+{% endfor %}
+
+---
+
+## 🏷 Categories
+
 - API Security
-
----
-
-## 📬 Contact
-- LinkedIn: your-link
-- Email: kanangandhi62@gmail.com
+- Web Security
+``
