@@ -1,6 +1,7 @@
 # 🔗 API Security Findings
 
-## Vulnerabilities:
-
-- IDOR Vulnerability
-- Authentication Issues
+{% for case in site.cases %}
+{% if case.category == "API Security" %}
+- [{{ case.title }}]({{ case.url }})
+{% endif %}
+{% endfor %}
