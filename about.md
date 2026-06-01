@@ -6,8 +6,17 @@ I am a penetration tester focused on:
 - API Security Testing
 - Bug Bounty Hunting
 
-Tools I use:
+---
+
+## 🛠 Tools
 
 - Burp Suite
-- Nmap
 - Postman
+- Nmap
+
+---
+
+## 🎯 Goals
+
+- Find real-world vulnerabilities  
+- Build secure applications  
