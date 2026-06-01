@@ -34,7 +34,7 @@
 ### 🔗 API Security
 {% for case in site.cases %}
 {% if case.category == "API Security" %}
-- [{{ case.title }}](👉 [View Report]({{ case.url }}))
+- 🔐 [{{ case.title }}]({{ case.url }})
 {% endif %}
 {% endfor %}
 
@@ -43,7 +43,7 @@
 ### 🌐 Web Security
 {% for case in site.cases %}
 {% if case.category == "Web Security" %}
-- [{{ case.title }}]({{ case.url }})
+- 🔐 [{{ case.title }}]({{ case.url }})
 {% endif %}
 {% endfor %}
 
@@ -51,8 +51,3 @@
 
 ## 🏷 Tags
 
-{% for case in site.cases %}
-{% for tag in case.tags %}
-`{{ tag }}`
-{% endfor %}
-{% endfor %}
