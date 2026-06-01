@@ -29,4 +29,4 @@ Experienced in identifying real-world vulnerabilities like:
 
 ## 📬 Contact
 - LinkedIn: your-link
-- Email: your-email@gmail.com
+- Email: kanangandhi62@gmail.com
