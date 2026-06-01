@@ -1,3 +1,9 @@
 title: Kanan Gandhi
 description: Penetration Tester Portfolio
-theme: minima
+theme: jekyll-theme-hacker
+
+markdown: kramdown
+
+collections:
+  cases:
+    output: true
