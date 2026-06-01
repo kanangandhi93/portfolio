@@ -12,3 +12,6 @@ header_pages:
   - index.md
   - about.md
   - contact.md
+
+plugins:
+  - jekyll-feed
