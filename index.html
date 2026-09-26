@@ -89,7 +89,7 @@ layout: null
   <div class="relative z-10 flex flex-col min-h-screen">
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 bg-brand-dark/80 backdrop-blur-md border-b border-brand-border/70 transition-all duration-200">
+    <header class="sticky top-0 z-40 bg-brand-dark/85 backdrop-blur-md border-b border-brand-border/70 transition-all duration-200">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         <!-- Logo / Name -->
@@ -106,11 +106,18 @@ layout: null
         </a>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
+          <a href="#dashboard" class="text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+            <span>📊</span> Dashboard
+          </a>
+          <a href="#categories" class="text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+            <span>🧬</span> Categories
+          </a>
+          <a href="#cases" class="text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+            <span>🧪</span> Findings
+          </a>
+          <a href="#skills" class="text-slate-300 hover:text-emerald-400 transition-colors">Skills</a>
           <a href="#about" class="text-slate-300 hover:text-emerald-400 transition-colors">About</a>
-          <a href="#cases" class="text-slate-300 hover:text-emerald-400 transition-colors">Security Findings</a>
-          <a href="#skills" class="text-slate-300 hover:text-emerald-400 transition-colors">Skills & Stack</a>
-          <a href="#methodology" class="text-slate-300 hover:text-emerald-400 transition-colors">Methodology</a>
           <a href="#contact" class="text-slate-300 hover:text-emerald-400 transition-colors">Contact</a>
         </nav>
 
@@ -120,7 +127,7 @@ layout: null
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
             Available for Consults
           </div>
-          <a href="#contact" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-brand-dark transition-colors duration-150">
+          <a href="#contact" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-brand-dark transition-colors duration-150 shadow-glow-emerald">
             Get in Touch
           </a>
         </div>
@@ -135,13 +142,14 @@ layout: null
 
       <!-- Mobile dropdown -->
       <div id="mobile-menu" class="hidden md:hidden border-b border-brand-border bg-brand-dark/95 px-4 pt-2 pb-4 space-y-2">
-        <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">About</a>
-        <a href="#cases" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">Security Findings</a>
-        <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">Skills & Stack</a>
-        <a href="#methodology" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">Methodology</a>
-        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">Contact</a>
+        <a href="#dashboard" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">📊 Dashboard</a>
+        <a href="#categories" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">🧬 Categories</a>
+        <a href="#cases" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">🧪 Security Findings</a>
+        <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">🛠 Skills & Stack</a>
+        <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">👨‍💻 About</a>
+        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">📬 Contact</a>
         <div class="pt-2">
-          <a href="#contact" class="w-full block text-center py-2 text-sm font-semibold rounded-lg bg-emerald-500 text-brand-dark">
+          <a href="#contact" class="w-full block text-center py-2 text-sm font-semibold rounded-lg bg-emerald-500 text-brand-dark font-bold">
             Get in Touch
           </a>
         </div>
@@ -152,7 +160,7 @@ layout: null
     <main class="flex-grow">
       
       <!-- HERO SECTION -->
-      <section id="hero" class="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden">
+      <section id="hero" class="relative pt-16 pb-12 md:pt-24 md:pb-16 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="max-w-3xl">
             
@@ -174,7 +182,7 @@ layout: null
             </p>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-wrap items-center gap-4 mb-12">
+            <div class="flex flex-wrap items-center gap-4 mb-8">
               <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-brand-dark font-semibold text-sm transition-all duration-200 shadow-glow-emerald">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -197,23 +205,806 @@ layout: null
               </a>
             </div>
 
-            <!-- Key Metrics Bar -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-brand-border/60">
-              <div class="p-3 bg-brand-card/50 rounded-xl border border-brand-border/40">
-                <span class="block text-2xl font-bold font-mono text-emerald-400">4+</span>
-                <span class="text-xs text-slate-400 font-medium">Critical Findings</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 📊 INTERACTIVE DASHBOARD SECTION (CLICKABLE) -->
+      <!-- ============================================== -->
+      <section id="dashboard" class="py-8 border-y border-brand-border/60 bg-brand-card/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📊</span>
+              <h2 class="text-base font-bold text-white uppercase tracking-wider font-mono">
+                Audit Dashboard
+              </h2>
+              <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                Interactive Metrics
+              </span>
+            </div>
+            <p class="text-xs font-mono text-slate-400">
+              💡 <span class="text-slate-300">Click any metric below</span> to jump & filter reports
+            </p>
+          </div>
+
+          <!-- Clickable Dashboard Metric Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            
+            <!-- Metric 1: Total Findings -->
+            <button onclick="applyFilter('all', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-emerald-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-emerald-400">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-medium">Total Findings</span>
+                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All →</span>
               </div>
-              <div class="p-3 bg-brand-card/50 rounded-xl border border-brand-border/40">
-                <span class="block text-2xl font-bold font-mono text-cyan-400">100%</span>
-                <span class="text-xs text-slate-400 font-medium">Manual Validation</span>
+              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">4+</span>
+              <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
+                <span>Verified Exploits</span>
+              </span>
+            </button>
+
+            <!-- Metric 2: Critical Severity -->
+            <button onclick="applyFilter('severity-critical', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-red-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-red-400">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-medium">Critical Severity</span>
+                <span class="text-[10px] font-mono text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter →</span>
               </div>
-              <div class="p-3 bg-brand-card/50 rounded-xl border border-brand-border/40">
-                <span class="block text-2xl font-bold font-mono text-white">OWASP</span>
-                <span class="text-xs text-slate-400 font-medium">API Top 10 Aligned</span>
+              <span class="block text-3xl font-extrabold font-mono text-red-400 mt-1">1</span>
+              <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
+                <span>CVSS 9.1 (BOLA / BAC)</span>
+              </span>
+            </button>
+
+            <!-- Metric 3: High Severity -->
+            <button onclick="applyFilter('severity-high', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-amber-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-amber-400">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-medium">High Severity</span>
+                <span class="text-[10px] font-mono text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter →</span>
               </div>
-              <div class="p-3 bg-brand-card/50 rounded-xl border border-brand-border/40">
-                <span class="block text-2xl font-bold font-mono text-amber-400">QA + SEC</span>
-                <span class="text-xs text-slate-400 font-medium">Hybrid Audit Edge</span>
+              <span class="block text-3xl font-extrabold font-mono text-amber-400 mt-1">3</span>
+              <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
+                <span>Cloud, Auth & Logic</span>
+              </span>
+            </button>
+
+            <!-- Metric 4: Categories -->
+            <button onclick="scrollToElement('categories')" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-cyan-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-cyan-400">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-400 font-medium">Core Categories</span>
+                <span class="text-[10px] font-mono text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">Browse →</span>
+              </div>
+              <span class="block text-3xl font-extrabold font-mono text-cyan-400 mt-1">4</span>
+              <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
+                <span>API, Cloud, Auth, Logic</span>
+              </span>
+            </button>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 🧬 CATEGORIES SECTION (FULLY CLICKABLE)       -->
+      <!-- ============================================== -->
+      <section id="categories" class="py-16 md:py-20 border-b border-brand-border/50 bg-brand-dark/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-3">
+                <span>// CATEGORIES BROWSER</span>
+              </div>
+              <h2 class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                <span>🧬</span> Security & QA Categories
+              </h2>
+              <p class="text-slate-400 mt-2 max-w-xl text-sm">
+                Explore real findings organized by security disciplines. Click any category card to filter findings, or click the report links directly.
+              </p>
+            </div>
+            
+            <div class="mt-4 md:mt-0">
+              <button onclick="applyFilter('all', true)" class="px-3.5 py-1.5 rounded-lg text-xs font-mono bg-brand-card border border-brand-border hover:border-emerald-400 text-slate-300 hover:text-white transition-all">
+                Reset to All Categories (4)
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Category Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Category 1: API Security -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-cyan-500/50 p-6 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xl">🔗</span>
+                    <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">API Security</h3>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                    1 Report
+                  </span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                  Focusing on Broken Object Level Authorization (BOLA), parameter tampering, tenant isolation, and REST/GraphQL endpoint vulnerabilities.
+                </p>
+
+                <!-- Case inside this category -->
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">🔐 Broken Access Control in Multi-Tenant API</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">CRITICAL</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: `/api/v2/tenants/{tenant_id}/invoices`</p>
+                  
+                  <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
+                    <button onclick="openCaseModal('case1')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                      👉 <span>Open Advisory (Modal)</span>
+                    </button>
+                    <a href="cases/broken-access-control.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                      📄 <span>View Markdown</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button to filter this category -->
+              <button onclick="applyFilter('category-api', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-cyan-950/40 text-cyan-400 border border-brand-border group-hover:border-cyan-500/40 transition-all flex items-center justify-center gap-1">
+                <span>Filter & View API Findings</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            <!-- Category 2: Cloud Security -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-amber-500/50 p-6 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xl">☁️</span>
+                    <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Cloud & Storage Security</h3>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                    1 Report
+                  </span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                  Auditing permissive cloud bucket ACLs, unauthenticated asset enumeration, IAM privilege creep, and cloud-hosted database leaks.
+                </p>
+
+                <!-- Case inside this category -->
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">🔐 Unauthenticated Cloud Storage Exfiltration</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH (8.6)</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: AWS S3 Object Storage Bucket</p>
+                  
+                  <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
+                    <button onclick="openCaseModal('case2')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                      👉 <span>Open Advisory (Modal)</span>
+                    </button>
+                    <a href="cases/cloud-storage-exfiltration.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                      📄 <span>View Markdown</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button to filter this category -->
+              <button onclick="applyFilter('category-cloud', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-amber-950/40 text-amber-400 border border-brand-border group-hover:border-amber-500/40 transition-all flex items-center justify-center gap-1">
+                <span>Filter & View Cloud Findings</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            <!-- Category 3: Authentication & Secrets -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-purple-500/50 p-6 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xl">🔑</span>
+                    <h3 class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">Authentication & Secrets</h3>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                    1 Report
+                  </span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                  Analyzing OAuth 2.0 flows, client secret exposures in production bundles, SSO misconfigurations, and credential extraction.
+                </p>
+
+                <!-- Case inside this category -->
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">🔐 Hardcoded OAuth Secrets & Client Invalidation</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH (8.2)</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: Client-side SPA Production Bundles</p>
+                  
+                  <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
+                    <button onclick="openCaseModal('case3')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                      👉 <span>Open Advisory (Modal)</span>
+                    </button>
+                    <a href="cases/oauth-secrets.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                      📄 <span>View Markdown</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button to filter this category -->
+              <button onclick="applyFilter('category-auth', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-purple-950/40 text-purple-400 border border-brand-border group-hover:border-purple-500/40 transition-all flex items-center justify-center gap-1">
+                <span>Filter & View Auth Findings</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            <!-- Category 4: Session & Business Logic -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-emerald-500/50 p-6 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xl">⚡</span>
+                    <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Session & Business Logic QA</h3>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    1 Report
+                  </span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                  Testing concurrency, race condition windows (TOCTOU), session invalidation on password change, and e-commerce cart logic flaws.
+                </p>
+
+                <!-- Case inside this category -->
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">🔐 Session Integrity & Race Condition Flaws</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH (7.8)</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: Checkout API & Session Token Lifecycle</p>
+                  
+                  <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
+                    <button onclick="openCaseModal('case4')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                      👉 <span>Open Advisory (Modal)</span>
+                    </button>
+                    <a href="cases/session-integrity.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                      📄 <span>View Markdown</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button to filter this category -->
+              <button onclick="applyFilter('category-logic', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-emerald-950/40 text-emerald-400 border border-brand-border group-hover:border-emerald-500/40 transition-all flex items-center justify-center gap-1">
+                <span>Filter & View Logic Findings</span>
+                <span>→</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 🧪 SECURITY CASE STUDIES SECTION (CLICKABLE)   -->
+      <!-- ============================================== -->
+      <section id="cases" class="py-16 md:py-24 border-b border-brand-border/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
+                <span>// 02. EVIDENCE & AUDITS</span>
+              </div>
+              <h2 class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                <span>🧪</span> Security Case Studies & Findings
+              </h2>
+              <p class="text-slate-400 mt-2 max-w-xl text-sm">
+                Click any card to open the interactive security advisory with technical PoCs, impact assessments, and remediation plans.
+              </p>
+            </div>
+            
+            <div id="findings-count" class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
+              Showing <span id="visible-count" class="text-emerald-400 font-bold">4</span> of 4 Findings
+            </div>
+          </div>
+
+          <!-- Interactive Filters & Search Toolbar -->
+          <div class="bg-brand-card/90 border border-brand-border rounded-2xl p-4 mb-8 space-y-4">
+            
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs font-mono text-slate-400 mr-2 flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                </svg>
+                Filter:
+              </span>
+
+              <button onclick="applyFilter('all')" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-emerald-500 text-brand-dark font-bold shadow-sm">
+                All (4)
+              </button>
+
+              <button onclick="applyFilter('category-api')" data-filter="category-api" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
+                🔗 API Security
+              </button>
+
+              <button onclick="applyFilter('category-cloud')" data-filter="category-cloud" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
+                ☁️ Cloud Storage
+              </button>
+
+              <button onclick="applyFilter('category-auth')" data-filter="category-auth" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
+                🔑 OAuth & Secrets
+              </button>
+
+              <button onclick="applyFilter('category-logic')" data-filter="category-logic" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
+                ⚡ Session & Logic
+              </button>
+
+              <button onclick="applyFilter('severity-critical')" data-filter="severity-critical" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-red-400 border border-brand-border">
+                🔴 Critical Only
+              </button>
+
+              <button onclick="applyFilter('severity-high')" data-filter="severity-high" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-amber-400 border border-brand-border">
+                🟠 High Only
+              </button>
+            </div>
+
+            <!-- Live Keyword Search Bar -->
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </div>
+              <input 
+                type="text" 
+                id="search-input" 
+                oninput="searchCases(this.value)"
+                placeholder="Search findings by keyword, tool or attack vector (e.g. BOLA, OAuth, S3, Race, Burp)..." 
+                class="w-full bg-brand-dark text-slate-200 pl-10 pr-4 py-2 rounded-xl border border-brand-border focus:border-emerald-400 focus:outline-none text-xs font-mono placeholder-slate-500"
+              />
+            </div>
+
+          </div>
+
+          <!-- 4 Case Study Cards Grid -->
+          <div id="cases-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Case Study 1: Broken Access Control in multi-tenant API -->
+            <div 
+              data-category="category-api" 
+              data-severity="severity-critical"
+              data-tags="burp api testing bola idor multi-tenant bac broken access"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case1')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-critical', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-red-500/15 text-red-400 border border-red-500/30 hover:bg-red-500/25 transition-colors">
+                    CRITICAL (CVSS 9.1)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-api', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    API Security / BOLA
+                  </button>
+                </div>
+                
+                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Broken Access Control in Multi-Tenant API
+                </h3>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Identified horizontal privilege escalation where modifying tenant identifiers (`org_id` / `tenant_uuid`) in downstream microservice endpoints bypassed tenant isolation, leaking sensitive cross-company customer databases.
+                </p>
+
+                <!-- Technical Snippet / Tags -->
+                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
+                    <span class="text-slate-200">BOLA / IDOR in Tenant Scope</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
+                    <span class="text-slate-300">REST API `/api/v2/tenants/{id}/billing`</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
+                    <span class="text-slate-300">JWT Tenant Claims + Row Level Security</span>
+                  </div>
+                </div>
+
+                <!-- Clickable Tag Pills -->
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('Burp Suite')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Burp Suite</button>
+                  <button onclick="event.stopPropagation(); searchCases('API Testing')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#API Testing</button>
+                  <button onclick="event.stopPropagation(); searchCases('BOLA')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#BOLA</button>
+                  <button onclick="event.stopPropagation(); searchCases('Multi-Tenancy')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Multi-Tenant</button>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case1')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </button>
+                <a href="cases/broken-access-control.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                  <span>📄 Markdown</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Case Study 2: Unauthenticated Cloud Storage Exfiltration -->
+            <div 
+              data-category="category-cloud" 
+              data-severity="severity-high"
+              data-tags="cloud security aws s3 fuzzing data exfiltration pii storage bucket"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case2')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
+                    HIGH (CVSS 8.6)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-cloud', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    Cloud & Data Exfiltration
+                  </button>
+                </div>
+                
+                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Unauthenticated Cloud Storage Exfiltration
+                </h3>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Discovered permissive cloud storage ACLs and unauthenticated public bucket endpoints exposing production database snapshots, KYC verification documents, and invoices via automated fuzzing of asset URL patterns.
+                </p>
+
+                <!-- Technical Snippet / Tags -->
+                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
+                    <span class="text-slate-200">Public Object Storage Misconfiguration</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
+                    <span class="text-slate-300">S3 / Cloud Storage Storage Bucket API</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
+                    <span class="text-slate-300">Block Public Access + Signed Presigned URLs</span>
+                  </div>
+                </div>
+
+                <!-- Clickable Tag Pills -->
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('Cloud Security')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Cloud Security</button>
+                  <button onclick="event.stopPropagation(); searchCases('AWS S3')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#AWS S3</button>
+                  <button onclick="event.stopPropagation(); searchCases('Fuzzing')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Fuzzing</button>
+                  <button onclick="event.stopPropagation(); searchCases('OWASP')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#OWASP Top 10</button>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case2')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </button>
+                <a href="cases/cloud-storage-exfiltration.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                  <span>📄 Markdown</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Case Study 3: Hardcoded OAuth Secrets -->
+            <div 
+              data-category="category-auth" 
+              data-severity="severity-high"
+              data-tags="oauth secrets leak javascript pkce static analysis authorization token"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case3')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
+                    HIGH (CVSS 8.2)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-auth', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    Auth / Secrets Leak
+                  </button>
+                </div>
+                
+                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Hardcoded OAuth Secrets & Client Invalidation
+                </h3>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Extracted embedded OAuth client secrets and developer keys compiled into production client-side JavaScript bundles and staging configs, facilitating unauthorized token minting and API impersonation.
+                </p>
+
+                <!-- Technical Snippet / Tags -->
+                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
+                    <span class="text-slate-200">Exposed OAuth Client Credentials</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
+                    <span class="text-slate-300">SPA Production JS Bundle & Auth Flow</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
+                    <span class="text-slate-300">Migrated to OAuth 2.0 PKCE + Secrets Vault</span>
+                  </div>
+                </div>
+
+                <!-- Clickable Tag Pills -->
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('OAuth 2.0')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#OAuth 2.0</button>
+                  <button onclick="event.stopPropagation(); searchCases('JavaScript')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#JavaScript</button>
+                  <button onclick="event.stopPropagation(); searchCases('PKCE')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#PKCE</button>
+                  <button onclick="event.stopPropagation(); searchCases('Static Analysis')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Static Analysis</button>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case3')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </button>
+                <a href="cases/oauth-secrets.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                  <span>📄 Markdown</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Case Study 4: Session Integrity Flaws -->
+            <div 
+              data-category="category-logic" 
+              data-severity="severity-high"
+              data-tags="turbo intruder race condition toctou business logic session concurrency"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case4')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
+                    HIGH (CVSS 7.8)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-logic', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    Logic & Session Integrity
+                  </button>
+                </div>
+                
+                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Session Integrity & Race Condition Flaws
+                </h3>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Uncovered concurrent request race conditions in checkout coupon redemption and incomplete server-side session revocation during privilege elevation and password reset flows, enabling stale token reuse.
+                </p>
+
+                <!-- Technical Snippet / Tags -->
+                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
+                    <span class="text-slate-200">TOCTOU Race & Stale Session Tokens</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
+                    <span class="text-slate-300">Checkout API & Auth Session Store</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
+                    <span class="text-slate-300">Atomic Distributed Locks + Central Session Blacklist</span>
+                  </div>
+                </div>
+
+                <!-- Clickable Tag Pills -->
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('Turbo Intruder')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Turbo Intruder</button>
+                  <button onclick="event.stopPropagation(); searchCases('Race Conditions')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Race Condition</button>
+                  <button onclick="event.stopPropagation(); searchCases('Business Logic')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Business Logic</button>
+                  <button onclick="event.stopPropagation(); searchCases('Session')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Session Security</button>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case4')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </button>
+                <a href="cases/session-integrity.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                  <span>📄 Markdown</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Empty search result state -->
+          <div id="no-results" class="hidden text-center py-12 bg-brand-card/40 rounded-2xl border border-brand-border">
+            <span class="text-3xl mb-2 block">🔍</span>
+            <p class="text-white font-medium text-base mb-1">No matching security findings found</p>
+            <p class="text-slate-400 text-xs mb-4">Try clearing your search query or selecting "All" from the filters.</p>
+            <button onclick="applyFilter('all'); document.getElementById('search-input').value='';" class="px-4 py-2 rounded-lg bg-emerald-500 text-brand-dark text-xs font-bold font-mono">
+              Reset Filters
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SKILLS GRID SECTION -->
+      <section id="skills" class="py-16 md:py-24 border-b border-brand-border/50 bg-brand-dark/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="max-w-2xl mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
+              <span>// 03. TOOLKIT & EXPERTISE</span>
+            </div>
+            <h2 class="text-3xl font-extrabold text-white tracking-tight">Core Competencies & Skills</h2>
+            <p class="text-slate-400 mt-2 text-sm">
+              Click on any skill to automatically filter matching case studies where that methodology was applied.
+            </p>
+          </div>
+
+          <!-- Skills Grid: 5 Core Focus Areas + Recon -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- 1. Burp Suite -->
+            <div onclick="searchCases('Burp Suite', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-orange-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-11 h-11 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </div>
+                <span class="text-[11px] font-mono text-orange-400 group-hover:underline">Filter cases →</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">Burp Suite Professional</h3>
+              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+                Expert deep-traffic interception, custom HTTP request manipulation, Repeater workflows, Turbo Intruder concurrency fuzzing, and Autorize for automated BAC checks.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Interception</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Turbo Intruder</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Autorize</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Collaborator</span>
+              </div>
+            </div>
+
+            <!-- 2. API Testing -->
+            <div onclick="applyFilter('category-api', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-cyan-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <span class="text-[11px] font-mono text-cyan-400 group-hover:underline">Filter cases →</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">API Security & Testing</h3>
+              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+                Thorough audit of REST, GraphQL, and microservice architectures. Inspecting JWT claims, parameter pollution, object-level authorizations, and rate limiting controls.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">REST & GraphQL</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Postman / Newman</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">JWT Security</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Swagger/OpenAPI</span>
+              </div>
+            </div>
+
+            <!-- 3. OWASP Top 10 -->
+            <div onclick="searchCases('OWASP', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <span class="text-[11px] font-mono text-emerald-400 group-hover:underline">Filter cases →</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">OWASP Top 10 (Web & API)</h3>
+              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+                Systematic auditing for Broken Access Control, Injection (SQLi, NoSQL, Command), SSRF, Cryptographic Failures, Security Misconfigurations, and Insecure Design.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">BOLA / BFLA</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">SSRF</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">XSS / Injection</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">CORS / CSP</span>
+              </div>
+            </div>
+
+            <!-- 4. Manual QA -->
+            <div onclick="applyFilter('category-logic', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-purple-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  </svg>
+                </div>
+                <span class="text-[11px] font-mono text-purple-400 group-hover:underline">Filter cases →</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Manual QA & Exploratory Testing</h3>
+              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+                Meticulous edge-case hunting, state manipulation, regression test suites, boundary analysis, and ensuring that user flows survive unexpected or malicious payloads.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Boundary Value</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Negative Testing</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Regression Suites</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Bug Triage</span>
+              </div>
+            </div>
+
+            <!-- 5. JavaScript / Python -->
+            <div onclick="searchCases('JavaScript', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-yellow-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-11 h-11 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <span class="text-[11px] font-mono text-yellow-400 group-hover:underline">Filter cases →</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors">JavaScript / Python</h3>
+              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+                Writing custom exploit scripts, automated API fuzzers in Python (`requests`, `asyncio`), client-side source de-obfuscation in JavaScript, and CI/CD security assertions.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Python Requests</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Async Fuzzing</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">JS Source Review</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Custom PoCs</span>
+              </div>
+            </div>
+
+            <!-- 6. Additional Security & Recon Tools -->
+            <div onclick="searchCases('Cloud', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-indigo-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <span class="text-[11px] font-mono text-indigo-400 group-hover:underline">Filter cases →</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">Recon & Security Tooling</h3>
+              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+                Proficient with reconnaissance, network scanning, endpoint discovery, and secret scanning across source repos and build environments.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Nmap</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">GitGuardian / TruffleHog</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">ffuf / Katana</span>
+                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Linux / Bash</span>
               </div>
             </div>
 
@@ -222,13 +1013,13 @@ layout: null
       </section>
 
       <!-- ABOUT SECTION -->
-      <section id="about" class="py-16 border-t border-brand-border/50 bg-brand-dark/60">
+      <section id="about" class="py-16 md:py-24 border-b border-brand-border/50 bg-brand-dark/60">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid md:grid-cols-12 gap-8 items-center">
             
             <div class="md:col-span-7">
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-4">
-                <span>// 01. PROFILE</span>
+                <span>// 04. PROFILE</span>
               </div>
               <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
                 Bridging Developer Velocity & Adversary Mindset
@@ -281,416 +1072,8 @@ layout: null
         </div>
       </section>
 
-      <!-- SECURITY CASE STUDIES SECTION -->
-      <section id="cases" class="py-16 md:py-24 border-t border-brand-border/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-3">
-                <span>// 02. EVIDENCE & AUDITS</span>
-              </div>
-              <h2 class="text-3xl font-extrabold text-white tracking-tight">Security Case Studies</h2>
-              <p class="text-slate-400 mt-2 max-w-xl">
-                Real-world high-impact security discoveries (sanitized to protect client and bug-bounty confidentiality), demonstrating root cause analysis, exploitation impact, and fixes.
-              </p>
-            </div>
-            
-            <div class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
-              <span class="text-emerald-400 font-bold">4</span> Detailed Findings
-            </div>
-          </div>
-
-          <!-- 4 High-Impact Case Study Cards Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <!-- Case Study 1: Broken Access Control in multi-tenant API -->
-            <div class="bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/50 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-red-500/15 text-red-400 border border-red-500/30">
-                    CRITICAL (CVSS 9.1)
-                  </span>
-                  <span class="text-xs font-mono text-slate-400">API Security / BOLA</span>
-                </div>
-                
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Broken Access Control in Multi-Tenant API
-                </h3>
-
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Identified horizontal privilege escalation where modifying tenant identifiers (`org_id` / `tenant_uuid`) in downstream microservice endpoints bypassed tenant isolation, leaking sensitive cross-company customer databases.
-                </p>
-
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2">Vulnerability:</span>
-                    <span>BOLA / IDOR in Tenant Scope</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2">Target Scope:</span>
-                    <span>REST API `/api/v2/tenants/{id}/billing`</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2">Remediation:</span>
-                    <span>JWT Tenant Claim Claims Binding + Row Level Security</span>
-                  </div>
-                </div>
-
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Burp Suite</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">API Testing</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">BOLA</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Multi-Tenancy</span>
-                </div>
-              </div>
-
-              <button onclick="openCaseModal('case1')" class="inline-flex items-center justify-between w-full pt-3 border-t border-brand-border text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
-                <span>View Full Security Advisory</span>
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Case Study 2: Unauthenticated Cloud Storage Exfiltration -->
-            <div class="bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/50 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">
-                    HIGH (CVSS 8.6)
-                  </span>
-                  <span class="text-xs font-mono text-slate-400">Cloud & Data Exfiltration</span>
-                </div>
-                
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Unauthenticated Cloud Storage Exfiltration
-                </h3>
-
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Discovered permissive cloud storage ACLs and unauthenticated public bucket endpoints exposing production database snapshots, KYC verification documents, and invoices via automated fuzzing of asset URL patterns.
-                </p>
-
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2">Vulnerability:</span>
-                    <span>Public Object Storage Misconfiguration</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2">Target Scope:</span>
-                    <span>S3 / Cloud Storage Storage Bucket API</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2">Remediation:</span>
-                    <span>Block Public Access + Signed Presigned URLs</span>
-                  </div>
-                </div>
-
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Cloud Security</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">AWS S3</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Fuzzing</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">OWASP Top 10</span>
-                </div>
-              </div>
-
-              <button onclick="openCaseModal('case2')" class="inline-flex items-center justify-between w-full pt-3 border-t border-brand-border text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
-                <span>View Full Security Advisory</span>
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Case Study 3: Hardcoded OAuth Secrets -->
-            <div class="bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/50 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">
-                    HIGH (CVSS 8.2)
-                  </span>
-                  <span class="text-xs font-mono text-slate-400">Auth / Secrets Leak</span>
-                </div>
-                
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Hardcoded OAuth Secrets & Client Invalidation
-                </h3>
-
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Extracted embedded OAuth client secrets and developer keys compiled into production client-side JavaScript bundles and staging configs, facilitating unauthorized token minting and API impersonation.
-                </p>
-
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2">Vulnerability:</span>
-                    <span>Exposed OAuth Client Credentials</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2">Target Scope:</span>
-                    <span>SPA Production JS Bundle & Auth Flow</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2">Remediation:</span>
-                    <span>Migrated to OAuth 2.0 PKCE + Secrets Vault</span>
-                  </div>
-                </div>
-
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">OAuth 2.0</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">JavaScript</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">PKCE</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Static Analysis</span>
-                </div>
-              </div>
-
-              <button onclick="openCaseModal('case3')" class="inline-flex items-center justify-between w-full pt-3 border-t border-brand-border text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
-                <span>View Full Security Advisory</span>
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Case Study 4: Session Integrity Flaws -->
-            <div class="bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/50 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">
-                    HIGH (CVSS 7.8)
-                  </span>
-                  <span class="text-xs font-mono text-slate-400">Logic & Session Integrity</span>
-                </div>
-                
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Session Integrity & Race Condition Flaws
-                </h3>
-
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Uncovered concurrent request race conditions in checkout coupon redemption and incomplete server-side session revocation during privilege elevation and password reset flows, enabling stale token reuse.
-                </p>
-
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2">Vulnerability:</span>
-                    <span>Time-of-Check to Time-of-Use (TOCTOU) & Stale Session</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2">Target Scope:</span>
-                    <span>Checkout API & Auth Session Store</span>
-                  </div>
-                  <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2">Remediation:</span>
-                    <span>Atomic Distributed Locks + Central Session Blacklist</span>
-                  </div>
-                </div>
-
-                <div class="flex flex-wrap gap-1.5 mb-6">
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Turbo Intruder</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Race Conditions</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Business Logic</span>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 text-slate-300">Session Security</span>
-                </div>
-              </div>
-
-              <button onclick="openCaseModal('case4')" class="inline-flex items-center justify-between w-full pt-3 border-t border-brand-border text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
-                <span>View Full Security Advisory</span>
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
-              </button>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- SKILLS GRID SECTION -->
-      <section id="skills" class="py-16 md:py-24 border-t border-brand-border/50 bg-brand-dark/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div class="max-w-2xl mb-12">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-              <span>// 03. TOOLKIT & EXPERTISE</span>
-            </div>
-            <h2 class="text-3xl font-extrabold text-white tracking-tight">Core Competencies & Skills</h2>
-            <p class="text-slate-400 mt-2">
-              A balanced blend of hands-on offensive security instrumentation and quality-focused validation workflows.
-            </p>
-          </div>
-
-          <!-- Skills Grid: 5 Core Focus Areas -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- 1. Burp Suite -->
-            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/40 transition-all duration-200">
-              <div class="w-11 h-11 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">Burp Suite Professional</h3>
-              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
-                Expert deep-traffic interception, custom HTTP request manipulation, Repeater workflows, Turbo Intruder concurrency fuzzing, and Autorize for automated BAC checks.
-              </p>
-              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Interception</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Turbo Intruder</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Autorize</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Collaborator</span>
-              </div>
-            </div>
-
-            <!-- 2. API Testing -->
-            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/40 transition-all duration-200">
-              <div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">API Security & Testing</h3>
-              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
-                Thorough audit of REST, GraphQL, and microservice architectures. Inspecting JWT claims, parameter pollution, object-level authorizations, and rate limiting controls.
-              </p>
-              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">REST & GraphQL</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Postman / Newman</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">JWT Security</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Swagger/OpenAPI</span>
-              </div>
-            </div>
-
-            <!-- 3. OWASP Top 10 -->
-            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/40 transition-all duration-200">
-              <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">OWASP Top 10 (Web & API)</h3>
-              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
-                Systematic auditing for Broken Access Control, Injection (SQLi, NoSQL, Command), SSRF, Cryptographic Failures, Security Misconfigurations, and Insecure Design.
-              </p>
-              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">BOLA / BFLA</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">SSRF</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">XSS / Injection</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">CORS / CSP</span>
-              </div>
-            </div>
-
-            <!-- 4. Manual QA -->
-            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/40 transition-all duration-200">
-              <div class="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">Manual QA & Exploratory Testing</h3>
-              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
-                Meticulous edge-case hunting, state manipulation, regression test suites, boundary analysis, and ensuring that user flows survive unexpected or malicious payloads.
-              </p>
-              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Boundary Value</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Negative Testing</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Regression Suites</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Bug Triage</span>
-              </div>
-            </div>
-
-            <!-- 5. JavaScript / Python -->
-            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/40 transition-all duration-200">
-              <div class="w-11 h-11 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">JavaScript / Python</h3>
-              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
-                Writing custom exploit scripts, automated API fuzzers in Python (`requests`, `asyncio`), client-side source de-obfuscation in JavaScript, and CI/CD security assertions.
-              </p>
-              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Python Requests</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Async Fuzzing</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">JS Source Review</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Custom PoCs</span>
-              </div>
-            </div>
-
-            <!-- 6. Additional Security & Recon Tools -->
-            <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-emerald-500/40 transition-all duration-200">
-              <div class="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-white mb-2">Recon & Security Tooling</h3>
-              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
-                Proficient with reconnaissance, network scanning, endpoint discovery, and secret scanning across source repos and build environments.
-              </p>
-              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Nmap</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">GitGuardian / TruffleHog</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">ffuf / Katana</span>
-                <span class="px-2 py-0.5 rounded bg-brand-dark text-slate-300 border border-brand-border/60">Linux / Bash</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- METHODOLOGY / PROCESS SECTION -->
-      <section id="methodology" class="py-16 md:py-20 border-t border-brand-border/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-2xl mx-auto mb-12">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-              <span>// 04. CONSULTING METHODOLOGY</span>
-            </div>
-            <h2 class="text-3xl font-extrabold text-white tracking-tight">Structured Security Audit Process</h2>
-            <p class="text-slate-400 mt-2 text-sm">
-              How I systematically audit, document, and help development teams remediate complex risks.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
-              <span class="font-mono text-4xl font-extrabold text-slate-700/60 block mb-2">01</span>
-              <h3 class="text-base font-bold text-white mb-2">Threat Modeling</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Mapping architecture, trust boundaries, multi-tenant boundaries, and unauthenticated attack vectors before testing.
-              </p>
-            </div>
-            <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
-              <span class="font-mono text-4xl font-extrabold text-slate-700/60 block mb-2">02</span>
-              <h3 class="text-base font-bold text-white mb-2">Manual Exploitation</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Deep manual penetration testing and fuzzing focusing on business logic, privilege escalation, and API parameters.
-              </p>
-            </div>
-            <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
-              <span class="font-mono text-4xl font-extrabold text-slate-700/60 block mb-2">03</span>
-              <h3 class="text-base font-bold text-white mb-2">Actionable Reporting</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Delivering verified Proof-of-Concepts (PoCs) with clear reproduction steps and CVSS severity scoring.
-              </p>
-            </div>
-            <div class="bg-brand-card p-6 rounded-2xl border border-brand-border relative">
-              <span class="font-mono text-4xl font-extrabold text-slate-700/60 block mb-2">04</span>
-              <h3 class="text-base font-bold text-white mb-2">QA & Re-testing</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Verifying patched code to ensure fixes don't introduce regressions or bypasses into production releases.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- CONTACT SECTION -->
-      <section id="contact" class="py-16 md:py-24 border-t border-brand-border/50 bg-brand-dark/80">
+      <section id="contact" class="py-16 md:py-24 bg-brand-dark/80">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-4">
@@ -795,6 +1178,7 @@ layout: null
         severity: "CRITICAL (CVSS 9.1)",
         severityColor: "text-red-400 border-red-500/30 bg-red-500/10",
         category: "API Security / BOLA / Multi-Tenant Isolation",
+        filePath: "cases/broken-access-control.md",
         overview: "During a penetration test of a multi-tenant enterprise SaaS platform, testing revealed that backend microservices relied entirely on URL-path organization identifiers (e.g. `/api/v2/tenants/{tenant_id}/invoices`) without cross-referencing the authenticated JWT subject's organizational membership.",
         exploitation: [
           "Authenticated as Tenant A (low-privilege standard user).",
@@ -814,6 +1198,7 @@ layout: null
         severity: "HIGH (CVSS 8.6)",
         severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
         category: "Cloud Infrastructure Security / Data Privacy",
+        filePath: "cases/cloud-storage-exfiltration.md",
         overview: "While auditing file attachment upload/download workflows, object storage URLs leaked bucket names and predictable hash paths. Further testing revealed that the underlying cloud storage bucket ACL permitted public 'ListBucket' and 'GetObject' actions to anonymous users.",
         exploitation: [
           "Identified image and PDF file URLs referencing `https://{client}-documents-prod.s3.amazonaws.com/{uuid}`.",
@@ -833,6 +1218,7 @@ layout: null
         severity: "HIGH (CVSS 8.2)",
         severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
         category: "Authentication Security / Secrets Management",
+        filePath: "cases/oauth-secrets.md",
         overview: "During client-side source code analysis of a single-page production application, static review revealed that developer environment variables containing production OAuth `client_secret` strings were bundled into minified JavaScript files.",
         exploitation: [
           "Parsed JavaScript source maps and chunk files using Burp Suite and source map extractors.",
@@ -852,6 +1238,7 @@ layout: null
         severity: "HIGH (CVSS 7.8)",
         severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
         category: "Business Logic / Concurrency / Session Management",
+        filePath: "cases/session-integrity.md",
         overview: "In an e-commerce and subscription platform, QA and security tests identified two related session flaws: (1) coupon redemption endpoints lacked concurrency locking, allowing a single-use promo code to be redeemed dozens of times concurrently; (2) server-side sessions remained active after user password resets and permission changes.",
         exploitation: [
           "Constructed a high-concurrency burst attack using Burp Suite Turbo Intruder sending 30 simultaneous HTTP POST requests to `/api/cart/apply-voucher`.",
@@ -866,6 +1253,112 @@ layout: null
       }
     };
 
+    // Filter functionality
+    let currentFilter = 'all';
+
+    function applyFilter(filterKey, shouldScroll = false) {
+      currentFilter = filterKey;
+      const cards = document.querySelectorAll('.case-card');
+      let visible = 0;
+
+      // Update active state on filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === filterKey) {
+          btn.className = 'filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-emerald-500 text-brand-dark font-bold shadow-sm';
+        } else {
+          btn.className = 'filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border';
+        }
+      });
+
+      // Clear search input when explicit category/severity filter is applied
+      const searchInput = document.getElementById('search-input');
+      if (searchInput && searchInput.value) {
+        searchInput.value = '';
+      }
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const sev = card.getAttribute('data-severity');
+
+        let match = false;
+        if (filterKey === 'all') {
+          match = true;
+        } else if (filterKey.startsWith('category-') && cat === filterKey) {
+          match = true;
+        } else if (filterKey.startsWith('severity-') && sev === filterKey) {
+          match = true;
+        }
+
+        if (match) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      updateCount(visible);
+
+      if (shouldScroll) {
+        scrollToElement('cases');
+      }
+    }
+
+    // Live search functionality
+    function searchCases(query, shouldScroll = false) {
+      const q = query.trim().toLowerCase();
+      const cards = document.querySelectorAll('.case-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+
+        if (!q || text.includes(q) || tags.includes(q)) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Update input if called programmatically
+      const searchInput = document.getElementById('search-input');
+      if (searchInput && searchInput.value !== query) {
+        searchInput.value = query;
+      }
+
+      updateCount(visible);
+
+      if (shouldScroll) {
+        scrollToElement('cases');
+      }
+    }
+
+    function updateCount(visible) {
+      const countEl = document.getElementById('visible-count');
+      const noResults = document.getElementById('no-results');
+      if (countEl) countEl.innerText = visible;
+      if (noResults) {
+        if (visible === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+
+    function scrollToElement(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function handleCardClick(event, caseKey) {
+      openCaseModal(caseKey);
+    }
+
     function openCaseModal(caseKey) {
       const data = caseStudies[caseKey];
       if (!data) return;
@@ -875,8 +1368,14 @@ layout: null
 
       container.innerHTML = `
         <div class="mb-4">
-          <div class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono font-bold border ${data.severityColor} mb-2">
-            ${data.severity}
+          <div class="flex items-center justify-between mb-2">
+            <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono font-bold border ${data.severityColor}">
+              ${data.severity}
+            </span>
+            <a href="${data.filePath}" target="_blank" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 border border-cyan-500/30 px-2 py-0.5 rounded bg-cyan-950/20">
+              <span>View Markdown File</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
           </div>
           <h3 class="text-2xl font-bold text-white mb-1">${data.title}</h3>
           <p class="text-xs font-mono text-cyan-400">${data.category}</p>
@@ -891,7 +1390,7 @@ layout: null
           <div>
             <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Proof of Concept & Exploitation Flow</h4>
             <ul class="space-y-1.5 font-mono text-xs text-slate-300 bg-brand-dark/60 p-3.5 rounded-xl border border-brand-border/60">
-              ${data.exploitation.map(step => `<li class="flex items-start gap-2"><span class="text-red-400">›</span><span>${step}</span></li>`).join('')}
+              ${data.exploitation.map(step => `<li class="flex items-start gap-2"><span class="text-red-400 font-bold">›</span><span>${step}</span></li>`).join('')}
             </ul>
           </div>
 
@@ -903,12 +1402,15 @@ layout: null
           <div>
             <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Remediation & QA Fix Guidance</h4>
             <ul class="space-y-1.5 font-mono text-xs text-emerald-300/90 bg-emerald-950/20 p-3.5 rounded-xl border border-emerald-900/40">
-              ${data.remediation.map(fix => `<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>${fix}</span></li>`).join('')}
+              ${data.remediation.map(fix => `<li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span><span>${fix}</span></li>`).join('')}
             </ul>
           </div>
         </div>
 
-        <div class="mt-6 pt-4 border-t border-brand-border flex justify-end">
+        <div class="mt-6 pt-4 border-t border-brand-border flex items-center justify-between">
+          <a href="${data.filePath}" target="_blank" class="text-xs font-mono text-cyan-400 hover:underline">
+            📄 Open Standalone Report (${data.filePath})
+          </a>
           <button onclick="closeCaseModal()" class="px-5 py-2 text-xs font-mono font-semibold rounded-lg bg-brand-dark hover:bg-slate-800 text-white border border-brand-border transition-colors">
             Close Advisory
           </button>
