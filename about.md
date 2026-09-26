@@ -1,19 +1,21 @@
 # 👨‍💻 About Me
 
-Penetration Tester with focus on:
+**Web Application Security & QA Consultant** with a deep focus on:
 
-- Web Security
-- API Security
-- Bug Bounty Hunting
+- Web Application Penetration Testing
+- API Security & Authorization (BOLA / IDOR)
+- Concurrency & Race Condition Auditing
+- OWASP Top 10 Assessment
+- Exploratory Quality Assurance & Negative Testing
 
 ---
 
-## 🛠 Tools
+## 🛠 Core Tools & Technologies
 
-`Burp Suite` `Nmap` `Postman`
+`Burp Suite Pro` `Postman` `OWASP ZAP` `Python` `JavaScript` `Nmap` `Git` `Linux`
 
 ---
 
 ## 🎯 Mission
 
-Find vulnerabilities before attackers do.
+Find and eliminate critical security vulnerabilities and business logic bugs before attackers exploit them.

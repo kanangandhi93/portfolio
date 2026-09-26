@@ -1,7 +1,5 @@
 title: Kanan Gandhi
-description: Penetration Tester Portfolio
-theme: jekyll-theme-hacker
-
+description: Web Application Security & QA Consultant Portfolio
 markdown: kramdown
 
 collections:
@@ -9,7 +7,7 @@ collections:
     output: true
 
 header_pages:
-  - index.md
+  - index.html
   - about.md
   - contact.md
 
