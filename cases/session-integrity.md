@@ -1,47 +1,55 @@
 ---
-title: Session Integrity & Race Condition Flaws
-category: Business Logic & Session Security
+title: Session Replay & Account Switching via Session Overwrite
+target: Healthcare & Genetic Analytics Platform
+category: Session Management & Integrity
 severity: High
-cvss: 7.8
-tags: [race-condition, toctou, session-management, turbo-intruder]
-date: 2026-01-05
+cvss: 8.0
+tags: [session-replay, session-fixation, cookie-security, auth-bypass]
+date: 2026-02-15
 ---
 
-# ⏱️ Session Integrity & Race Condition Flaws (Anonymized)
+# ⏱️ Session Replay & Account Switching via Session Overwrite (Anonymized)
 
-> ⚠️ Discovered during business logic fuzzing & concurrency QA testing  
-> Details sanitized for client confidentiality
+> ⚠️ **Context:** Discovered during security evaluation of a healthcare and genetic analytics web application.  
+> 🛡️ **Confidentiality:** Target organization anonymized as **"Healthcare & Genetic Analytics Platform"**. All session tokens and user identifiers are **[REDACTED]**.
 
 ---
 
-## 🎯 Scope & Context
-High-traffic e-commerce checkout and membership subscription system.
+## 🎯 Target Scope
+- **Organization Type:** Healthcare & Personal Genomics Platform
+- **Component:** User Profile & Authentication Middleware
+- **Affected Endpoint:** `GET /user/`
+- **Vulnerable Parameter:** `Cookie: sessionid=[REDACTED]`
 
 ---
 
 ## ⚠️ Impact Summary
-- **Severity**: High (CVSS 7.8)
-- Direct financial exploitation via voucher double-spend race condition
-- Stale session persistence after credential reset, failing complete account lockout
+- **Severity:** High (CVSS 8.0 - `CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N`)
+- **Impact:** Dynamic account switching and session replay.
+- The server relied solely on client-supplied `sessionid` cookies without context or environment binding.
+- More critically, supplying a different user's valid session cookie caused the server to return responses that forced the browser to overwrite the active session, dynamically switching the logged-in user state.
 
 ---
 
-## 🔗 Target Scope
-`POST /api/cart/apply-voucher`  
-`POST /api/auth/password-reset`
+## 🔍 Attack Flow & Reproduction
 
----
+### 1. Session Replay Without Environment Binding
+1. Authenticate as User A and capture the `sessionid` cookie via intercepting proxy (Burp Suite).
+2. Open a clean browser session from a different IP address and user-agent.
+3. Inject the captured `sessionid` cookie and navigate to `/user/`.
+4. Observe immediate authenticated access to User A's private genetic reports and health data without MFA or context challenge.
 
-## 🧪 Exploitation Flow
-1. Load a one-time promo voucher worth \$50 discount into session cart.
-2. Script a concurrent burst using Burp Suite Turbo Intruder (30 parallel HTTP requests).
-3. Backend checked voucher validity (`isValid = true`) concurrently before persisting redemption state (`used = true`).
-4. Over 20 requests succeeded within a 45ms window, applying cumulative \$1,000+ discounts against a single code.
-5. In addition, when testing password reset in Session A, existing bearer tokens in Session B remained fully valid indefinitely until manual token expiry.
+### 2. Dynamic Session Overwrite
+1. Authenticate as User B in a browser session.
+2. Intercept an outbound request to `GET /user/`.
+3. Replace the cookie with User A's `sessionid`.
+4. Forward the request.
+5. The backend accepts the modified cookie and returns a `Set-Cookie` header that instructs the browser to overwrite the active session cookie with User A's identity, switching the browser session completely.
 
 ---
 
 ## 🛡️ Remediation
-1. **Atomic Locks**: Implemented Redis distributed locks (`SET key val NX EX 5`) around voucher validation and wallet balance transactions.
-2. **Session Token Versioning**: Added user-level `token_version` column in the database; incrementing version on password change immediately invalidates all active JWT sessions.
-3. **Automated Concurrency QA**: Added load & race-condition test cases to automated QA pipeline.
+1. **Context Binding:** Bind session tokens to cryptographic device fingerprints or client TLS session context to prevent off-host replay.
+2. **Session ID Regeneration:** Always regenerate session identifiers upon any change in privilege or state.
+3. **Reject Arbitrary Session Overwrite:** Enforce server-side session integrity validation to ensure sessions cannot be dynamically reassigned via modified client headers.
+4. **Strict Revocation:** Invalidate all active user sessions globally upon logout or security events.

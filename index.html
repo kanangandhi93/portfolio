@@ -237,9 +237,9 @@ layout: null
             <button onclick="applyFilter('all', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-emerald-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-emerald-400">
               <div class="flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">Total Findings</span>
-                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All →</span>
+                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All (6) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">4+</span>
+              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">6+</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
                 <span>Verified Exploits</span>
               </span>
@@ -249,11 +249,11 @@ layout: null
             <button onclick="applyFilter('severity-critical', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-red-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-red-400">
               <div class="flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">Critical Severity</span>
-                <span class="text-[10px] font-mono text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter →</span>
+                <span class="text-[10px] font-mono text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter (2) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-red-400 mt-1">1</span>
+              <span class="block text-3xl font-extrabold font-mono text-red-400 mt-1">2</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
-                <span>CVSS 9.1 (BOLA / BAC)</span>
+                <span>CVSS 9.3 & 9.1</span>
               </span>
             </button>
 
@@ -261,23 +261,23 @@ layout: null
             <button onclick="applyFilter('severity-high', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-amber-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-amber-400">
               <div class="flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">High Severity</span>
-                <span class="text-[10px] font-mono text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter →</span>
+                <span class="text-[10px] font-mono text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter (4) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-amber-400 mt-1">3</span>
+              <span class="block text-3xl font-extrabold font-mono text-amber-400 mt-1">4</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
-                <span>Cloud, Auth & Logic</span>
+                <span>BOLA, OAuth, GraphQL, Session</span>
               </span>
             </button>
 
             <!-- Metric 4: Categories -->
             <button onclick="scrollToElement('categories')" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-cyan-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-cyan-400">
               <div class="flex items-center justify-between">
-                <span class="text-xs text-slate-400 font-medium">Core Categories</span>
-                <span class="text-[10px] font-mono text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">Browse →</span>
+                <span class="text-xs text-slate-400 font-medium">Core Disciplines</span>
+                <span class="text-[10px] font-mono text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">Browse (5) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-cyan-400 mt-1">4</span>
+              <span class="block text-3xl font-extrabold font-mono text-cyan-400 mt-1">5</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
-                <span>API, Cloud, Auth, Logic</span>
+                <span>API, Cloud, PKI, Auth, Logic</span>
               </span>
             </button>
 
@@ -300,19 +300,19 @@ layout: null
                 <span>🧬</span> Security & QA Categories
               </h2>
               <p class="text-slate-400 mt-2 max-w-xl text-sm">
-                Explore real findings organized by security disciplines. Click any category card to filter findings, or click the report links directly.
+                Explore real findings organized by security disciplines. All target organizations and live tokens are completely anonymized & redacted.
               </p>
             </div>
             
             <div class="mt-4 md:mt-0">
               <button onclick="applyFilter('all', true)" class="px-3.5 py-1.5 rounded-lg text-xs font-mono bg-brand-card border border-brand-border hover:border-emerald-400 text-slate-300 hover:text-white transition-all">
-                Reset to All Categories (4)
+                Reset to All Findings (6)
               </button>
             </div>
           </div>
 
-          <!-- 4 Category Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 5 Category Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             <!-- Category 1: API Security -->
             <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-cyan-500/50 p-6 transition-all flex flex-col justify-between group">
@@ -320,85 +320,125 @@ layout: null
                 <div class="flex items-center justify-between mb-3">
                   <div class="flex items-center space-x-2">
                     <span class="text-xl">🔗</span>
-                    <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">API Security</h3>
+                    <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">API & Authorization</h3>
                   </div>
                   <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                    1 Report
+                    2 Reports
                   </span>
                 </div>
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                  Focusing on Broken Object Level Authorization (BOLA), parameter tampering, tenant isolation, and REST/GraphQL endpoint vulnerabilities.
+                  Broken Object Level Authorization (BOLA), client-controlled headers, and unrestricted GraphQL mutations in production backends.
                 </p>
 
                 <!-- Case inside this category -->
-                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-2 space-y-1.5">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-200">🔐 Broken Access Control in Multi-Tenant API</span>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">CRITICAL</span>
+                    <span class="text-xs font-bold text-slate-200">🔐 Supplier Insights BAC</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH 8.5</span>
                   </div>
-                  <p class="text-[11px] text-slate-400 font-mono">Scope: `/api/v2/tenants/{tenant_id}/invoices`</p>
-                  
-                  <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
-                    <button onclick="openCaseModal('case1')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
-                      👉 <span>Open Advisory (Modal)</span>
-                    </button>
-                    <a href="cases/broken-access-control.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                      📄 <span>View Markdown</span>
-                    </a>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: Enterprise E-Commerce Platform</p>
+                  <div class="flex items-center gap-3 pt-1 text-xs font-mono">
+                    <button onclick="openCaseModal('case_ecommerce_bac')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/broken-access-control.md" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Markdown</a>
+                  </div>
+                </div>
+
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">⚡ Open GraphQL Registration</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH 7.5</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: Pan-African Mobile Banking Platform</p>
+                  <div class="flex items-center gap-3 pt-1 text-xs font-mono">
+                    <button onclick="openCaseModal('case_fintech_graphql')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/graphql-open-registration.md" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Markdown</a>
                   </div>
                 </div>
               </div>
 
-              <!-- Button to filter this category -->
               <button onclick="applyFilter('category-api', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-cyan-950/40 text-cyan-400 border border-brand-border group-hover:border-cyan-500/40 transition-all flex items-center justify-center gap-1">
-                <span>Filter & View API Findings</span>
+                <span>Filter API Findings</span>
                 <span>→</span>
               </button>
             </div>
 
-            <!-- Category 2: Cloud Security -->
-            <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-amber-500/50 p-6 transition-all flex flex-col justify-between group">
+            <!-- Category 2: Cloud & Storage Security -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-red-500/50 p-6 transition-all flex flex-col justify-between group">
               <div>
                 <div class="flex items-center justify-between mb-3">
                   <div class="flex items-center space-x-2">
                     <span class="text-xl">☁️</span>
-                    <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Cloud & Storage Security</h3>
+                    <h3 class="text-lg font-bold text-white group-hover:text-red-400 transition-colors">Cloud & File Storage</h3>
                   </div>
-                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                    1 Report
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20">
+                    1 Report (Critical)
                   </span>
                 </div>
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                  Auditing permissive cloud bucket ACLs, unauthenticated asset enumeration, IAM privilege creep, and cloud-hosted database leaks.
+                  Object storage access controls, CORS wildcard permissions, UUID predictability, and cross-origin file exfiltration.
                 </p>
 
                 <!-- Case inside this category -->
-                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-1.5">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-200">🔐 Unauthenticated Cloud Storage Exfiltration</span>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH (8.6)</span>
+                    <span class="text-xs font-bold text-slate-200">🔐 File Storage Data Exposure</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">CRITICAL 9.1</span>
                   </div>
-                  <p class="text-[11px] text-slate-400 font-mono">Scope: AWS S3 Object Storage Bucket</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: International Ride-Hailing Platform</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Vulnerability: CORS Wildcard + IDOR</p>
                   
                   <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
-                    <button onclick="openCaseModal('case2')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
-                      👉 <span>Open Advisory (Modal)</span>
-                    </button>
-                    <a href="cases/cloud-storage-exfiltration.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                      📄 <span>View Markdown</span>
-                    </a>
+                    <button onclick="openCaseModal('case_ridehailing_storage')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/cloud-storage-exfiltration.md" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Markdown</a>
                   </div>
                 </div>
               </div>
 
-              <!-- Button to filter this category -->
-              <button onclick="applyFilter('category-cloud', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-amber-950/40 text-amber-400 border border-brand-border group-hover:border-amber-500/40 transition-all flex items-center justify-center gap-1">
-                <span>Filter & View Cloud Findings</span>
+              <button onclick="applyFilter('category-cloud', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-red-950/40 text-red-400 border border-brand-border group-hover:border-red-500/40 transition-all flex items-center justify-center gap-1">
+                <span>Filter Cloud Storage Findings</span>
                 <span>→</span>
               </button>
             </div>
 
-            <!-- Category 3: Authentication & Secrets -->
+            <!-- Category 3: PKI & Cryptography -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-red-500/50 p-6 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xl">🛡️</span>
+                    <h3 class="text-lg font-bold text-white group-hover:text-red-400 transition-colors">PKI & Cryptography</h3>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20">
+                    1 Report (Critical)
+                  </span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                  Cryptographic trust architectures, X.509 certificate leaks in JWKS, Certificate Revocation Lists, and OCSP responders.
+                </p>
+
+                <!-- Case inside this category -->
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">🔐 Internal PKI Trust Exposure</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">CRITICAL 9.3</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: Multinational Retail Conglomerate</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Vulnerability: JWKS x5c CA Chain Leak</p>
+                  
+                  <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
+                    <button onclick="openCaseModal('case_retail_pki')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/pki-infrastructure-exposure.md" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Markdown</a>
+                  </div>
+                </div>
+              </div>
+
+              <button onclick="applyFilter('category-pki', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-red-950/40 text-red-400 border border-brand-border group-hover:border-red-500/40 transition-all flex items-center justify-center gap-1">
+                <span>Filter PKI Findings</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            <!-- Category 4: Authentication & Secrets -->
             <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-purple-500/50 p-6 transition-all flex flex-col justify-between group">
               <div>
                 <div class="flex items-center justify-between mb-3">
@@ -411,73 +451,65 @@ layout: null
                   </span>
                 </div>
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                  Analyzing OAuth 2.0 flows, client secret exposures in production bundles, SSO misconfigurations, and credential extraction.
+                  OAuth 2.0 flow analysis, client secret extraction in public production React bundles, and PKCE transition validation.
                 </p>
 
                 <!-- Case inside this category -->
-                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-1.5">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-200">🔐 Hardcoded OAuth Secrets & Client Invalidation</span>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH (8.2)</span>
+                    <span class="text-xs font-bold text-slate-200">🔐 Hardcoded OAuth2 Credentials</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH 8.2</span>
                   </div>
-                  <p class="text-[11px] text-slate-400 font-mono">Scope: Client-side SPA Production Bundles</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: Global Hospitality Management System</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: Compiled SPA JavaScript Bundle</p>
                   
                   <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
-                    <button onclick="openCaseModal('case3')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
-                      👉 <span>Open Advisory (Modal)</span>
-                    </button>
-                    <a href="cases/oauth-secrets.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                      📄 <span>View Markdown</span>
-                    </a>
+                    <button onclick="openCaseModal('case_hospitality_oauth')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/oauth-secrets.md" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Markdown</a>
                   </div>
                 </div>
               </div>
 
-              <!-- Button to filter this category -->
               <button onclick="applyFilter('category-auth', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-purple-950/40 text-purple-400 border border-brand-border group-hover:border-purple-500/40 transition-all flex items-center justify-center gap-1">
-                <span>Filter & View Auth Findings</span>
+                <span>Filter Auth Findings</span>
                 <span>→</span>
               </button>
             </div>
 
-            <!-- Category 4: Session & Business Logic -->
+            <!-- Category 5: Session & Business Logic -->
             <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-emerald-500/50 p-6 transition-all flex flex-col justify-between group">
               <div>
                 <div class="flex items-center justify-between mb-3">
                   <div class="flex items-center space-x-2">
-                    <span class="text-xl">⚡</span>
-                    <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Session & Business Logic QA</h3>
+                    <span class="text-xl">⏱️</span>
+                    <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Session & Integrity QA</h3>
                   </div>
                   <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                     1 Report
                   </span>
                 </div>
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                  Testing concurrency, race condition windows (TOCTOU), session invalidation on password change, and e-commerce cart logic flaws.
+                  Session replay, dynamic account switching via session overwrite, context binding failures, and token lifecycle integrity.
                 </p>
 
                 <!-- Case inside this category -->
-                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-2">
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-1.5">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-200">🔐 Session Integrity & Race Condition Flaws</span>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH (7.8)</span>
+                    <span class="text-xs font-bold text-slate-200">🔐 Session Replay & Overwrite</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH 8.0</span>
                   </div>
-                  <p class="text-[11px] text-slate-400 font-mono">Scope: Checkout API & Session Token Lifecycle</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: Healthcare & Genetics Platform</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: Session Cookie Integrity & Binding</p>
                   
                   <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
-                    <button onclick="openCaseModal('case4')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
-                      👉 <span>Open Advisory (Modal)</span>
-                    </button>
-                    <a href="cases/session-integrity.md" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                      📄 <span>View Markdown</span>
-                    </a>
+                    <button onclick="openCaseModal('case_healthcare_session')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/session-integrity.md" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Markdown</a>
                   </div>
                 </div>
               </div>
 
-              <!-- Button to filter this category -->
               <button onclick="applyFilter('category-logic', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-emerald-950/40 text-emerald-400 border border-brand-border group-hover:border-emerald-500/40 transition-all flex items-center justify-center gap-1">
-                <span>Filter & View Logic Findings</span>
+                <span>Filter Session Findings</span>
                 <span>→</span>
               </button>
             </div>
@@ -501,12 +533,12 @@ layout: null
                 <span>🧪</span> Security Case Studies & Findings
               </h2>
               <p class="text-slate-400 mt-2 max-w-xl text-sm">
-                Click any card to open the interactive security advisory with technical PoCs, impact assessments, and remediation plans.
+                Real-world high-impact discoveries. All sensitive client names, production URLs, and credentials have been strictly sanitized and redacted.
               </p>
             </div>
             
             <div id="findings-count" class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
-              Showing <span id="visible-count" class="text-emerald-400 font-bold">4</span> of 4 Findings
+              Showing <span id="visible-count" class="text-emerald-400 font-bold">6</span> of 6 Findings
             </div>
           </div>
 
@@ -523,15 +555,19 @@ layout: null
               </span>
 
               <button onclick="applyFilter('all')" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-emerald-500 text-brand-dark font-bold shadow-sm">
-                All (4)
+                All (6)
               </button>
 
               <button onclick="applyFilter('category-api')" data-filter="category-api" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
-                🔗 API Security
+                🔗 API & GraphQL
               </button>
 
               <button onclick="applyFilter('category-cloud')" data-filter="category-cloud" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
-                ☁️ Cloud Storage
+                ☁️ Cloud & Storage
+              </button>
+
+              <button onclick="applyFilter('category-pki')" data-filter="category-pki" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
+                🛡️ PKI & Crypto
               </button>
 
               <button onclick="applyFilter('category-auth')" data-filter="category-auth" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
@@ -539,15 +575,15 @@ layout: null
               </button>
 
               <button onclick="applyFilter('category-logic')" data-filter="category-logic" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
-                ⚡ Session & Logic
+                ⏱️ Session & Integrity
               </button>
 
               <button onclick="applyFilter('severity-critical')" data-filter="severity-critical" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-red-400 border border-brand-border">
-                🔴 Critical Only
+                🔴 Critical (2)
               </button>
 
               <button onclick="applyFilter('severity-high')" data-filter="severity-high" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-amber-400 border border-brand-border">
-                🟠 High Only
+                🟠 High (4)
               </button>
             </div>
 
@@ -562,159 +598,212 @@ layout: null
                 type="text" 
                 id="search-input" 
                 oninput="searchCases(this.value)"
-                placeholder="Search findings by keyword, tool or attack vector (e.g. BOLA, OAuth, S3, Race, Burp)..." 
+                placeholder="Search findings by keyword, tool or attack vector (e.g. BOLA, OAuth, S3, PKI, GraphQL, Session)..." 
                 class="w-full bg-brand-dark text-slate-200 pl-10 pr-4 py-2 rounded-xl border border-brand-border focus:border-emerald-400 focus:outline-none text-xs font-mono placeholder-slate-500"
               />
             </div>
 
           </div>
 
-          <!-- 4 Case Study Cards Grid -->
-          <div id="cases-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Real Findings Grid -->
+          <div id="cases-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!-- Case Study 1: Broken Access Control in multi-tenant API -->
+            <!-- Finding 1: Enterprise E-Commerce Platform -->
             <div 
               data-category="category-api" 
-              data-severity="severity-critical"
-              data-tags="burp api testing bola idor multi-tenant bac broken access"
+              data-severity="severity-high"
+              data-tags="bola idor api security supplier header access control burp postman"
               class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
-              onclick="handleCardClick(event, 'case1')"
+              onclick="handleCardClick(event, 'case_ecommerce_bac')"
             >
               <div>
                 <div class="flex items-center justify-between mb-4">
-                  <button onclick="event.stopPropagation(); applyFilter('severity-critical', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-red-500/15 text-red-400 border border-red-500/30 hover:bg-red-500/25 transition-colors">
-                    CRITICAL (CVSS 9.1)
+                  <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
+                    HIGH (CVSS 8.5)
                   </button>
                   <button onclick="event.stopPropagation(); applyFilter('category-api', true);" class="text-xs font-mono text-cyan-400 hover:underline">
                     API Security / BOLA
                   </button>
                 </div>
                 
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Broken Access Control in Multi-Tenant API
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Broken Access Control in Supplier Insights API
                 </h3>
 
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Identified horizontal privilege escalation where modifying tenant identifiers (`org_id` / `tenant_uuid`) in downstream microservice endpoints bypassed tenant isolation, leaking sensitive cross-company customer databases.
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">Enterprise E-Commerce Platform</span>
                 </p>
 
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Authorization relied entirely on client-controlled HTTP header (<code class="text-emerald-300 font-mono">Supplier-Id</code>). Modifying this header allowed authenticated users to access confidential sales metrics and insights of arbitrary suppliers.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
                   <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
-                    <span class="text-slate-200">BOLA / IDOR in Tenant Scope</span>
+                    <span class="text-red-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Header-Based BOLA / IDOR</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
-                    <span class="text-slate-300">REST API `/api/v2/tenants/{id}/billing`</span>
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">POST /api/insights/dashboard</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
-                    <span class="text-slate-300">JWT Tenant Claims + Row Level Security</span>
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Server-Side Session Binding</span>
                   </div>
                 </div>
 
-                <!-- Clickable Tag Pills -->
                 <div class="flex flex-wrap gap-1.5 mb-6">
-                  <button onclick="event.stopPropagation(); searchCases('Burp Suite')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Burp Suite</button>
-                  <button onclick="event.stopPropagation(); searchCases('API Testing')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#API Testing</button>
-                  <button onclick="event.stopPropagation(); searchCases('BOLA')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#BOLA</button>
-                  <button onclick="event.stopPropagation(); searchCases('Multi-Tenancy')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Multi-Tenant</button>
+                  <button onclick="event.stopPropagation(); searchCases('BOLA')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#BOLA</button>
+                  <button onclick="event.stopPropagation(); searchCases('API Security')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#API</button>
+                  <button onclick="event.stopPropagation(); searchCases('Burp Suite')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Burp Suite</button>
                 </div>
               </div>
 
-              <!-- Card Action Bar -->
               <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
-                <button onclick="event.stopPropagation(); openCaseModal('case1')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                <button onclick="event.stopPropagation(); openCaseModal('case_ecommerce_bac')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
                   <span>👉 Open Advisory</span>
-                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
-                <a href="cases/broken-access-control.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                <a href="cases/broken-access-control.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
                   <span>📄 Markdown</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                  </svg>
                 </a>
               </div>
             </div>
 
-            <!-- Case Study 2: Unauthenticated Cloud Storage Exfiltration -->
+            <!-- Finding 2: International Ride-Hailing Platform -->
             <div 
               data-category="category-cloud" 
-              data-severity="severity-high"
-              data-tags="cloud security aws s3 fuzzing data exfiltration pii storage bucket"
+              data-severity="severity-critical"
+              data-tags="cloud storage s3 cors idor pii data exfiltration uuidv7 ride-hailing"
               class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
-              onclick="handleCardClick(event, 'case2')"
+              onclick="handleCardClick(event, 'case_ridehailing_storage')"
             >
               <div>
                 <div class="flex items-center justify-between mb-4">
-                  <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
-                    HIGH (CVSS 8.6)
+                  <button onclick="event.stopPropagation(); applyFilter('severity-critical', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-red-500/15 text-red-400 border border-red-500/30 hover:bg-red-500/25 transition-colors">
+                    CRITICAL (CVSS 9.1)
                   </button>
                   <button onclick="event.stopPropagation(); applyFilter('category-cloud', true);" class="text-xs font-mono text-cyan-400 hover:underline">
-                    Cloud & Data Exfiltration
+                    Cloud & Storage Security
                   </button>
                 </div>
                 
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Unauthenticated Cloud Storage Exfiltration
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  File Storage API Complete Data Exposure
                 </h3>
 
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Discovered permissive cloud storage ACLs and unauthenticated public bucket endpoints exposing production database snapshots, KYC verification documents, and invoices via automated fuzzing of asset URL patterns.
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">International Ride-Hailing Platform</span>
                 </p>
 
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Combined missing authentication on file read operations with a CORS wildcard (<code class="text-emerald-300 font-mono">*</code>), enabling zero-interaction cross-origin exfiltration of KYC identity documents and driver licenses.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
                   <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
-                    <span class="text-slate-200">Public Object Storage Misconfiguration</span>
+                    <span class="text-red-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Unauthenticated IDOR + CORS Wildcard</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
-                    <span class="text-slate-300">S3 / Cloud Storage Storage Bucket API</span>
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">GET /api/v1/files/{uuid}</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
-                    <span class="text-slate-300">Block Public Access + Signed Presigned URLs</span>
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Strict Auth + Pre-Signed URLs</span>
                   </div>
                 </div>
 
-                <!-- Clickable Tag Pills -->
                 <div class="flex flex-wrap gap-1.5 mb-6">
-                  <button onclick="event.stopPropagation(); searchCases('Cloud Security')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Cloud Security</button>
-                  <button onclick="event.stopPropagation(); searchCases('AWS S3')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#AWS S3</button>
-                  <button onclick="event.stopPropagation(); searchCases('Fuzzing')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Fuzzing</button>
-                  <button onclick="event.stopPropagation(); searchCases('OWASP')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#OWASP Top 10</button>
+                  <button onclick="event.stopPropagation(); searchCases('Cloud')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Cloud</button>
+                  <button onclick="event.stopPropagation(); searchCases('CORS')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#CORS</button>
+                  <button onclick="event.stopPropagation(); searchCases('IDOR')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#IDOR</button>
                 </div>
               </div>
 
-              <!-- Card Action Bar -->
               <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
-                <button onclick="event.stopPropagation(); openCaseModal('case2')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                <button onclick="event.stopPropagation(); openCaseModal('case_ridehailing_storage')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
                   <span>👉 Open Advisory</span>
-                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
-                <a href="cases/cloud-storage-exfiltration.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                <a href="cases/cloud-storage-exfiltration.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
                   <span>📄 Markdown</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                  </svg>
                 </a>
               </div>
             </div>
 
-            <!-- Case Study 3: Hardcoded OAuth Secrets -->
+            <!-- Finding 3: Multinational Retail Conglomerate -->
+            <div 
+              data-category="category-pki" 
+              data-severity="severity-critical"
+              data-tags="pki crypto jwks x509 crl ocsp certificates retail retail reconnaissance"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case_retail_pki')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-critical', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-red-500/15 text-red-400 border border-red-500/30 hover:bg-red-500/25 transition-colors">
+                    CRITICAL (CVSS 9.3)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-pki', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    PKI & Cryptography
+                  </button>
+                </div>
+                
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Public Exposure of Internal PKI Trust Chain
+                </h3>
+
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">Multinational Retail Conglomerate</span>
+                </p>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  JWKS <code class="text-emerald-300 font-mono">x5c</code> parameter exposed internal Certificate Authority URLs. Root CA, Sub CA, 15KB CRL, and active OCSP responders were publicly accessible, revealing internal hostnames and JWT keys.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-red-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Public Internal PKI Trust Chain</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">JWKS URI + Public PKI Endpoints</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Remove x5c + Firewall PKI Server</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('PKI')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#PKI</button>
+                  <button onclick="event.stopPropagation(); searchCases('JWKS')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#JWKS</button>
+                  <button onclick="event.stopPropagation(); searchCases('Crypto')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Crypto</button>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case_retail_pki')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                <a href="cases/pki-infrastructure-exposure.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
+                  <span>📄 Markdown</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Finding 4: Global Hospitality System -->
             <div 
               data-category="category-auth" 
               data-severity="severity-high"
-              data-tags="oauth secrets leak javascript pkce static analysis authorization token"
+              data-tags="oauth secrets leak javascript bundle pkce hospitality credentials token"
               class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
-              onclick="handleCardClick(event, 'case3')"
+              onclick="handleCardClick(event, 'case_hospitality_oauth')"
             >
               <div>
                 <div class="flex items-center justify-between mb-4">
@@ -722,124 +811,177 @@ layout: null
                     HIGH (CVSS 8.2)
                   </button>
                   <button onclick="event.stopPropagation(); applyFilter('category-auth', true);" class="text-xs font-mono text-cyan-400 hover:underline">
-                    Auth / Secrets Leak
+                    Authentication & Secrets
                   </button>
                 </div>
                 
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Hardcoded OAuth Secrets & Client Invalidation
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Hardcoded OAuth2 Client Credentials in SPA
                 </h3>
 
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Extracted embedded OAuth client secrets and developer keys compiled into production client-side JavaScript bundles and staging configs, facilitating unauthorized token minting and API impersonation.
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">Global Hospitality System</span>
                 </p>
 
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Production/UAT React single-page app bundle exposed confidential OAuth2 <code class="text-emerald-300 font-mono">client_secret</code> and gateway endpoints, enabling unauthorized token exchange and internal API access.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
                   <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
-                    <span class="text-slate-200">Exposed OAuth Client Credentials</span>
+                    <span class="text-red-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Exposed OAuth2 Client Secret</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
-                    <span class="text-slate-300">SPA Production JS Bundle & Auth Flow</span>
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">Public main.[hash].js Bundle</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
-                    <span class="text-slate-300">Migrated to OAuth 2.0 PKCE + Secrets Vault</span>
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Migrate to OAuth 2.0 PKCE Flow</span>
                   </div>
                 </div>
 
-                <!-- Clickable Tag Pills -->
                 <div class="flex flex-wrap gap-1.5 mb-6">
-                  <button onclick="event.stopPropagation(); searchCases('OAuth 2.0')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#OAuth 2.0</button>
-                  <button onclick="event.stopPropagation(); searchCases('JavaScript')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#JavaScript</button>
-                  <button onclick="event.stopPropagation(); searchCases('PKCE')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#PKCE</button>
-                  <button onclick="event.stopPropagation(); searchCases('Static Analysis')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Static Analysis</button>
+                  <button onclick="event.stopPropagation(); searchCases('OAuth 2.0')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#OAuth 2.0</button>
+                  <button onclick="event.stopPropagation(); searchCases('PKCE')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#PKCE</button>
+                  <button onclick="event.stopPropagation(); searchCases('JavaScript')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#JavaScript</button>
                 </div>
               </div>
 
-              <!-- Card Action Bar -->
               <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
-                <button onclick="event.stopPropagation(); openCaseModal('case3')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                <button onclick="event.stopPropagation(); openCaseModal('case_hospitality_oauth')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
                   <span>👉 Open Advisory</span>
-                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
-                <a href="cases/oauth-secrets.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                <a href="cases/oauth-secrets.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
                   <span>📄 Markdown</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                  </svg>
                 </a>
               </div>
             </div>
 
-            <!-- Case Study 4: Session Integrity Flaws -->
+            <!-- Finding 5: Healthcare Analytics Platform -->
             <div 
               data-category="category-logic" 
               data-severity="severity-high"
-              data-tags="turbo intruder race condition toctou business logic session concurrency"
+              data-tags="session replay overwrite cookie account switching genomics health"
               class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
-              onclick="handleCardClick(event, 'case4')"
+              onclick="handleCardClick(event, 'case_healthcare_session')"
             >
               <div>
                 <div class="flex items-center justify-between mb-4">
                   <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
-                    HIGH (CVSS 7.8)
+                    HIGH (CVSS 8.0)
                   </button>
                   <button onclick="event.stopPropagation(); applyFilter('category-logic', true);" class="text-xs font-mono text-cyan-400 hover:underline">
-                    Logic & Session Integrity
+                    Session & Integrity QA
                   </button>
                 </div>
                 
-                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-                  Session Integrity & Race Condition Flaws
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Session Replay & Dynamic Account Switching
                 </h3>
 
-                <p class="text-sm text-slate-300 leading-relaxed mb-4">
-                  Uncovered concurrent request race conditions in checkout coupon redemption and incomplete server-side session revocation during privilege elevation and password reset flows, enabling stale token reuse.
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">Healthcare & Genetics Platform</span>
                 </p>
 
-                <!-- Technical Snippet / Tags -->
-                <div class="space-y-2 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Session identifiers lacked environment binding. Modifying the cookie caused the server to overwrite the active session cookie in the browser, triggering seamless unauthorized account switching.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
                   <div class="flex items-center text-slate-400">
-                    <span class="text-red-400 mr-2 font-semibold">Vulnerability:</span>
-                    <span class="text-slate-200">TOCTOU Race & Stale Session Tokens</span>
+                    <span class="text-red-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Session Overwrite & Lack of Binding</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-cyan-400 mr-2 font-semibold">Target Scope:</span>
-                    <span class="text-slate-300">Checkout API & Auth Session Store</span>
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">Cookie: sessionid=[REDACTED]</span>
                   </div>
                   <div class="flex items-center text-slate-400">
-                    <span class="text-emerald-400 mr-2 font-semibold">Remediation:</span>
-                    <span class="text-slate-300">Atomic Distributed Locks + Central Session Blacklist</span>
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Device/IP Binding + Regeneration</span>
                   </div>
                 </div>
 
-                <!-- Clickable Tag Pills -->
                 <div class="flex flex-wrap gap-1.5 mb-6">
-                  <button onclick="event.stopPropagation(); searchCases('Turbo Intruder')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Turbo Intruder</button>
-                  <button onclick="event.stopPropagation(); searchCases('Race Conditions')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Race Condition</button>
-                  <button onclick="event.stopPropagation(); searchCases('Business Logic')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Business Logic</button>
-                  <button onclick="event.stopPropagation(); searchCases('Session')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 transition-colors">#Session Security</button>
+                  <button onclick="event.stopPropagation(); searchCases('Session')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Session</button>
+                  <button onclick="event.stopPropagation(); searchCases('Replay')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Replay</button>
+                  <button onclick="event.stopPropagation(); searchCases('QA')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Manual QA</button>
                 </div>
               </div>
 
-              <!-- Card Action Bar -->
               <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
-                <button onclick="event.stopPropagation(); openCaseModal('case4')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                <button onclick="event.stopPropagation(); openCaseModal('case_healthcare_session')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
                   <span>👉 Open Advisory</span>
-                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
-                <a href="cases/session-integrity.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors">
+                <a href="cases/session-integrity.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
                   <span>📄 Markdown</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Finding 6: Pan-African Mobile Banking Platform -->
+            <div 
+              data-category="category-api" 
+              data-severity="severity-high"
+              data-tags="graphql open registration jwt strapi fintech mobile banking apollo"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case_fintech_graphql')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
+                    HIGH (CVSS 7.5)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-api', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    API & GraphQL Security
+                  </button>
+                </div>
+                
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Open GraphQL User Registration & JWT Minting
+                </h3>
+
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">Pan-African Mobile Banking Platform</span>
+                </p>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Production CMS backend exposed an unrestricted GraphQL mutation that created auto-confirmed user accounts, minting valid production JWT tokens across 1,350+ live accounts.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-red-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Open Registration on Production CMS</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">POST /graphql (register mutation)</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Disable Public Mutations + Verify</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('GraphQL')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#GraphQL</button>
+                  <button onclick="event.stopPropagation(); searchCases('JWT')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#JWT</button>
+                  <button onclick="event.stopPropagation(); searchCases('API')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#API</button>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case_fintech_graphql')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                <a href="cases/graphql-open-registration.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
+                  <span>📄 Markdown</span>
                 </a>
               </div>
             </div>
@@ -987,7 +1129,7 @@ layout: null
             </div>
 
             <!-- 6. Additional Security & Recon Tools -->
-            <div onclick="searchCases('Cloud', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-indigo-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
+            <div onclick="searchCases('PKI', true)" class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-indigo-500/50 hover:bg-brand-cardHover transition-all duration-200 cursor-pointer group">
               <div class="flex items-center justify-between mb-4">
                 <div class="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1171,84 +1313,133 @@ layout: null
 
   <!-- Interactive Scripts -->
   <script>
-    // Case study detailed data
+    // Sanitized Case Study Data (Strictly Anonymized & Redacted)
     const caseStudies = {
-      case1: {
-        title: "Broken Access Control in Multi-Tenant API",
-        severity: "CRITICAL (CVSS 9.1)",
-        severityColor: "text-red-400 border-red-500/30 bg-red-500/10",
+      case_ecommerce_bac: {
+        title: "Broken Access Control in Supplier Insights API",
+        target: "Enterprise E-Commerce Platform",
+        severity: "HIGH (CVSS 8.5)",
+        severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
         category: "API Security / BOLA / Multi-Tenant Isolation",
         filePath: "cases/broken-access-control.md",
-        overview: "During a penetration test of a multi-tenant enterprise SaaS platform, testing revealed that backend microservices relied entirely on URL-path organization identifiers (e.g. `/api/v2/tenants/{tenant_id}/invoices`) without cross-referencing the authenticated JWT subject's organizational membership.",
+        overview: "In a major e-commerce supplier portal, authorization logic relied exclusively on a client-controlled HTTP header (Supplier-Id). Authenticated users could tamper with this header to access sales performance, revenue recommendations, and private business intelligence belonging to competing suppliers across the marketplace.",
         exploitation: [
-          "Authenticated as Tenant A (low-privilege standard user).",
-          "Captured API request in Burp Suite Repeater.",
-          "Iterated `tenant_id` UUID parameters in `/api/v2/tenants/{tenant_id}/sensitive-data`.",
-          "Observed HTTP 200 OK responses returning full cross-tenant client financial records, invoices, and employee records without authorization restrictions."
+          "Authenticated as a standard registered supplier with valid session cookie.",
+          "Intercepted POST request to `/api/insights/business-dashboard/fetchProductsWithRecommendations`.",
+          "Modified the HTTP header from `Supplier-Id: [Own_ID]` to `Supplier-Id: [Victim_ID]`.",
+          "Observed HTTP 200 OK responses leaking complete sales and order records for the target supplier without permission checks."
         ],
-        impact: "Complete breakdown of multi-tenant isolation, allowing any authenticated tenant to exfiltrate rival corporate datasets and violating strict regulatory and privacy boundaries (GDPR/SOC2).",
+        impact: "Severe breakdown of tenant isolation across multi-vendor marketplace; competitor data scraping possible at automated scale.",
         remediation: [
-          "Enforce tenant authorization checks at the API Gateway and service middleware using cryptographically signed tenant claims inside the JWT.",
-          "Implement database-level Row Level Security (RLS) so queries automatically append `WHERE tenant_id = current_user_tenant_id`.",
-          "Integrate automated BOLA/IDOR regression test cases in the CI/CD pipeline using Postman/Newman."
+          "Do not trust client-controlled headers for authorization decisions.",
+          "Derive user and supplier identity strictly from validated server-side session tokens.",
+          "Enforce backend validation verifying session.supplier_id matches the requested entity."
         ]
       },
-      case2: {
-        title: "Unauthenticated Cloud Storage Exfiltration",
-        severity: "HIGH (CVSS 8.6)",
-        severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
-        category: "Cloud Infrastructure Security / Data Privacy",
+      case_ridehailing_storage: {
+        title: "Complete Data Exposure via File Storage API & CORS Wildcard",
+        target: "International Ride-Hailing Platform",
+        severity: "CRITICAL (CVSS 9.1)",
+        severityColor: "text-red-400 border-red-500/30 bg-red-500/10",
+        category: "Cloud & Storage Security / IDOR / CORS",
         filePath: "cases/cloud-storage-exfiltration.md",
-        overview: "While auditing file attachment upload/download workflows, object storage URLs leaked bucket names and predictable hash paths. Further testing revealed that the underlying cloud storage bucket ACL permitted public 'ListBucket' and 'GetObject' actions to anonymous users.",
+        overview: "Discovered an unauthenticated file storage endpoint backed by CloudFront and an Envoy service mesh. The API served stored files directly by UUID without authentication, while returning a permissive `Access-Control-Allow-Origin: *` wildcard header.",
         exploitation: [
-          "Identified image and PDF file URLs referencing `https://{client}-documents-prod.s3.amazonaws.com/{uuid}`.",
-          "Executed AWS CLI unauthenticated enumeration commands (`aws s3 ls s3://{client}-documents-prod --no-sign-request`).",
-          "Extracted hundreds of unencrypted KYC identity proofs, passport scans, and historical database backups.",
-          "Confirmed automated exfiltration capability through custom Python script."
+          "Sent unauthenticated GET requests to `/api/v1/files/{uuid}` and confirmed HTTP 200 responses returning binary image/document streams.",
+          "Confirmed CORS response header: `access-control-allow-origin: *`.",
+          "Analyzed UUID format: confirmed sequential millisecond timestamps encoded in UUIDv7 structure.",
+          "Constructed proof-of-concept cross-origin fetch script that silently reads victim documents from an attacker-controlled website."
         ],
-        impact: "Severe confidentiality breach exposing personally identifiable information (PII) of tens of thousands of users to the public internet.",
+        impact: "Zero-interaction exfiltration of sensitive platform assets including KYC driver documents, license scans, and personal receipts.",
         remediation: [
-          "Enable AWS 'S3 Block Public Access' at the AWS Account and bucket levels immediately.",
-          "Replace direct public bucket URLs with time-limited (max 15 minutes) pre-signed URLs generated server-side following authentication.",
-          "Deploy AWS IAM policy guardrails preventing creation of public S3 buckets."
+          "Mandate authentication and authorization claims on all file read operations.",
+          "Remove CORS wildcard (*) and restrict allowed origins strictly to trusted first-party domains.",
+          "Transition all client file downloads to short-lived HMAC pre-signed URLs."
         ]
       },
-      case3: {
-        title: "Hardcoded OAuth Secrets & Client Invalidation",
+      case_retail_pki: {
+        title: "Public Exposure of Internal PKI Trust Chain via JWKS x5c",
+        target: "Multinational Retail & Fashion Conglomerate",
+        severity: "CRITICAL (CVSS 9.3)",
+        severityColor: "text-red-400 border-red-500/30 bg-red-500/10",
+        category: "PKI & Cryptographic Architecture / Reconnaissance",
+        filePath: "cases/pki-infrastructure-exposure.md",
+        overview: "A public OpenAM JWKS endpoint leaked full X.509 certificate chains in the `x5c` parameter. Certificate extensions pointed to internal Certificate Authority URLs that resolved publicly on the internet, allowing unauthenticated public download of the Root CA, Sub CA, 15KB Certificate Revocation List (CRL), and active OCSP responder.",
+        exploitation: [
+          "Parsed JWKS JSON response from `/oauth2/connect/jwk_uri` and extracted CDP/AIA certificate extensions.",
+          "Resolved internal PKI server hostnames via public DNS (`195.77.x.x`).",
+          "Downloaded valid DER-encoded ASN.1 Root CA and Subordinate CA certificates via unauthenticated HTTP GET.",
+          "Downloaded 15,494 byte CRL file and confirmed active OCSP responder functionality via POST /ocsp.",
+          "Extracted internal corporate hostnames (`*.central.[redacted].grp`) from SAN extensions, mapping internal network topology."
+        ],
+        impact: "Complete exposure of enterprise internal trust hierarchy, enabling internal network TLS interception, service mapping, and potential MiTM attacks when chained with SSRF.",
+        remediation: [
+          "Strip `x5c` certificate chains from public JWKS responses; provide only standard public key components (n, e).",
+          "Place internal PKI servers and OCSP responders behind corporate VPNs and block all public internet access.",
+          "Rotate exposed intermediate CA certificates and revoke compromised keys."
+        ]
+      },
+      case_hospitality_oauth: {
+        title: "Exposed OAuth2 Client Credentials in Client-Side JavaScript Bundle",
+        target: "Global Hospitality Management System",
         severity: "HIGH (CVSS 8.2)",
         severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
-        category: "Authentication Security / Secrets Management",
+        category: "Authentication & Secrets Management",
         filePath: "cases/oauth-secrets.md",
-        overview: "During client-side source code analysis of a single-page production application, static review revealed that developer environment variables containing production OAuth `client_secret` strings were bundled into minified JavaScript files.",
+        overview: "During static review of a compiled React frontend application, unminified environment configuration variables revealed a production OAuth2 `client_secret`, `client_id`, internal token exchange URLs, and PingFederate SSO configurations.",
         exploitation: [
-          "Parsed JavaScript source maps and chunk files using Burp Suite and source map extractors.",
-          "Located plaintext `client_secret` alongside staging and third-party API integration keys.",
-          "Used the discovered secret in an OAuth Authorization Code exchange, successfully minting administrative access tokens without user consent or web origin checks.",
-          "Demonstrated potential account takeover and unauthorized API quota exhaustion."
+          "Downloaded and analyzed production JavaScript bundle (`main.[hash].js`).",
+          "Extracted valid `client_secret` alongside PingFederate SAML logout URLs and gateway endpoints.",
+          "Executed POST request to token service gateway `/v1/auth-service/token.auth` with extracted secret.",
+          "Server accepted the authorization_code grant type, validated origin headers, and confirmed secret authenticity."
         ],
-        impact: "Compromised trust model of the OAuth provider, enabling threat actors to forge client applications, hijack user tokens, and access protected API resources.",
+        impact: "Enables arbitrary token minting, internal SSO infrastructure mapping, and potential impersonation of corporate client applications.",
         remediation: [
-          "Transition frontend single-page applications to the OAuth 2.0 Authorization Code flow with Proof Key for Code Exchange (PKCE), eliminating the need for client secrets on public clients.",
-          "Revoke and rotate all leaked secrets immediately in production and staging.",
-          "Implement automated secret scanning (TruffleHog / GitGuardian) into pre-commit hooks and GitHub Actions."
+          "Migrate all public single-page applications to OAuth 2.0 PKCE (RFC 7636), which eliminates client secrets.",
+          "Immediately revoke and rotate all leaked OAuth client credentials.",
+          "Deploy TruffleHog / GitGuardian secret scanning in CI/CD pipeline."
         ]
       },
-      case4: {
-        title: "Session Integrity & Race Condition Flaws",
-        severity: "HIGH (CVSS 7.8)",
+      case_healthcare_session: {
+        title: "Session Replay & Dynamic Account Switching via Session Overwrite",
+        target: "Healthcare & Genetic Analytics Platform",
+        severity: "HIGH (CVSS 8.0)",
         severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
-        category: "Business Logic / Concurrency / Session Management",
+        category: "Session Management & Integrity QA",
         filePath: "cases/session-integrity.md",
-        overview: "In an e-commerce and subscription platform, QA and security tests identified two related session flaws: (1) coupon redemption endpoints lacked concurrency locking, allowing a single-use promo code to be redeemed dozens of times concurrently; (2) server-side sessions remained active after user password resets and permission changes.",
+        overview: "The application relied solely on a `sessionid` cookie without binding sessions to client IP or device context. Supplying a different user's session identifier in an active browser request caused the backend to respond with Set-Cookie headers that overwrote the browser cookie, dynamically switching the logged-in user state.",
         exploitation: [
-          "Constructed a high-concurrency burst attack using Burp Suite Turbo Intruder sending 30 simultaneous HTTP POST requests to `/api/cart/apply-voucher`.",
-          "Verified that 24 out of 30 requests succeeded due to a Time-of-Check to Time-of-Use (TOCTOU) database race window, applying massive negative balances.",
-          "Conducted session invalidation testing: changed user password from session A, yet session B retained valid bearer tokens for hours without re-authentication."
+          "Captured session cookie from User A session.",
+          "Injected session cookie into independent clean browser session; observed immediate access to User A health profile without challenge.",
+          "Intercepted outbound GET /user/ from User B and replaced cookie with User A's session.",
+          "Server accepted modified cookie and returned headers instructing the browser to overwrite its session, immediately switching active user context to User A."
         ],
-        impact: "Direct financial loss from exploit loops and persistent account hijacking via unrevoked lingering sessions.",
+        impact: "Direct account takeover and dynamic session hijacking without session fixation protection or anomaly detection.",
         remediation: [
-          "Implement distributed database locks (e.g., Redis `Redlock`) or pessimistic transaction locks during balance updates and voucher redemptions.",
-          "Implement a global session token revocation mechanism upon password changes, MFA resets, or privilege changes by maintaining a revocation blacklist or incrementing a user `token_version` in the database."
+          "Bind session tokens to client TLS context or device fingerprinting.",
+          "Regenerate session identifiers upon authentication and reject client-supplied session switching.",
+          "Invalidate sessions globally on logout and state changes."
+        ]
+      },
+      case_fintech_graphql: {
+        title: "Unauthenticated User Registration & Auto-Confirmed JWT Minting",
+        target: "Pan-African Mobile Banking Platform",
+        severity: "HIGH (CVSS 7.5)",
+        severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
+        category: "API & GraphQL Security",
+        filePath: "cases/graphql-open-registration.md",
+        overview: "The production Strapi CMS backend exposed an unrestricted GraphQL endpoint allowing unauthenticated users to execute `register` mutations with automatic email confirmation. Anyone could create active production accounts and obtain valid JWT bearer tokens across 1,350+ live production accounts.",
+        exploitation: [
+          "Sent unauthenticated POST request to `/graphql` with mutation: `register(input:{username, email, password})`.",
+          "Received HTTP 200 response with `confirmed: true` account status without email verification.",
+          "Executed `login` mutation with created credentials to receive valid production JWT bearer token.",
+          "Used JWT to query authenticated endpoints (`me`, `uploadFiles`, schema introspection)."
+        ],
+        impact: "Unauthorized authenticated foothold on live financial CMS infrastructure, enabling automated account creation and attack surface expansion.",
+        remediation: [
+          "Disable public self-registration mutations on production GraphQL endpoints.",
+          "Enforce mandatory email verification tokens before activating account status.",
+          "Restrict administrative CMS endpoints behind internal VPN / IP allowlisting."
         ]
       }
     };
@@ -1378,7 +1569,8 @@ layout: null
             </a>
           </div>
           <h3 class="text-2xl font-bold text-white mb-1">${data.title}</h3>
-          <p class="text-xs font-mono text-cyan-400">${data.category}</p>
+          <p class="text-xs font-mono text-slate-400">Target: <span class="text-cyan-400 font-bold">${data.target}</span></p>
+          <p class="text-xs font-mono text-slate-500 mt-0.5">${data.category}</p>
         </div>
 
         <div class="space-y-5 text-sm text-slate-300">
@@ -1388,7 +1580,7 @@ layout: null
           </div>
 
           <div>
-            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Proof of Concept & Exploitation Flow</h4>
+            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">Proof of Concept & Exploitation Flow (Sanitized)</h4>
             <ul class="space-y-1.5 font-mono text-xs text-slate-300 bg-brand-dark/60 p-3.5 rounded-xl border border-brand-border/60">
               ${data.exploitation.map(step => `<li class="flex items-start gap-2"><span class="text-red-400 font-bold">›</span><span>${step}</span></li>`).join('')}
             </ul>
