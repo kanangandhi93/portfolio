@@ -2,6 +2,10 @@ title: Kanan Gandhi
 description: Web Application Security & QA Consultant Portfolio
 markdown: kramdown
 
+include:
+  - cases
+  - .nojekyll
+
 collections:
   cases:
     output: true

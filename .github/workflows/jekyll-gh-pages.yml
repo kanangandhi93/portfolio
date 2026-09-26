@@ -35,6 +35,11 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Ensure both HTML and Markdown files exist in _site
+        run: |
+          mkdir -p ./_site/cases
+          cp -r cases/* ./_site/cases/
+          touch ./_site/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
