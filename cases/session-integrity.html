@@ -1,0 +1,144 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session Replay & Dynamic Account Switching via Session Overwrite | Kanan Gandhi Security Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070a12',
+              card: '#0f1423',
+              cardHover: '#161c30',
+              border: '#1f293d',
+              accent: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              red: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#070a12] text-slate-300 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen">
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 bg-[#070a12]/90 backdrop-blur-md border-b border-[#1f293d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Portfolio Home</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono">
+        <span class="text-slate-400">Auditor:</span>
+        <span class="text-white font-bold">Kanan Gandhi</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Advisory Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+
+    <!-- Metadata Pill Bar -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="px-2.5 py-1 rounded text-xs font-mono font-bold border text-amber-400 border-amber-500/30 bg-amber-500/10">
+        HIGH (CVSS 8.0)
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+        Session Management & Integrity QA
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-[#0f1423] text-slate-400 border border-[#1f293d]">
+        Target: <strong class="text-slate-200">Healthcare & Genetic Analytics Platform</strong>
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+      Session Replay & Dynamic Account Switching via Session Overwrite
+    </h1>
+
+    <div class="p-3 bg-[#0f1423] rounded-xl border border-[#1f293d] font-mono text-xs text-slate-400 mb-8 flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-emerald-400 font-semibold">Scope:</span>
+        <code class="text-slate-200 ml-1.5">GET /user/ (Cookie: sessionid)</code>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        Status: <span class="text-emerald-400 font-semibold">Remediated & Verified</span>
+      </div>
+    </div>
+
+    <!-- Executive Summary Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 01. EXECUTIVE SUMMARY</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300">
+        The web application relied exclusively on a `sessionid` cookie without binding sessions to client IP, TLS context, or device fingerprint. Supplying a different user’s session identifier caused the backend to respond with Set-Cookie headers that overwrote active browser sessions, allowing seamless dynamic account takeover.
+      </div>
+    </section>
+
+    <!-- Technical PoC Flow Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 02. PROOF OF CONCEPT & REPRODUCTION FLOW</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+### 1. Session Replay
+1. Captured session cookie from User A session.
+2. Injected session cookie into independent clean browser session; observed immediate access to User A health profile without challenge.
+
+### 2. Dynamic Session Overwrite
+1. Intercepted outbound GET /user/ from User B and replaced cookie with User A's session.
+2. Server accepted modified cookie and returned headers instructing the browser to overwrite its session, immediately switching active user context to User A.
+      </div>
+    </section>
+
+    <!-- Business Impact Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 03. BUSINESS IMPACT & REGULATORY EXPOSURE</h2>
+      <div class="bg-red-950/20 p-5 rounded-2xl border border-red-900/40 text-sm leading-relaxed text-red-300/90">
+        Direct account takeover and dynamic session hijacking without session fixation protection or anomaly detection.
+      </div>
+    </section>
+
+    <!-- Remediation Guidance Section -->
+    <section class="mb-12">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 04. REMEDIATION & QA ENGINEERING GUIDANCE</h2>
+      <div class="bg-emerald-950/20 p-5 rounded-2xl border border-emerald-900/40 text-sm leading-relaxed text-emerald-300/90 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+1. **Context Binding:** Bind session tokens to client TLS context or device fingerprinting.
+2. **Session ID Regeneration:** Always regenerate session identifiers upon authentication and state changes.
+3. **Reject Arbitrary Session Overwrite:** Enforce server-side session integrity validation to ensure sessions cannot be dynamically reassigned via modified client headers.
+      </div>
+    </section>
+
+    <!-- Bottom Action Navigation -->
+    <div class="border-t border-[#1f293d] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="../index.html#cases" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0f1423] hover:bg-[#161c30] text-slate-300 hover:text-white border border-[#1f293d] text-xs font-mono transition-colors">
+        ← Return to All Findings
+      </a>
+      <a href="mailto:kanangandhi62@gmail.com?subject=Inquiry%20regarding%20Session%20Replay%20%26%20Dynamic%20Account%20Switching%20via%20Session%20Overwrite" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#070a12] font-bold text-xs font-mono transition-colors">
+        Inquire / Request Pentest
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-[#1f293d] py-6 text-center text-xs font-mono text-slate-500">
+    © 2026 Kanan Gandhi. All sanitized security advisories published under responsible disclosure.
+  </footer>
+
+</body>
+</html>

