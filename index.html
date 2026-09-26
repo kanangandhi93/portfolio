@@ -237,9 +237,9 @@ layout: null
             <button onclick="applyFilter('all', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-emerald-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-emerald-400">
               <div class="flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">Total Findings</span>
-                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All (6) →</span>
+                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All (7) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">6+</span>
+              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">7+</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
                 <span>Verified Exploits</span>
               </span>
@@ -306,7 +306,7 @@ layout: null
             
             <div class="mt-4 md:mt-0">
               <button onclick="applyFilter('all', true)" class="px-3.5 py-1.5 rounded-lg text-xs font-mono bg-brand-card border border-brand-border hover:border-emerald-400 text-slate-300 hover:text-white transition-all">
-                Reset to All Findings (6)
+                Reset to All Findings (7)
               </button>
             </div>
           </div>
@@ -485,14 +485,27 @@ layout: null
                     <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Session & Integrity QA</h3>
                   </div>
                   <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    1 Report
+                    2 Reports
                   </span>
                 </div>
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
                   Session replay, dynamic account switching via session overwrite, context binding failures, and token lifecycle integrity.
                 </p>
 
-                <!-- Case inside this category -->
+                <!-- Cases inside this category -->
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-2 space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">⚖️ Terms Acceptance Bypass</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-400 font-bold">LOW / COMPLIANCE</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: EdTech & Online Learning Platform</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: POST /api/users/register/</p>
+                  <div class="flex items-center gap-3 pt-1 text-xs font-mono">
+                    <button onclick="openCaseModal('case_edtech_terms')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/terms-acceptance-validation.md" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Markdown</a>
+                  </div>
+                </div>
+
                 <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-1.5">
                   <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-slate-200">🔐 Session Replay & Overwrite</span>
@@ -538,7 +551,7 @@ layout: null
             </div>
             
             <div id="findings-count" class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
-              Showing <span id="visible-count" class="text-emerald-400 font-bold">6</span> of 6 Findings
+              Showing <span id="visible-count" class="text-emerald-400 font-bold">7</span> of 7 Findings
             </div>
           </div>
 
@@ -555,7 +568,7 @@ layout: null
               </span>
 
               <button onclick="applyFilter('all')" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-emerald-500 text-brand-dark font-bold shadow-sm">
-                All (6)
+                All (7)
               </button>
 
               <button onclick="applyFilter('category-api')" data-filter="category-api" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
@@ -580,6 +593,10 @@ layout: null
 
               <button onclick="applyFilter('severity-critical')" data-filter="severity-critical" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-red-400 border border-brand-border">
                 🔴 Critical (2)
+              </button>
+
+              <button onclick="applyFilter('severity-low')" data-filter="severity-low" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-sky-400 border border-brand-border">
+                🔵 Low/Compliance (1)
               </button>
 
               <button onclick="applyFilter('severity-high')" data-filter="severity-high" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-amber-400 border border-brand-border">
@@ -988,6 +1005,70 @@ layout: null
 
           </div>
 
+          
+            <!-- Finding 7: EdTech & Online Learning Platform -->
+            <div 
+              data-category="category-logic" 
+              data-severity="severity-low"
+              data-tags="business logic input validation compliance terms acceptance gdpr manual qa edtech consent"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case_edtech_terms')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-low', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-sky-500/15 text-sky-400 border border-sky-500/30 hover:bg-sky-500/25 transition-colors">
+                    LOW / COMPLIANCE
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-logic', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    Business Logic & Compliance
+                  </button>
+                </div>
+                
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Missing Server-Side Enforcement of Terms Acceptance
+                </h3>
+
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">EdTech & Online Learning Platform</span>
+                </p>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Registration endpoint relied on client-side controls for consent. Submitting <code class="text-emerald-300 font-mono">has_accepted_terms_and_condition: false</code> still registered the user and issued valid JWT credentials.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-sky-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Client-Side Only Consent Validation</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">POST /api/users/register/</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Server-Side Schema Boolean Assertion</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('Business Logic')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Business Logic</button>
+                  <button onclick="event.stopPropagation(); searchCases('Compliance')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Compliance</button>
+                  <button onclick="event.stopPropagation(); searchCases('QA')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#QA Audit</button>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case_edtech_terms')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                <a href="cases/terms-acceptance-validation.md" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
+                  <span>📄 Markdown</span>
+                </a>
+              </div>
+            </div>
+
           <!-- Empty search result state -->
           <div id="no-results" class="hidden text-center py-12 bg-brand-card/40 rounded-2xl border border-brand-border">
             <span class="text-3xl mb-2 block">🔍</span>
@@ -1315,6 +1396,28 @@ layout: null
   <script>
     // Sanitized Case Study Data (Strictly Anonymized & Redacted)
     const caseStudies = {
+      case_edtech_terms: {
+        title: "Missing Server-Side Enforcement of Terms Acceptance",
+        target: "EdTech & Online Learning Platform",
+        severity: "LOW / COMPLIANCE (CWE-20 / CWE-840)",
+        severityColor: "text-sky-400 border-sky-500/30 bg-sky-500/10",
+        category: "Business Logic Flaw & Compliance QA",
+        filePath: "cases/terms-acceptance-validation.md",
+        overview: "During security and QA auditing of the user onboarding service, a business logic validation flaw was identified on the registration endpoint. The application relies primarily on front-end controls to enforce user consent. By intercepting and altering the registration payload to explicitly set has_accepted_terms_and_condition: false, the server-side API still accepts the registration, provisions the account, and issues authentication tokens.",
+        exploitation: [
+          "Navigated to signup interface and entered valid registration credentials.",
+          "Intercepted outbound HTTP POST to /api/users/register/ using Burp Suite proxy.",
+          "Modified payload parameter has_accepted_terms_and_condition from true to false.",
+          "Observed response HTTP 201 Created with valid access_token and refresh_token, creating user profile with has_accepted_terms_and_condition: false and terms_accepted_at: null."
+        ],
+        impact: "Regulatory and legal exposure under GDPR/CCPA for processing user data without verifiable consent; undermines contractual enforceability of terms of service and liability limitations.",
+        remediation: [
+          "Enforce server-side schema validation (Express validator / Django DRF serializer) requiring has_accepted_terms_and_condition === true.",
+          "Reject any registration payload with HTTP 400 Bad Request if mandatory terms consent is false or missing.",
+          "Add negative integration test cases to the automated QA regression suite."
+        ]
+      },
+
       case_ecommerce_bac: {
         title: "Broken Access Control in Supplier Insights API",
         target: "Enterprise E-Commerce Platform",
