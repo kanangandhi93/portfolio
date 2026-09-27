@@ -1,0 +1,171 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direct Origin Access & WAF Bypass via Header IP Disclosure | Kanan Gandhi Security Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070a12',
+              card: '#0f1423',
+              cardHover: '#161c30',
+              border: '#1f293d',
+              accent: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              red: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#070a12] text-slate-300 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen">
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 bg-[#070a12]/90 backdrop-blur-md border-b border-[#1f293d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Portfolio Home</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono">
+        <span class="text-slate-400">Auditor:</span>
+        <span class="text-white font-bold">Kanan Gandhi</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Advisory Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+
+    <!-- Metadata Pill Bar -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="px-2.5 py-1 rounded text-xs font-mono font-bold border text-amber-400 border-amber-500/30 bg-amber-500/10">
+        HIGH (CVSS 7.5)
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+        Infrastructure Security & WAF Bypass
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-[#0f1423] text-slate-400 border border-[#1f293d]">
+        Target: <strong class="text-slate-200">Global Connected Vehicle & EV Enterprise</strong>
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+      Direct Origin Access & WAF Bypass via Header IP Disclosure
+    </h1>
+
+    <div class="p-3 bg-[#0f1423] rounded-xl border border-[#1f293d] font-mono text-xs text-slate-400 mb-8 flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-emerald-400 font-semibold">Scope:</span>
+        <code class="text-slate-200 ml-1.5">auth.[redacted-automotive].com & owner-api.[redacted-automotive].com</code>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        Status: <span class="text-emerald-400 font-semibold">Reported & Verified (Bugcrowd)</span>
+      </div>
+    </div>
+
+    <!-- Executive Summary Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 01. EXECUTIVE SUMMARY</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300">
+        During external edge auditing of a major connected automotive platform, a multi-stage infrastructure attack chain was uncovered. Custom CDN latency response headers leaked internal origin IP addresses. Using DNS resolution overrides (`--resolve`), direct origin connectivity was established, completely bypassing the Akamai Web Application Firewall (WAF) layer on the core authentication service. Additionally, spoofing internal subnet ranges via the `Client-IP` header triggered unhandled exceptions and persistent HTTP 500 Denial of Service conditions on the fleet management API.
+      </div>
+    </section>
+
+    <!-- Technical PoC Flow Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 02. PROOF OF CONCEPT & EXPLOITATION CHAIN</h2>
+      <div class="bg-[#0f1423] p-5 rounded-2xl border border-[#1f293d] text-sm leading-relaxed text-slate-300 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+### Step 1: Origin IP Discovery via Latency Headers
+The CDN edge returned custom latency profiling headers disclosing internal origin IP addresses:
+- `auth.[redacted-automotive].com` -> `66.17.x.x` (Origin behind Akamai WAF)
+- `owner-api.[redacted-automotive].com` -> `66.17.x.x` (Direct Envoy Gateway)
+
+### Step 2: Direct Origin Access & WAF Bypass
+By forcing DNS resolution directly to the leaked origin IP address while preserving legitimate SNI headers:
+```bash
+# WAF BYPASS - Direct origin access bypassing Akamai WAF rules
+curl -v --resolve "auth.[redacted-automotive].com:443:[REDACTED_ORIGIN_IP]" \
+  https://auth.[redacted-automotive].com/oauth2/v1/token
+```
+**Result:** Returns HTTP 200 OK directly from the backend origin, bypassing Akamai rate-limiting, IP reputation, and bot protection rules.
+
+### Step 3: Internal Subnet Header Spoofing & DoS Crash
+Injecting internal subnets (`192.168.90.0/24`) revealed differential backend handling:
+1. `X-Forwarded-For: 192.168.90.100` routed traffic to an internal localized cluster.
+2. `Client-IP: 192.168.90.100` caused the backend Ruby on Rails service to crash with an unhandled exception:
+```http
+GET /api/1/vehicles HTTP/1.1
+Host: owner-api.[redacted-automotive].com
+Client-IP: 192.168.90.100
+
+HTTP/1.1 500 Internal Server Error
+```
+
+### Step 4: Regional SSO Architecture Disclosure
+Cross-region authentication probing revealed internal data center topology:
+- `x-datacenter: [redacted-datacenter-iam]`
+- `x-hosting-region: [REDACTED]`
+- `Set-Cookie: [redacted]-auth.sid` provisioned on HTTP 404 responses.
+      </div>
+    </section>
+
+    <!-- Business Impact Section -->
+    <section class="mb-10">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 03. BUSINESS IMPACT & RISK ASSESSMENT</h2>
+      <div class="bg-red-950/20 p-5 rounded-2xl border border-red-900/40 text-sm leading-relaxed text-red-300/90">
+        <strong>1. Complete WAF Circumvention:</strong> An attacker can conduct high-velocity brute force attacks, credential stuffing, and unthrottled OAuth token fuzzing without interference from Akamai WAF filters.<br><br>
+        <strong>2. Denial of Service:</strong> Sending crafted internal IP values in the `Client-IP` header crashes upstream vehicle API services with HTTP 500 errors.<br><br>
+        <strong>3. Internal Topology Mapping:</strong> Leaked origin IPs, internal subnets, and datacenter naming conventions provide actionable reconnaissance for targeted internal network pivoting.
+      </div>
+    </section>
+
+    <!-- Remediation Guidance Section -->
+    <section class="mb-12">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-2">// 04. REMEDIATION & DEFENSIVE ENGINEERING</h2>
+      <div class="bg-emerald-950/20 p-5 rounded-2xl border border-emerald-900/40 text-sm leading-relaxed text-emerald-300/90 overflow-x-auto font-mono text-xs whitespace-pre-wrap">
+1. **Origin Ingress Firewalling (Origin Shielding):** Configure cloud firewall security groups to drop all direct inbound connections that do not originate from authenticated CDN/WAF IP CIDR blocks.
+2. **Header Stripping:** Suppress custom latency profiling and `OriginIP` headers before responses leave the reverse proxy.
+3. **Defensive Proxy Header Parsing:** Sanitize and reject untrusted client-supplied `Client-IP` and `X-Forwarded-For` headers at the reverse proxy layer to prevent upstream application crashes.
+4. **Error Handling & Cookie Hardening:** Ensure session cookies are never issued on error responses, and suppress internal datacenter naming headers.
+      </div>
+    </section>
+
+    <!-- Bottom Action Navigation -->
+    <div class="border-t border-[#1f293d] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="../index.html#cases" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0f1423] hover:bg-[#161c30] text-slate-300 hover:text-white border border-[#1f293d] text-xs font-mono transition-colors">
+        ← Return to All Findings
+      </a>
+      <a href="mailto:kanangandhi62@gmail.com?subject=Inquiry%20regarding%20WAF%20Bypass%20Advisory" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#070a12] font-bold text-xs font-mono transition-colors">
+        Inquire / Request Pentest
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-[#1f293d] py-6 text-center text-xs font-mono text-slate-500">
+    © 2026 Kanan Gandhi. All sanitized security advisories published under responsible disclosure.
+  </footer>
+
+</body>
+</html>

@@ -237,9 +237,9 @@ layout: null
             <button onclick="applyFilter('all', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-emerald-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-emerald-400">
               <div class="flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">Total Findings</span>
-                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All (7) →</span>
+                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All (8) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">7+</span>
+              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">8+</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
                 <span>Verified Exploits</span>
               </span>
@@ -261,11 +261,11 @@ layout: null
             <button onclick="applyFilter('severity-high', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-amber-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-amber-400">
               <div class="flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">High Severity</span>
-                <span class="text-[10px] font-mono text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter (4) →</span>
+                <span class="text-[10px] font-mono text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">Filter (5) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-amber-400 mt-1">4</span>
+              <span class="block text-3xl font-extrabold font-mono text-amber-400 mt-1">5</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
-                <span>BOLA, OAuth, GraphQL, Session</span>
+                <span>BOLA, WAF Bypass, OAuth, GraphQL, Session</span>
               </span>
             </button>
 
@@ -306,7 +306,7 @@ layout: null
             
             <div class="mt-4 md:mt-0">
               <button onclick="applyFilter('all', true)" class="px-3.5 py-1.5 rounded-lg text-xs font-mono bg-brand-card border border-brand-border hover:border-emerald-400 text-slate-300 hover:text-white transition-all">
-                Reset to All Findings (7)
+                Reset to All Findings (8)
               </button>
             </div>
           </div>
@@ -370,15 +370,28 @@ layout: null
                     <span class="text-xl">☁️</span>
                     <h3 class="text-lg font-bold text-white group-hover:text-red-400 transition-colors">Cloud & File Storage</h3>
                   </div>
-                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20">
-                    1 Report (Critical)
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                    2 Reports
                   </span>
                 </div>
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
                   Object storage access controls, CORS wildcard permissions, UUID predictability, and cross-origin file exfiltration.
                 </p>
 
-                <!-- Case inside this category -->
+                <!-- Cases inside this category -->
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-2 space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">🛡️ Direct Origin WAF Bypass</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH 7.5</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: Global Connected Vehicle & EV Enterprise</p>
+                  <p class="text-[11px] text-slate-400 font-mono">Scope: auth.[redacted].com & owner-api.[redacted].com</p>
+                  <div class="flex items-center gap-3 pt-1 text-xs font-mono">
+                    <button onclick="openCaseModal('case_automotive_waf')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/waf-bypass-origin-disclosure.html" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Page</a>
+                  </div>
+                </div>
+
                 <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-4 space-y-1.5">
                   <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-slate-200">🔐 File Storage Data Exposure</span>
@@ -551,7 +564,7 @@ layout: null
             </div>
             
             <div id="findings-count" class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
-              Showing <span id="visible-count" class="text-emerald-400 font-bold">7</span> of 7 Findings
+              Showing <span id="visible-count" class="text-emerald-400 font-bold">8</span> of 8 Findings
             </div>
           </div>
 
@@ -568,7 +581,7 @@ layout: null
               </span>
 
               <button onclick="applyFilter('all')" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-emerald-500 text-brand-dark font-bold shadow-sm">
-                All (7)
+                All (8)
               </button>
 
               <button onclick="applyFilter('category-api')" data-filter="category-api" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
@@ -600,7 +613,7 @@ layout: null
               </button>
 
               <button onclick="applyFilter('severity-high')" data-filter="severity-high" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-amber-400 border border-brand-border">
-                🟠 High (4)
+                🟠 High (5)
               </button>
             </div>
 
@@ -1069,6 +1082,70 @@ layout: null
               </div>
             </div>
 
+          
+            <!-- Finding 8: Global Connected Vehicle & EV Enterprise -->
+            <div 
+              data-category="category-cloud" 
+              data-severity="severity-high"
+              data-tags="waf bypass origin ip disclosure cdn akamai infrastructure denial of service dos automotive"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case_automotive_waf')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-high', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25 transition-colors">
+                    HIGH (CVSS 7.5)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-cloud', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    Infrastructure & WAF Bypass
+                  </button>
+                </div>
+                
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Direct Origin Access & WAF Bypass via Header IP Disclosure
+                </h3>
+
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">Global Connected Vehicle & EV Enterprise</span>
+                </p>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  CDN latency profiling headers leaked backend origin IPs. Direct connections completely bypassed the Akamai WAF perimeter, enabling unthrottled token attacks and a DoS crash via client proxy headers.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-red-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">Origin IP Leak + Direct Ingress Access</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">auth.[redacted].com & owner-api.[redacted].com</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Origin Shielding Firewall + Header Stripping</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('WAF')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#WAF Bypass</button>
+                  <button onclick="event.stopPropagation(); searchCases('Origin')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Origin IP</button>
+                  <button onclick="event.stopPropagation(); searchCases('Infrastructure')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Infrastructure</button>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case_automotive_waf')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                <a href="cases/waf-bypass-origin-disclosure.html" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
+                  <span>📄 Page</span>
+                </a>
+              </div>
+            </div>
+
           <!-- Empty search result state -->
           <div id="no-results" class="hidden text-center py-12 bg-brand-card/40 rounded-2xl border border-brand-border">
             <span class="text-3xl mb-2 block">🔍</span>
@@ -1396,6 +1473,28 @@ layout: null
   <script>
     // Sanitized Case Study Data (Strictly Anonymized & Redacted)
     const caseStudies = {
+      case_automotive_waf: {
+        title: "Direct Origin Access & WAF Bypass via Header IP Disclosure",
+        target: "Global Connected Vehicle & EV Enterprise",
+        severity: "HIGH (CVSS 7.5 - Bugcrowd Verified)",
+        severityColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
+        category: "Infrastructure Security & WAF Bypass",
+        filePath: "cases/waf-bypass-origin-disclosure.html",
+        overview: "External edge auditing uncovered that CDN latency profiling headers leaked backend origin IP addresses. Using DNS resolution overrides (--resolve), direct origin connectivity was established, completely bypassing the Akamai WAF perimeter on the core authentication gateway. Furthermore, internal subnet spoofing via the Client-IP header triggered unhandled exceptions and persistent HTTP 500 Denial of Service conditions on the vehicle API.",
+        exploitation: [
+          "Discovered origin IP addresses leaked through OriginIP and latency profiling headers.",
+          "Forced DNS resolution directly to origin IPs using curl --resolve while preserving SNI: observed HTTP 200 OK directly from backend, completely bypassing Akamai WAF rules.",
+          "Tested internal subnet spoofing (192.168.90.0/24); observed differential backend cluster routing.",
+          "Sent Client-IP: 192.168.90.100 to vehicle API; observed persistent HTTP 500 unhandled backend crashes (DoS vector)."
+        ],
+        impact: "Complete circumvention of enterprise WAF protections (unrestricted credential stuffing & OAuth fuzzing), service disruption via Client-IP crash, and internal datacenter architecture leakage.",
+        remediation: [
+          "Configure origin firewalls (Security Groups) to drop all inbound traffic not originating from verified Akamai IP CIDR blocks (Origin Shielding).",
+          "Strip custom OriginIP and latency profiling headers before returning responses to clients.",
+          "Sanitize client-supplied proxy headers (Client-IP, X-Forwarded-For) at the edge reverse proxy layer."
+        ]
+      },
+
       case_edtech_terms: {
         title: "Missing Server-Side Enforcement of Terms Acceptance",
         target: "EdTech & Online Learning Platform",
