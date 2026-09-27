@@ -1,0 +1,229 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cleartext Credential Transmission over HTTP & SSO Disclosure | Kanan Gandhi Security Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070a12',
+              card: '#0f1423',
+              cardHover: '#161c30',
+              border: '#1f293d',
+              accent: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              red: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#070a12] text-slate-300 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen">
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 bg-[#070a12]/90 backdrop-blur-md border-b border-[#1f293d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Portfolio Home</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono">
+        <span class="text-slate-400">Auditor:</span>
+        <span class="text-white font-bold">Kanan Gandhi</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Advisory Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+
+    <!-- Metadata Pill Bar -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="px-2.5 py-1 rounded text-xs font-mono font-bold border text-amber-400 border-amber-500/30 bg-amber-500/10">
+        P4 / MEDIUM (CVSS 6.5)
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-purple-500/10 text-purple-400 border border-purple-500/20">
+        Authentication & Transport Security
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-[#0f1423] text-slate-400 border border-[#1f293d]">
+        Target: <strong class="text-slate-200">National Telecommunications & Mobile Carrier</strong>
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+      Cleartext Credential Transmission via Hardcoded HTTP Form Action
+    </h1>
+
+    <div class="p-3 bg-[#0f1423] rounded-xl border border-[#1f293d] font-mono text-xs text-slate-400 mb-8 flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-emerald-400 font-semibold">Scope:</span>
+        <code class="text-slate-200 ml-1.5">https://www.[redacted-telecom].com.au/signon/portal/login.fcc</code>
+      </div>
+      <div>
+        <span class="text-slate-400">Classification:</span>
+        <span class="text-amber-400 ml-1">VRT: Broken Authentication &gt; Weak Login Function &gt; Over HTTP</span>
+      </div>
+    </div>
+
+    <!-- Section 1: Executive Overview -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 1. Executive Summary
+      </h2>
+      <p class="text-sm text-slate-300 leading-relaxed mb-4">
+        During an authentication security assessment of customer-facing single sign-on (SSO) portals, a transport security flaw was identified on the primary enterprise login interface. While the initial webpage was served securely over HTTPS, the underlying HTML form was hardcoded with an unencrypted <code class="text-red-400">http://</code> form action targeting the CA SiteMinder authentication handler.
+      </p>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Submitting the form causes user credentials (<code class="text-slate-200">USER</code> and <code class="text-slate-200">PASSWORD</code>) to be transmitted across the local network and public internet in unencrypted plaintext over port 80. While the edge CDN issues an HTTP 302 redirect to HTTPS upon receipt, the sensitive credentials have already crossed the wire in cleartext, exposing customers to passive eavesdropping and Man-in-the-Middle (MITM) credential harvesting.
+      </p>
+    </section>
+
+    <!-- Section 2: Technical Flaw & DOM Evidence -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 2. Vulnerable Form Action & Code Evidence
+      </h2>
+      <p class="text-sm text-slate-300 mb-3">
+        Direct source inspection of the authentication page at <code class="text-slate-200">/signon/portal/login.fcc</code> confirmed the insecure form configuration:
+      </p>
+
+      <pre class="bg-[#070a12] p-4 rounded-xl border border-[#1f293d] text-xs font-mono text-slate-300 overflow-x-auto mb-4"><code><span class="text-red-400 font-bold">&lt;FORM NAME="Login" ACTION="http://www.[redacted-telecom].com.au/siteminderagent/portal/login.fcc" METHOD="POST"&gt;</span>
+    &lt;INPUT TYPE=HIDDEN NAME="SMENC" VALUE="ISO-8859-1"&gt;
+    &lt;INPUT type=HIDDEN name="SMLOCALE" value="US-EN"&gt;
+    &lt;input type=hidden name=target value=""&gt;
+    &lt;input type=hidden name=smauthreason value=""&gt;
+    &lt;input type=hidden name=smagentname value=""&gt;
+    &lt;input type=hidden name=postpreservationdata value=""&gt;
+    &lt;input id="USER" NAME="USER" SIZE="25"&gt;
+    &lt;input type="password" id="PASSWORD" NAME="PASSWORD" SIZE="25"&gt;
+&lt;/FORM&gt;</code></pre>
+
+      <h3 class="text-sm font-semibold text-slate-200 mb-2 font-mono">// Plaintext Transmission Interception</h3>
+      <p class="text-xs text-slate-400 mb-3">
+        Sending a POST request to the cleartext HTTP endpoint demonstrates that the edge receives the credentials prior to issuing a redirect:
+      </p>
+
+      <pre class="bg-[#070a12] p-4 rounded-xl border border-[#1f293d] text-xs font-mono text-amber-300 overflow-x-auto"><code>POST http://www.[redacted-telecom].com.au/siteminderagent/portal/login.fcc HTTP/1.1
+Host: www.[redacted-telecom].com.au
+Content-Type: application/x-www-form-urlencoded
+
+USER=customer_account&PASSWORD=CleartextPassword123!&SMENC=ISO-8859-1&target=
+
+→ HTTP/1.1 302 Moved Temporarily
+Server: AkamaiGHost
+Location: https://www.[redacted-telecom].com.au/siteminderagent/portal/login.fcc</code></pre>
+    </section>
+
+    <!-- Section 3: Additional SSO Reconnaissance & QA Weaknesses -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 3. Additional SSO Reconnaissance & Logic Weaknesses
+      </h2>
+
+      <div class="space-y-4">
+        <div class="bg-[#070a12] p-4 rounded-xl border border-[#1f293d]">
+          <h3 class="text-xs font-mono font-bold text-cyan-400 mb-1">1. Proprietary SSO Topology Exposure</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-2">
+            The login flow query parameters and hidden form values leak internal CA SiteMinder deployment metadata:
+          </p>
+          <ul class="text-xs font-mono text-slate-400 space-y-1">
+            <li><span class="text-slate-200">REALMOID:</span> <code class="text-amber-400">06-dd57b946-1753-43da-[REDACTED]</code> (Internal realm database UUID)</li>
+            <li><span class="text-slate-200">SMAGENTNAME:</span> <code class="text-amber-400">-SM-7LF8ifsjXF2F6vC8[REDACTED]</code> (Encrypted web agent name)</li>
+            <li><span class="text-slate-200">TYPE:</span> <code class="text-amber-400">33554433</code> (Form-based authentication mechanism)</li>
+          </ul>
+        </div>
+
+        <div class="bg-[#070a12] p-4 rounded-xl border border-[#1f293d]">
+          <h3 class="text-xs font-mono font-bold text-amber-400 mb-1">2. Absence of Anti-CSRF Token</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            The login form completely lacks cryptographic CSRF tokens, exposing users to login CSRF attacks where an attacker forces a victim's browser to authenticate into an attacker-controlled account context.
+          </p>
+        </div>
+
+        <div class="bg-[#070a12] p-4 rounded-xl border border-[#1f293d]">
+          <h3 class="text-xs font-mono font-bold text-red-400 mb-1">3. Client-Side Only Rate Limiting Bypass</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Authentication attempts were tracked purely via client-side cookie logic (<code class="text-slate-200">SMTRYNO</code>). Because no server-side IP or account-level throttling was enforced, an attacker can automate unrestricted credential stuffing by omitting or clearing cookies between requests.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Threat & Risk Impact -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 4. Threat & Business Impact
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-3 bg-[#070a12] rounded-xl border border-[#1f293d]">
+          <div class="text-xs font-mono text-red-400 font-bold mb-1">Credential Sniffing (MITM)</div>
+          <p class="text-xs text-slate-400">
+            Adversaries on public networks (coffee shops, hotels, public Wi-Fi) can capture plaintext credentials in real-time using passive packet analysis.
+          </p>
+        </div>
+        <div class="p-3 bg-[#070a12] rounded-xl border border-[#1f293d]">
+          <div class="text-xs font-mono text-amber-400 font-bold mb-1">SSO Perimeter Compromise</div>
+          <p class="text-xs text-slate-400">
+            Compromised SiteMinder credentials provide lateral access across all federated customer accounts, billing data, and carrier services.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Remediation Recommendations -->
+    <section class="mb-10 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 5. Security Remediation Plan
+      </h2>
+      <ul class="space-y-3 text-sm text-slate-300">
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">1.</span>
+          <span><strong>Enforce HTTPS Action URL:</strong> Update the login template to strictly target <code class="text-emerald-300">https://www.[redacted-telecom].com.au/...</code>.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">2.</span>
+          <span><strong>HSTS with Preload:</strong> Deploy <code class="text-slate-200">Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</code> to force browsers to automatically upgrade insecure form submissions.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">3.</span>
+          <span><strong>Content Security Policy:</strong> Enforce <code class="text-slate-200">form-action 'self' https://*</code> to block unencrypted form actions at the browser engine level.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">4.</span>
+          <span><strong>Server-Side Rate Limiting & Anti-CSRF:</strong> Enforce server-side account lockouts / CAPTCHA on failed attempts and inject unique cryptographic CSRF tokens on all login forms.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer Back Link -->
+    <div class="text-center pt-6 border-t border-[#1f293d]">
+      <a href="../index.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#070a12] font-mono font-bold text-xs transition-all shadow-lg shadow-emerald-500/10">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to All Security Cases</span>
+      </a>
+    </div>
+
+  </main>
+
+</body>
+</html>
