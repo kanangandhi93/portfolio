@@ -1,0 +1,279 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EOL Apache Cocoon Exposure & Known CVEs in Enterprise Portal | Kanan Gandhi Security Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#070a12',
+              card: '#0f1423',
+              cardHover: '#161c30',
+              border: '#1f293d',
+              accent: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              red: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#070a12] text-slate-300 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen">
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 bg-[#070a12]/90 backdrop-blur-md border-b border-[#1f293d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Portfolio Home</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono">
+        <span class="text-slate-400">Auditor:</span>
+        <span class="text-white font-bold">Kanan Gandhi</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Advisory Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+
+    <!-- Metadata Pill Bar -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="px-2.5 py-1 rounded text-xs font-mono font-bold border text-sky-400 border-sky-500/30 bg-sky-500/10">
+        P5 / INFORMATIONAL (CVSS 5.3)
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+        Component Vulnerabilities & Perimeter Hardening
+      </span>
+      <span class="px-2.5 py-1 rounded text-xs font-mono bg-[#0f1423] text-slate-400 border border-[#1f293d]">
+        Target: <strong class="text-slate-200">Major National Telecommunications Provider</strong>
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+      Exposure of EOL Apache Cocoon Framework & Unpatched CVEs
+    </h1>
+
+    <div class="p-3 bg-[#0f1423] rounded-xl border border-[#1f293d] font-mono text-xs text-slate-400 mb-8 flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-emerald-400 font-semibold">Scope:</span>
+        <code class="text-slate-200 ml-1.5">portal-fm1.[redacted-telecom].net & portal-fm2.[redacted-telecom].net</code>
+      </div>
+      <div>
+        <span class="text-slate-400">Classification:</span>
+        <span class="text-cyan-400 ml-1">VRT: Known Vulnerabilities &gt; Outdated Software</span>
+      </div>
+    </div>
+
+    <!-- Section 1: Executive Overview -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 1. Executive Summary
+      </h2>
+      <p class="text-sm text-slate-300 leading-relaxed mb-4">
+        During external perimeter reconnaissance across enterprise telecommunications management systems, two production facility portal clusters (<code class="text-slate-200">eFRAMS3</code>) were discovered running a legacy, end-of-life framework: <strong class="text-amber-400">Apache Cocoon 2.0.4</strong> deployed on an unversioned <code class="text-slate-200">Apache-Coyote/1.1</code> Tomcat backend.
+      </p>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Apache Cocoon has been officially retired with no active security updates. Version <code class="text-slate-200">2.0.4</code> suffers from multiple documented high-impact vulnerabilities, including critical XML External Entity (XXE) injection and SQL injection in core serializers. Furthermore, comparative edge testing revealed inconsistent Akamai WAF rules between cluster nodes, leaving the primary portal accessible without challenge.
+      </p>
+    </section>
+
+    <!-- Section 2: Known Unpatched CVEs -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 2. Unpatched CVE Exposure in Apache Cocoon 2.0.4
+      </h2>
+      <p class="text-sm text-slate-300 mb-4">
+        The identified software version (<code class="text-slate-200">X-Cocoon-Version: 2.0.4</code>) is vulnerable to multiple public CVE advisories:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b border-[#1f293d] text-slate-400">
+              <th class="py-2.5 px-3">CVE ID</th>
+              <th class="py-2.5 px-3">Severity</th>
+              <th class="py-2.5 px-3">CVSS</th>
+              <th class="py-2.5 px-3">Vulnerability Summary</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#1f293d]/50 text-slate-300">
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2.5 px-3 text-red-400 font-semibold">CVE-2023-49733</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">CRITICAL</span></td>
+              <td class="py-2.5 px-3 text-red-400 font-bold">9.8</td>
+              <td class="py-2.5 px-3 font-sans text-xs">Improper restriction of XML External Entity Reference (XXE) allowing remote file disclosure and SSRF.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2.5 px-3 text-amber-400 font-semibold">CVE-2022-45135</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH</span></td>
+              <td class="py-2.5 px-3 text-amber-400 font-bold">8.8</td>
+              <td class="py-2.5 px-3 font-sans text-xs">SQL Injection via improper neutralization of special elements in database serialization and SQL transformers.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2.5 px-3 text-amber-400 font-semibold">CVE-2020-11991</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH</span></td>
+              <td class="py-2.5 px-3 text-amber-400 font-bold">7.5</td>
+              <td class="py-2.5 px-3 font-sans text-xs">XXE Injection in StreamGenerator component processing untrusted XML inputs.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2.5 px-3 text-amber-400 font-semibold">CVE-2025-24783</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH</span></td>
+              <td class="py-2.5 px-3 text-amber-400 font-bold">7.5</td>
+              <td class="py-2.5 px-3 font-sans text-xs">Predictable PRNG generation for continuation IDs, enabling session hijacking attacks.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2.5 px-3 text-amber-400 font-semibold">CVE-2003-1172</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH</span></td>
+              <td class="py-2.5 px-3 text-amber-400 font-bold">7.5</td>
+              <td class="py-2.5 px-3 font-sans text-xs">Directory traversal vulnerability via view-source sample handlers exposing server filesystem.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3: Evidence & Header Leakage -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 3. Technical Evidence & Information Disclosure
+      </h2>
+
+      <div class="mb-5">
+        <h3 class="text-sm font-semibold text-slate-200 mb-2 font-mono">// HTTP Header Fingerprint (FM1 & FM2)</h3>
+        <pre class="bg-[#070a12] p-4 rounded-xl border border-[#1f293d] text-xs font-mono text-emerald-300 overflow-x-auto"><code>HTTP/1.1 200 OK
+X-Cocoon-Version: 2.0.4
+Server: Apache-Coyote/1.1
+X-OneAgent-JS-Injection: true
+Content-Type: text/html; charset=ISO-8859-1
+Set-Cookie: JSESSIONID=[REDACTED]; Path=/eFRAMS3; HttpOnly
+Accept-Ranges: bytes</code></pre>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-slate-200 mb-2 font-mono">// Login Portal Metadata Disclosure</h3>
+        <p class="text-xs text-slate-300 mb-3">
+          Unauthenticated GET requests to <code class="text-slate-200">authenticate.html</code> leaked extensive internal architecture information:
+        </p>
+        <ul class="space-y-1.5 text-xs font-mono text-slate-300 bg-[#070a12] p-4 rounded-xl border border-[#1f293d]">
+          <li><span class="text-cyan-400 font-bold">Application Build:</span> Version 3.7.6.0</li>
+          <li><span class="text-cyan-400 font-bold">Login Handler:</span> <code class="text-slate-200">POST processlogin.html</code></li>
+          <li><span class="text-cyan-400 font-bold">XML Namespaces:</span> <code class="text-amber-300">xmlns:sql="http://apache.org/cocoon/SQL/2.0"</code> (SQL transformer active)</li>
+          <li><span class="text-cyan-400 font-bold">Java Bindings:</span> <code class="text-amber-300">xmlns:java="http://xml.apache.org/xslt/java"</code> (XSLT Java binding)</li>
+          <li><span class="text-cyan-400 font-bold">APM Sensor:</span> Dynatrace Real User Monitoring (RUM agent: <code class="text-slate-400">ruxitagentjs_[REDACTED]</code>)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 4: Comparative WAF Analysis -->
+    <section class="mb-8 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 4. Comparative Edge WAF Analysis (FM1 vs FM2)
+      </h2>
+      <p class="text-sm text-slate-300 mb-4">
+        A comparative matrix across cluster nodes demonstrated significant rule divergence at the Akamai edge layer:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b border-[#1f293d] text-slate-400">
+              <th class="py-2.5 px-3">Test Vector</th>
+              <th class="py-2.5 px-3">FM1 Node (Permissive)</th>
+              <th class="py-2.5 px-3">FM2 Node (Hardened)</th>
+              <th class="py-2.5 px-3">Finding</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#1f293d]/50 text-slate-300">
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2 px-3 text-slate-200">GET /eFRAMS3/</td>
+              <td class="py-2 px-3 text-emerald-400">200 OK</td>
+              <td class="py-2 px-3 text-red-400">403 Forbidden (WAF #18)</td>
+              <td class="py-2 px-3 font-sans text-xs">FM1 permits edge entry; FM2 blocks.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2 px-3 text-slate-200">GET authenticate.html</td>
+              <td class="py-2 px-3 text-emerald-400">200 OK (Login Page)</td>
+              <td class="py-2 px-3 text-red-400">403 Forbidden (WAF #18)</td>
+              <td class="py-2 px-3 font-sans text-xs">Login UI exposed on FM1.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2 px-3 text-slate-200">POST (empty body)</td>
+              <td class="py-2 px-3 text-amber-400">411 Length Required</td>
+              <td class="py-2 px-3 text-amber-400">411 Length Required</td>
+              <td class="py-2 px-3 font-sans text-xs">Both hit identical Tomcat backend.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2 px-3 text-slate-200">PUT / PATCH</td>
+              <td class="py-2 px-3 text-amber-400">501 Not Implemented</td>
+              <td class="py-2 px-3 text-amber-400">501 Not Implemented</td>
+              <td class="py-2 px-3 font-sans text-xs">Passed straight to backend servlet.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/20">
+              <td class="py-2 px-3 text-slate-200">PROPFIND / COPY</td>
+              <td class="py-2 px-3 text-amber-400">501 Not Implemented</td>
+              <td class="py-2 px-3 text-red-400">403 Forbidden (WAF #18)</td>
+              <td class="py-2 px-3 font-sans text-xs">WebDAV methods pass FM1 WAF.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 5: Remediation Recommendations -->
+    <section class="mb-10 bg-[#0f1423] rounded-2xl border border-[#1f293d] p-6">
+      <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span class="text-emerald-400 font-mono">//</span> 5. Security & QA Remediation Plan
+      </h2>
+      <ul class="space-y-3 text-sm text-slate-300">
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">1.</span>
+          <span><strong>Decommission EOL Components:</strong> Migrate the enterprise portal away from unmaintained Apache Cocoon 2.0.4 to a modern, supported web framework.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">2.</span>
+          <span><strong>Unify Edge WAF Rules:</strong> Replicate the strict Akamai WAF Rule #18 policy active on FM2 across the FM1 cluster node to eliminate public exposure.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">3.</span>
+          <span><strong>Strip Disclosure Headers:</strong> Configure the edge reverse proxy tier to remove <code class="text-slate-200">X-Cocoon-Version</code> and <code class="text-slate-200">Server: Apache-Coyote/1.1</code> before responses reach clients.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold">4.</span>
+          <span><strong>Disable External XML Entities:</strong> Mandate <code class="text-slate-200">disallow-doctype-decl = true</code> in all XML processing pipelines to defeat XXE injection attempts.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer Back Link -->
+    <div class="text-center pt-6 border-t border-[#1f293d]">
+      <a href="../index.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#070a12] font-mono font-bold text-xs transition-all shadow-lg shadow-emerald-500/10">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to All Security Cases</span>
+      </a>
+    </div>
+
+  </main>
+
+</body>
+</html>

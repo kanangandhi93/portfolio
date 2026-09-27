@@ -237,9 +237,9 @@ layout: null
             <button onclick="applyFilter('all', true)" class="group p-4 bg-brand-card hover:bg-brand-cardHover rounded-xl border border-brand-border hover:border-emerald-500/60 transition-all text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-emerald-400">
               <div class="flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">Total Findings</span>
-                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All (8) →</span>
+                <span class="text-[10px] font-mono text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">View All (9) →</span>
               </div>
-              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">8+</span>
+              <span class="block text-3xl font-extrabold font-mono text-emerald-400 mt-1">9+</span>
               <span class="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-1">
                 <span>Verified Exploits</span>
               </span>
@@ -306,7 +306,7 @@ layout: null
             
             <div class="mt-4 md:mt-0">
               <button onclick="applyFilter('all', true)" class="px-3.5 py-1.5 rounded-lg text-xs font-mono bg-brand-card border border-brand-border hover:border-emerald-400 text-slate-300 hover:text-white transition-all">
-                Reset to All Findings (8)
+                Reset to All Findings (9)
               </button>
             </div>
           </div>
@@ -362,20 +362,20 @@ layout: null
               </button>
             </div>
 
-            <!-- Category 2: Cloud & Storage Security -->
+            <!-- Category 2: Cloud & Infrastructure Security -->
             <div class="bg-brand-card rounded-2xl border border-brand-border hover:border-red-500/50 p-6 transition-all flex flex-col justify-between group">
               <div>
                 <div class="flex items-center justify-between mb-3">
                   <div class="flex items-center space-x-2">
                     <span class="text-xl">☁️</span>
-                    <h3 class="text-lg font-bold text-white group-hover:text-red-400 transition-colors">Cloud & File Storage</h3>
+                    <h3 class="text-lg font-bold text-white group-hover:text-red-400 transition-colors">Cloud & Infrastructure</h3>
                   </div>
                   <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                    2 Reports
+                    3 Reports
                   </span>
                 </div>
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                  Object storage access controls, CORS wildcard permissions, UUID predictability, and cross-origin file exfiltration.
+                  Perimeter firewalls, WAF bypass, unmaintained EOL frameworks, S3/CORS exfiltration, and origin IP disclosures.
                 </p>
 
                 <!-- Cases inside this category -->
@@ -385,10 +385,21 @@ layout: null
                     <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">HIGH 7.5</span>
                   </div>
                   <p class="text-[11px] text-slate-400 font-mono">Target: Global Connected Vehicle & EV Enterprise</p>
-                  <p class="text-[11px] text-slate-400 font-mono">Scope: auth.[redacted].com & owner-api.[redacted].com</p>
                   <div class="flex items-center gap-3 pt-1 text-xs font-mono">
                     <button onclick="openCaseModal('case_automotive_waf')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
                     <a href="cases/waf-bypass-origin-disclosure.html" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Page</a>
+                  </div>
+                </div>
+
+                <div class="bg-brand-dark/80 rounded-xl p-3.5 border border-brand-border/60 mb-2 space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-200">📦 EOL Framework & Known CVEs</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-400 font-bold">P5 / CVSS 5.3</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-mono">Target: Major National Telecommunications Provider</p>
+                  <div class="flex items-center gap-3 pt-1 text-xs font-mono">
+                    <button onclick="openCaseModal('case_telecom_cocoon')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
+                    <a href="cases/outdated-framework-known-cves.html" target="_blank" class="text-cyan-400 hover:text-cyan-300">📄 Page</a>
                   </div>
                 </div>
 
@@ -398,7 +409,6 @@ layout: null
                     <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold">CRITICAL 9.1</span>
                   </div>
                   <p class="text-[11px] text-slate-400 font-mono">Target: International Ride-Hailing Platform</p>
-                  <p class="text-[11px] text-slate-400 font-mono">Vulnerability: CORS Wildcard + IDOR</p>
                   
                   <div class="flex items-center gap-3 pt-2 border-t border-brand-border/40 text-xs font-mono">
                     <button onclick="openCaseModal('case_ridehailing_storage')" class="text-emerald-400 hover:text-emerald-300">👉 Advisory</button>
@@ -408,7 +418,7 @@ layout: null
               </div>
 
               <button onclick="applyFilter('category-cloud', true)" class="w-full mt-2 py-2 px-3 rounded-lg text-xs font-mono bg-brand-dark hover:bg-red-950/40 text-red-400 border border-brand-border group-hover:border-red-500/40 transition-all flex items-center justify-center gap-1">
-                <span>Filter Cloud Storage Findings</span>
+                <span>Filter Cloud & Infra Findings</span>
                 <span>→</span>
               </button>
             </div>
@@ -564,7 +574,7 @@ layout: null
             </div>
             
             <div id="findings-count" class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
-              Showing <span id="visible-count" class="text-emerald-400 font-bold">8</span> of 8 Findings
+              Showing <span id="visible-count" class="text-emerald-400 font-bold">9</span> of 9 Findings
             </div>
           </div>
 
@@ -581,7 +591,7 @@ layout: null
               </span>
 
               <button onclick="applyFilter('all')" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-emerald-500 text-brand-dark font-bold shadow-sm">
-                All (8)
+                All (9)
               </button>
 
               <button onclick="applyFilter('category-api')" data-filter="category-api" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-slate-300 border border-brand-border">
@@ -609,7 +619,7 @@ layout: null
               </button>
 
               <button onclick="applyFilter('severity-low')" data-filter="severity-low" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-sky-400 border border-brand-border">
-                🔵 Low/Compliance (1)
+                🔵 Low / P5 (2)
               </button>
 
               <button onclick="applyFilter('severity-high')" data-filter="severity-high" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-brand-dark hover:bg-slate-800 text-amber-400 border border-brand-border">
@@ -1146,6 +1156,69 @@ layout: null
               </div>
             </div>
 
+            <!-- Finding 9: Major National Telecommunications Provider -->
+            <div 
+              data-category="category-cloud" 
+              data-severity="severity-low"
+              data-tags="outdated components eol framework apache cocoon known cves xxe sqli recon waf telecom perimeter p5"
+              class="case-card bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-emerald-500/60 hover:bg-brand-cardHover transition-all duration-200 flex flex-col justify-between group cursor-pointer relative"
+              onclick="handleCardClick(event, 'case_telecom_cocoon')"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <button onclick="event.stopPropagation(); applyFilter('severity-low', true);" class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-sky-500/15 text-sky-400 border border-sky-500/30 hover:bg-sky-500/25 transition-colors">
+                    P5 / INFORMATIONAL (CVSS 5.3)
+                  </button>
+                  <button onclick="event.stopPropagation(); applyFilter('category-cloud', true);" class="text-xs font-mono text-cyan-400 hover:underline">
+                    Perimeter & Component Security
+                  </button>
+                </div>
+                
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
+                  Exposure of EOL Apache Cocoon Framework & Unpatched CVEs
+                </h3>
+
+                <p class="text-xs text-slate-400 font-mono mb-2">
+                  Target: <span class="text-slate-200">Major National Telecommunications Provider</span>
+                </p>
+
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                  Enterprise facility management portals exposed retired Apache Cocoon 2.0.4 via HTTP response headers. The unmaintained framework is vulnerable to unpatched Critical XXE and High SQLi CVEs, coupled with inconsistent edge WAF enforcement.
+                </p>
+
+                <div class="space-y-1.5 mb-4 bg-brand-dark/70 rounded-xl p-3 border border-brand-border/60 font-mono text-xs">
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-amber-400 mr-2 font-semibold">Flaw:</span>
+                    <span class="text-slate-200">EOL Framework Exposure + Known CVEs</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-cyan-400 mr-2 font-semibold">Scope:</span>
+                    <span class="text-slate-300">portal-fm1.[redacted] & portal-fm2.[redacted]</span>
+                  </div>
+                  <div class="flex items-center text-slate-400">
+                    <span class="text-emerald-400 mr-2 font-semibold">Fix:</span>
+                    <span class="text-slate-300">Retire Cocoon + Unify Edge WAF Rules</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <button onclick="event.stopPropagation(); searchCases('Cocoon')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Apache Cocoon</button>
+                  <button onclick="event.stopPropagation(); searchCases('CVE')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#Known CVEs</button>
+                  <button onclick="event.stopPropagation(); searchCases('WAF')" class="px-2 py-0.5 rounded text-[11px] font-mono bg-brand-border/40 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300">#WAF Analysis</button>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-brand-border flex items-center justify-between text-xs font-mono">
+                <button onclick="event.stopPropagation(); openCaseModal('case_telecom_cocoon')" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                  <span>👉 Open Advisory</span>
+                  <svg class="w-4 h-4 ml-0.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                <a href="cases/outdated-framework-known-cves.html" target="_blank" onclick="event.stopPropagation()" class="text-slate-400 hover:text-cyan-400 flex items-center gap-1">
+                  <span>📄 Page</span>
+                </a>
+              </div>
+            </div>
+
           <!-- Empty search result state -->
           <div id="no-results" class="hidden text-center py-12 bg-brand-card/40 rounded-2xl border border-brand-border">
             <span class="text-3xl mb-2 block">🔍</span>
@@ -1473,6 +1546,30 @@ layout: null
   <script>
     // Sanitized Case Study Data (Strictly Anonymized & Redacted)
     const caseStudies = {
+      case_telecom_cocoon: {
+        title: "Exposure of EOL Apache Cocoon Framework & Unpatched CVEs",
+        target: "Major National Telecommunications Provider",
+        severity: "P5 / INFORMATIONAL (CVSS 5.3 - Bugcrowd Verified)",
+        severityColor: "text-sky-400 border-sky-500/30 bg-sky-500/10",
+        category: "Component Vulnerabilities & Perimeter Hardening",
+        filePath: "cases/outdated-framework-known-cves.html",
+        overview: "External perimeter auditing identified enterprise facility portals running retired Apache Cocoon 2.0.4 on Apache Tomcat. The unmaintained framework contains multiple unpatched CVEs including Critical XXE (CVE-2023-49733, CVSS 9.8) and SQL Injection (CVE-2022-45135, CVSS 8.8). Comparative edge testing revealed inconsistent Akamai WAF rules between cluster nodes, leaving the primary portal accessible without challenge and leaking internal build and XML namespace metadata.",
+        exploitation: [
+          "Observed X-Cocoon-Version: 2.0.4 and Server: Apache-Coyote/1.1 response headers on public GET requests.",
+          "Unauthenticated access to FM1 login interface exposed build version 3.7.6.0, XML SQL transformer namespaces, and XSLT Java language bindings.",
+          "Identified multiple unpatched public CVEs in Cocoon 2.0.4: CVE-2023-49733 (XXE 9.8), CVE-2022-45135 (SQLi 8.8), and CVE-2025-24783 (predictable PRNG session IDs).",
+          "Conducted comparative edge testing: FM2 strictly enforced WAF rule #18 on all GET paths, while FM1 permitted unauthenticated reconnaissance directly through to the Tomcat servlet."
+        ],
+        impact: "Exposes enterprise infrastructure to high-severity unpatched CVE exploits (XXE arbitrary file read, database SQL injection, and session hijacking) should perimeter filters fail.",
+        remediation: [
+          "Decommission and migrate away from retired Apache Cocoon to a supported enterprise framework.",
+          "Apply FM2's strict Akamai WAF Rule #18 uniformly across all portal cluster nodes.",
+          "Strip X-Cocoon-Version and Server response headers at the edge reverse proxy layer.",
+          "Disable external XML entity resolution (disallow-doctype-decl) across all XML processing pipelines."
+        ]
+      },
+
+
       case_automotive_waf: {
         title: "Direct Origin Access & WAF Bypass via Header IP Disclosure",
         target: "Global Connected Vehicle & EV Enterprise",
