@@ -35,10 +35,13 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: Ensure both HTML and Markdown files exist in _site
+      - name: Ensure both HTML, Markdown and PDF files exist in _site
         run: |
           mkdir -p ./_site/cases
           cp -r cases/* ./_site/cases/
+          mkdir -p ./_site/report
+          cp -r report/* ./_site/report/ || true
+          cp *.pdf ./_site/ || true
           touch ./_site/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

