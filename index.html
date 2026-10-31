@@ -107,6 +107,9 @@ layout: null
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
+          <a href="#projects" class="text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+            <span>🚀</span> Projects
+          </a>
           <a href="#dashboard" class="text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
             <span>📊</span> Dashboard
           </a>
@@ -142,6 +145,7 @@ layout: null
 
       <!-- Mobile dropdown -->
       <div id="mobile-menu" class="hidden md:hidden border-b border-brand-border bg-brand-dark/95 px-4 pt-2 pb-4 space-y-2">
+        <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-400 hover:bg-brand-card">🚀 Featured Projects</a>
         <a href="#dashboard" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">📊 Dashboard</a>
         <a href="#categories" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">🧬 Categories</a>
         <a href="#cases" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-brand-card hover:text-emerald-400">🧪 Security Findings</a>
@@ -189,6 +193,11 @@ layout: null
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 <span>Download Client Report (PDF)</span>
+              </a>
+
+              <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-brand-card hover:bg-brand-cardHover border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 hover:text-emerald-200 font-semibold text-sm transition-all duration-200">
+                <span>🚀</span>
+                <span>View Flagship Project</span>
               </a>
 
               <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-brand-card hover:bg-brand-cardHover border border-brand-border hover:border-slate-500 text-white font-semibold text-sm transition-all duration-200">
@@ -1314,6 +1323,175 @@ layout: null
             <button onclick="applyFilter('all'); document.getElementById('search-input').value='';" class="px-4 py-2 rounded-lg bg-emerald-500 text-brand-dark text-xs font-bold font-mono">
               Reset Filters
             </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 🚀 FEATURED WORK / FLAGSHIP SECURITY PROJECTS  -->
+      <!-- ============================================== -->
+      <section id="projects" class="py-16 md:py-24 border-b border-brand-border/60 bg-brand-dark/40 relative overflow-hidden">
+        
+        <!-- Subtle Glow Effects -->
+        <div class="absolute top-1/2 -left-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <!-- Section Heading -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>// 02. FEATURED ENGINEERING & DEFENSE TOOLS</span>
+              </div>
+              <h2 class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-2.5">
+                <span>🚀</span> Flagship Cybersecurity Projects
+              </h2>
+              <p class="text-slate-400 mt-2 max-w-2xl text-sm leading-relaxed">
+                Production-grade defensive frameworks, security firewalls, and AI agent hardening tools engineered to safeguard autonomous systems and modern FinTech APIs.
+              </p>
+            </div>
+            
+            <div class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
+              <span class="text-emerald-400 font-bold">1</span> Flagship Hackathon System
+            </div>
+          </div>
+
+          <!-- Featured Projects Grid -->
+          <div class="grid grid-cols-1 gap-8">
+
+            <!-- Card: PromptPay Guard -->
+            <div class="group relative rounded-2xl border border-brand-border bg-brand-card/90 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 hover:border-emerald-500/60 hover:bg-brand-cardHover hover:shadow-[0_0_35px_rgba(16,185,129,0.12)] flex flex-col justify-between">
+              
+              <!-- Subtle Header Ambient Glow -->
+              <div class="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-emerald-500/10 blur-3xl transition-opacity group-hover:opacity-100 opacity-60"></div>
+
+              <div>
+                <!-- Top Meta Row: Badge & Category -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-mono font-bold text-emerald-400 shadow-sm">
+                      <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      PayPal AI Agent Hackathon 2026
+                    </span>
+                    <span class="hidden sm:inline-flex items-center rounded-md border border-brand-border/80 bg-brand-dark/70 px-2.5 py-0.5 text-[11px] font-mono text-amber-400 font-semibold">
+                      Flagship Build
+                    </span>
+                  </div>
+                  <span class="text-xs font-mono text-cyan-400/90 tracking-wide">
+                    // Zero-Trust AppSec &amp; Autonomous AI
+                  </span>
+                </div>
+
+                <!-- Title & Subtitle -->
+                <div class="mb-4">
+                  <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight group-hover:text-emerald-300 transition-colors">
+                    PromptPay Guard
+                  </h3>
+                  <p class="mt-1.5 text-sm sm:text-base font-medium text-slate-300 leading-relaxed">
+                    Two-Tier Zero-Trust Security Firewall for Autonomous AI Payments
+                  </p>
+                </div>
+
+                <!-- Tech Stack Chips -->
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="rounded-md border border-brand-border/80 bg-brand-dark px-2.5 py-1 text-xs font-mono text-slate-300 font-medium">AppSec</span>
+                  <span class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-mono text-emerald-300 font-semibold">Zero-Trust</span>
+                  <span class="rounded-md border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 text-xs font-mono text-cyan-300 font-semibold">Google Gemini 1.5</span>
+                  <span class="rounded-md border border-sky-500/30 bg-sky-500/10 px-2.5 py-1 text-xs font-mono text-sky-300 font-semibold">PayPal API</span>
+                  <span class="rounded-md border border-brand-border/80 bg-brand-dark px-2.5 py-1 text-xs font-mono text-slate-300 font-medium">Node.js</span>
+                  <span class="rounded-md border border-brand-border/80 bg-brand-dark px-2.5 py-1 text-xs font-mono text-slate-300 font-medium">FinTech</span>
+                  <span class="rounded-md border border-brand-border/80 bg-brand-dark px-2.5 py-1 text-xs font-mono text-purple-300 font-medium">Server-Sent Events (SSE)</span>
+                </div>
+
+                <!-- 3-Point Architectural Breakdown -->
+                <div class="space-y-3 rounded-xl border border-brand-border/70 bg-brand-dark/75 p-4 sm:p-5 font-sans text-xs sm:text-sm">
+                  
+                  <!-- Point 1 -->
+                  <div class="flex items-start gap-3">
+                    <span class="mt-0.5 font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 text-xs">01</span>
+                    <div class="flex-1">
+                      <strong class="text-slate-200 font-semibold">Two-Tier Defensive Architecture:</strong>
+                      <p class="text-slate-400 mt-1 leading-relaxed text-xs">
+                        Drops ~38% of malicious payloads via &lt;0.5ms in-memory heuristics at $0.00 compute cost, backed by Google Gemini 1.5 semantic intent reconciliation (cutting OpEx by 98.8%).
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Point 2 -->
+                  <div class="flex items-start gap-3 border-t border-brand-border/60 pt-3">
+                    <span class="mt-0.5 font-mono font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20 text-xs">02</span>
+                    <div class="flex-1">
+                      <strong class="text-slate-200 font-semibold">3-Zone Operational Triaging:</strong>
+                      <p class="text-slate-400 mt-1 leading-relaxed text-xs">
+                        Enables automated settlements (Zone 1), real-time Human-in-the-Loop (HITL) operator holds via Server-Sent Events (Zone 2), and instant HTTP 403 blocks for prompt injections (Zone 3).
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Point 3 -->
+                  <div class="flex items-start gap-3 border-t border-brand-border/60 pt-3">
+                    <span class="mt-0.5 font-mono font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 text-xs">03</span>
+                    <div class="flex-1">
+                      <strong class="text-slate-200 font-semibold">Enterprise Hardening:</strong>
+                      <p class="text-slate-400 mt-1 leading-relaxed text-xs">
+                        In-memory idempotency caching (<code class="text-slate-300 font-mono text-[11px] bg-brand-card px-1 py-0.5 rounded border border-brand-border">x-idempotency-key</code>), cryptographic webhook verification (<code class="text-slate-300 font-mono text-[11px] bg-brand-card px-1 py-0.5 rounded border border-brand-border">PAYPAL-TRANSMISSION-SIG</code>), and 100% green integrity across 60 automated test suites.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Action CTA Buttons -->
+              <div class="mt-6 pt-5 border-t border-brand-border flex flex-wrap items-center justify-between gap-4">
+                
+                <!-- Primary Video Demo Link -->
+                <a 
+                  href="https://youtu.be/2_1kc6dqQbE" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 px-4 sm:px-5 py-2.5 text-xs font-bold text-white shadow-lg shadow-red-600/20 hover:shadow-red-600/30 transition-all duration-200"
+                >
+                  <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  <span>Watch Video Demo</span>
+                </a>
+
+                <!-- Devpost & GitHub Buttons -->
+                <div class="flex items-center gap-2.5">
+                  <a 
+                    href="https://devpost.com/software/promptpay-guard" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-xl border border-brand-border bg-brand-dark hover:bg-slate-800/80 px-3.5 py-2 text-xs font-mono font-medium text-slate-200 hover:border-cyan-500 hover:text-cyan-300 transition-all"
+                  >
+                    <svg class="h-4 w-4 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M6.002 1.61L0 12.014 6.002 22.39h11.996L24 12.014 17.998 1.61H6.002zm1.593 4.084h3.947c2.977 0 5.394 2.417 5.394 5.394s-2.417 5.394-5.394 5.394H7.595V5.694zm3.037 2.417v5.954h.91c1.644 0 2.977-1.333 2.977-2.977s-1.333-2.977-2.977-2.977h-.91z"/>
+                    </svg>
+                    <span>Devpost Submission</span>
+                  </a>
+
+                  <a 
+                    href="https://github.com/kanangandhi93/promptpay-guard" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-xl border border-brand-border bg-brand-dark hover:bg-slate-800/80 px-3.5 py-2 text-xs font-mono font-medium text-slate-200 hover:border-emerald-500 hover:text-emerald-300 transition-all"
+                  >
+                    <svg class="h-4 w-4 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    <span>GitHub</span>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
         </div>
